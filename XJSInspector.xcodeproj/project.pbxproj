@@ -13,7 +13,10 @@
 		0663F188182A2EE500587A38 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0663F175182A2EE500587A38 /* Cocoa.framework */; };
 		0663F18B182A2EE500587A38 /* libXJSInspector.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0663F172182A2EE500587A38 /* libXJSInspector.a */; };
 		0663F191182A2EE500587A38 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0663F18F182A2EE500587A38 /* InfoPlist.strings */; };
-		0663F193182A2EE500587A38 /* XJSInspectorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0663F192182A2EE500587A38 /* XJSInspectorTests.m */; };
+		0663F193182A2EE500587A38 /* XJSInspectorTests.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0663F192182A2EE500587A38 /* XJSInspectorTests.mm */; };
+		06A8769518336FBE00855B3E /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 06A8769418336FBE00855B3E /* libz.dylib */; };
+		1EE75F3DCC6246748E668136 /* libPods-XJSInspectorTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F64C0D321764CCDAD44C429 /* libPods-XJSInspectorTests.a */; };
+		A3E8EE00FA9F4491B2AB44CA /* libPods-XJSInspector.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FB02BEC8203948538687CBEF /* libPods-XJSInspector.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,7 +42,12 @@
 		0663F186182A2EE500587A38 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		0663F18E182A2EE500587A38 /* XJSInspectorTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "XJSInspectorTests-Info.plist"; sourceTree = "<group>"; };
 		0663F190182A2EE500587A38 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		0663F192182A2EE500587A38 /* XJSInspectorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XJSInspectorTests.m; sourceTree = "<group>"; };
+		0663F192182A2EE500587A38 /* XJSInspectorTests.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = XJSInspectorTests.mm; sourceTree = "<group>"; };
+		06A8769418336FBE00855B3E /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		86A0DAF32B0A4EF49A6F1D0B /* Pods-XJSInspector.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XJSInspector.xcconfig"; path = "Pods/Pods-XJSInspector.xcconfig"; sourceTree = "<group>"; };
+		9F5F8167BC93414D8B54E981 /* Pods-XJSInspectorTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XJSInspectorTests.xcconfig"; path = "Pods/Pods-XJSInspectorTests.xcconfig"; sourceTree = "<group>"; };
+		9F64C0D321764CCDAD44C429 /* libPods-XJSInspectorTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XJSInspectorTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FB02BEC8203948538687CBEF /* libPods-XJSInspector.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XJSInspector.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,6 +56,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0663F176182A2EE500587A38 /* Cocoa.framework in Frameworks */,
+				A3E8EE00FA9F4491B2AB44CA /* libPods-XJSInspector.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -55,9 +64,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				06A8769518336FBE00855B3E /* libz.dylib in Frameworks */,
 				0663F188182A2EE500587A38 /* Cocoa.framework in Frameworks */,
 				0663F18B182A2EE500587A38 /* libXJSInspector.a in Frameworks */,
 				0663F187182A2EE500587A38 /* XCTest.framework in Frameworks */,
+				1EE75F3DCC6246748E668136 /* libPods-XJSInspectorTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,6 +82,8 @@
 				0663F18C182A2EE500587A38 /* XJSInspectorTests */,
 				0663F174182A2EE500587A38 /* Frameworks */,
 				0663F173182A2EE500587A38 /* Products */,
+				86A0DAF32B0A4EF49A6F1D0B /* Pods-XJSInspector.xcconfig */,
+				9F5F8167BC93414D8B54E981 /* Pods-XJSInspectorTests.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -86,9 +99,12 @@
 		0663F174182A2EE500587A38 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				06A8769418336FBE00855B3E /* libz.dylib */,
 				0663F175182A2EE500587A38 /* Cocoa.framework */,
 				0663F186182A2EE500587A38 /* XCTest.framework */,
 				0663F177182A2EE500587A38 /* Other Frameworks */,
+				FB02BEC8203948538687CBEF /* libPods-XJSInspector.a */,
+				9F64C0D321764CCDAD44C429 /* libPods-XJSInspectorTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -124,7 +140,7 @@
 		0663F18C182A2EE500587A38 /* XJSInspectorTests */ = {
 			isa = PBXGroup;
 			children = (
-				0663F192182A2EE500587A38 /* XJSInspectorTests.m */,
+				0663F192182A2EE500587A38 /* XJSInspectorTests.mm */,
 				0663F18D182A2EE500587A38 /* Supporting Files */,
 			);
 			path = XJSInspectorTests;
@@ -156,9 +172,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0663F196182A2EE500587A38 /* Build configuration list for PBXNativeTarget "XJSInspector" */;
 			buildPhases = (
+				8D2A826AC6FE479E97E952C0 /* Check Pods Manifest.lock */,
 				0663F16E182A2EE500587A38 /* Sources */,
 				0663F16F182A2EE500587A38 /* Frameworks */,
 				0663F170182A2EE500587A38 /* Headers */,
+				23E11707F09C41739EEFC340 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -173,9 +191,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0663F199182A2EE500587A38 /* Build configuration list for PBXNativeTarget "XJSInspectorTests" */;
 			buildPhases = (
+				6FF1A8CD190148D1A1545CF5 /* Check Pods Manifest.lock */,
 				0663F181182A2EE500587A38 /* Sources */,
 				0663F182182A2EE500587A38 /* Frameworks */,
 				0663F183182A2EE500587A38 /* Resources */,
+				39D15AA1D22A49469474528A /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -225,6 +245,69 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		23E11707F09C41739EEFC340 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-XJSInspector-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		39D15AA1D22A49469474528A /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-XJSInspectorTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6FF1A8CD190148D1A1545CF5 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		8D2A826AC6FE479E97E952C0 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		0663F16E182A2EE500587A38 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -238,7 +321,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0663F193182A2EE500587A38 /* XJSInspectorTests.m in Sources */,
+				0663F193182A2EE500587A38 /* XJSInspectorTests.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -321,6 +404,10 @@
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"NDEBUG=1",
+				);
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -334,24 +421,29 @@
 		};
 		0663F197182A2EE500587A38 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 86A0DAF32B0A4EF49A6F1D0B /* Pods-XJSInspector.xcconfig */;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "XJSInspector/XJSInspector-Prefix.pch";
+				LIBRARY_SEARCH_PATHS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
 		};
 		0663F198182A2EE500587A38 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 86A0DAF32B0A4EF49A6F1D0B /* Pods-XJSInspector.xcconfig */;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "XJSInspector/XJSInspector-Prefix.pch";
+				LIBRARY_SEARCH_PATHS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
 		};
 		0663F19A182A2EE500587A38 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9F5F8167BC93414D8B54E981 /* Pods-XJSInspectorTests.xcconfig */;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -365,6 +457,11 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "XJSInspectorTests/XJSInspectorTests-Info.plist";
+				LIBRARY_SEARCH_PATHS = "\"${PODS_ROOT}/XJSBinding/Spidermonkey/debug\"";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-ljs_static",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -372,6 +469,7 @@
 		};
 		0663F19B182A2EE500587A38 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9F5F8167BC93414D8B54E981 /* Pods-XJSInspectorTests.xcconfig */;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -381,6 +479,11 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "XJSInspector/XJSInspector-Prefix.pch";
 				INFOPLIST_FILE = "XJSInspectorTests/XJSInspectorTests-Info.plist";
+				LIBRARY_SEARCH_PATHS = "\"${PODS_ROOT}/XJSBinding/Spidermonkey/release\"";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-ljs_static",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -405,6 +508,7 @@
 				0663F198182A2EE500587A38 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0663F199182A2EE500587A38 /* Build configuration list for PBXNativeTarget "XJSInspectorTests" */ = {
 			isa = XCConfigurationList;
@@ -413,6 +517,7 @@
 				0663F19B182A2EE500587A38 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

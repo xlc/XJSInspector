@@ -8,6 +8,9 @@
 
 #import <XCTest/XCTest.h>
 
+#import "XJSContext.h"
+#import "XJSValue.h"
+
 @interface XJSInspectorTests : XCTestCase
 
 @end
@@ -28,7 +31,11 @@
 
 - (void)testExample
 {
-    XCTFail(@"No implementation for \"%s\"", __PRETTY_FUNCTION__);
+    XJSContext *context = [[XJSContext alloc] init];
+    
+    context[@"a"] = @1;
+    
+    NSLog(@"%@", [context[@"a"] debugDescription]);
 }
 
 @end
