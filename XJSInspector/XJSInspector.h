@@ -10,4 +10,10 @@
 
 @interface XJSInspector : NSObject
 
++ (void)setProtocolIdentifier:(NSString *)iden;
++ (NSString *)protocolIdentifier;
+
++ (void)startServer;
++ (void)stopServer;
+
 @end

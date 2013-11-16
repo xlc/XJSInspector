@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0624EC7A183701C600D2F7BC /* XJSServerDelegateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0624EC79183701C600D2F7BC /* XJSServerDelegateTests.m */; };
 		0663F176182A2EE500587A38 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0663F175182A2EE500587A38 /* Cocoa.framework */; };
 		0663F180182A2EE500587A38 /* XJSInspector.m in Sources */ = {isa = PBXBuildFile; fileRef = 0663F17F182A2EE500587A38 /* XJSInspector.m */; };
 		0663F187182A2EE500587A38 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0663F186182A2EE500587A38 /* XCTest.framework */; };
@@ -15,6 +16,8 @@
 		0663F191182A2EE500587A38 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0663F18F182A2EE500587A38 /* InfoPlist.strings */; };
 		0663F193182A2EE500587A38 /* XJSInspectorTests.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0663F192182A2EE500587A38 /* XJSInspectorTests.mm */; };
 		06A8769518336FBE00855B3E /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 06A8769418336FBE00855B3E /* libz.dylib */; };
+		06A876981833807B00855B3E /* XJSServerDelegate_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 06A876961833807B00855B3E /* XJSServerDelegate_Private.h */; };
+		06A876991833807B00855B3E /* XJSServerDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 06A876971833807B00855B3E /* XJSServerDelegate.m */; };
 		1EE75F3DCC6246748E668136 /* libPods-XJSInspectorTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F64C0D321764CCDAD44C429 /* libPods-XJSInspectorTests.a */; };
 		A3E8EE00FA9F4491B2AB44CA /* libPods-XJSInspector.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FB02BEC8203948538687CBEF /* libPods-XJSInspector.a */; };
 /* End PBXBuildFile section */
@@ -30,6 +33,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0624EC79183701C600D2F7BC /* XJSServerDelegateTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XJSServerDelegateTests.m; sourceTree = "<group>"; };
 		0663F172182A2EE500587A38 /* libXJSInspector.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libXJSInspector.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		0663F175182A2EE500587A38 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		0663F178182A2EE500587A38 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -44,6 +48,9 @@
 		0663F190182A2EE500587A38 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		0663F192182A2EE500587A38 /* XJSInspectorTests.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = XJSInspectorTests.mm; sourceTree = "<group>"; };
 		06A8769418336FBE00855B3E /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		06A876961833807B00855B3E /* XJSServerDelegate_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XJSServerDelegate_Private.h; sourceTree = "<group>"; };
+		06A876971833807B00855B3E /* XJSServerDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XJSServerDelegate.m; sourceTree = "<group>"; };
+		06A8769B18360BBA00855B3E /* XJSInspectorMessageProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XJSInspectorMessageProtocol.h; path = Shared/XJSInspectorMessageProtocol.h; sourceTree = SOURCE_ROOT; };
 		86A0DAF32B0A4EF49A6F1D0B /* Pods-XJSInspector.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XJSInspector.xcconfig"; path = "Pods/Pods-XJSInspector.xcconfig"; sourceTree = "<group>"; };
 		9F5F8167BC93414D8B54E981 /* Pods-XJSInspectorTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XJSInspectorTests.xcconfig"; path = "Pods/Pods-XJSInspectorTests.xcconfig"; sourceTree = "<group>"; };
 		9F64C0D321764CCDAD44C429 /* libPods-XJSInspectorTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XJSInspectorTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -78,6 +85,7 @@
 		0663F169182A2EE500587A38 = {
 			isa = PBXGroup;
 			children = (
+				06A8769C18360BC200855B3E /* Shared */,
 				0663F17B182A2EE500587A38 /* XJSInspector */,
 				0663F18C182A2EE500587A38 /* XJSInspectorTests */,
 				0663F174182A2EE500587A38 /* Frameworks */,
@@ -124,6 +132,8 @@
 			children = (
 				0663F17E182A2EE500587A38 /* XJSInspector.h */,
 				0663F17F182A2EE500587A38 /* XJSInspector.m */,
+				06A876961833807B00855B3E /* XJSServerDelegate_Private.h */,
+				06A876971833807B00855B3E /* XJSServerDelegate.m */,
 				0663F17C182A2EE500587A38 /* Supporting Files */,
 			);
 			path = XJSInspector;
@@ -141,6 +151,7 @@
 			isa = PBXGroup;
 			children = (
 				0663F192182A2EE500587A38 /* XJSInspectorTests.mm */,
+				0624EC79183701C600D2F7BC /* XJSServerDelegateTests.m */,
 				0663F18D182A2EE500587A38 /* Supporting Files */,
 			);
 			path = XJSInspectorTests;
@@ -155,6 +166,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		06A8769C18360BC200855B3E /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				06A8769B18360BBA00855B3E /* XJSInspectorMessageProtocol.h */,
+			);
+			name = Shared;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -162,6 +181,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				06A876981833807B00855B3E /* XJSServerDelegate_Private.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -314,6 +334,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0663F180182A2EE500587A38 /* XJSInspector.m in Sources */,
+				06A876991833807B00855B3E /* XJSServerDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -322,6 +343,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0663F193182A2EE500587A38 /* XJSInspectorTests.mm in Sources */,
+				0624EC7A183701C600D2F7BC /* XJSServerDelegateTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

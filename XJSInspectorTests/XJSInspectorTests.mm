@@ -29,13 +29,4 @@
     [super tearDown];
 }
 
-- (void)testExample
-{
-    XJSContext *context = [[XJSContext alloc] init];
-    
-    context[@"a"] = @1;
-    
-    NSLog(@"%@", [context[@"a"] debugDescription]);
-}
-
 @end
