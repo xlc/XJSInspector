@@ -38,6 +38,16 @@
                ReferencedContainer = "container:XJSInspector.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "061B33F61837530B00F5DA08"
+               BuildableName = "XJSInspectorTerminalTests.xctest"
+               BlueprintName = "XJSInspectorTerminalTests"
+               ReferencedContainer = "container:XJSInspector.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
