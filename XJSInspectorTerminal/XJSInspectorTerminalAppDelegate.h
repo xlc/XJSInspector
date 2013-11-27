@@ -1,5 +1,5 @@
 //
-//  AppDelegate.h
+//  XJSInspectorTerminalAppDelegate.h
 //  XJSInspectorTerminal
 //
 //  Created by Xiliang Chen on 13-11-16.
@@ -8,8 +8,12 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class MainWindowController;
+
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 
-@property (assign) IBOutlet NSWindow *window;
+@property (nonatomic, copy, readonly) NSArray *mainWindowControllers;
+
+- (IBAction)newWindow;
 
 @end

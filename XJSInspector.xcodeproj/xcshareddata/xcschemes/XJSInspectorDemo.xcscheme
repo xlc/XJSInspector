@@ -42,7 +42,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "061B33F61837530B00F5DA08"
+               BlueprintIdentifier = "06F95D971845DDA300E34922"
                BuildableName = "XJSInspectorTerminalTests.xctest"
                BlueprintName = "XJSInspectorTerminalTests"
                ReferencedContainer = "container:XJSInspector.xcodeproj">

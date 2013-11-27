@@ -11,13 +11,9 @@
 		061B33E41837530A00F5DA08 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 061B33E21837530A00F5DA08 /* InfoPlist.strings */; };
 		061B33E61837530A00F5DA08 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 061B33E51837530A00F5DA08 /* main.m */; };
 		061B33EA1837530A00F5DA08 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 061B33E81837530A00F5DA08 /* Credits.rtf */; };
-		061B33ED1837530A00F5DA08 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 061B33EC1837530A00F5DA08 /* AppDelegate.m */; };
+		061B33ED1837530A00F5DA08 /* XJSInspectorTerminalAppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 061B33EC1837530A00F5DA08 /* XJSInspectorTerminalAppDelegate.mm */; };
 		061B33F01837530A00F5DA08 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 061B33EE1837530A00F5DA08 /* MainMenu.xib */; };
 		061B33F21837530A00F5DA08 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 061B33F11837530A00F5DA08 /* Images.xcassets */; };
-		061B33F81837530B00F5DA08 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0663F186182A2EE500587A38 /* XCTest.framework */; };
-		061B33F91837530B00F5DA08 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0663F175182A2EE500587A38 /* Cocoa.framework */; };
-		061B34011837530B00F5DA08 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 061B33FF1837530B00F5DA08 /* InfoPlist.strings */; };
-		061B34031837530B00F5DA08 /* XJSInspectorTerminalTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 061B34021837530B00F5DA08 /* XJSInspectorTerminalTests.m */; };
 		0624EC7A183701C600D2F7BC /* XJSServerDelegateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0624EC79183701C600D2F7BC /* XJSServerDelegateTests.m */; };
 		0624EC8118372E9400D2F7BC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0624EC8018372E9400D2F7BC /* Foundation.framework */; };
 		0624EC8318372E9400D2F7BC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0624EC8218372E9400D2F7BC /* CoreGraphics.framework */; };
@@ -57,21 +53,20 @@
 		06A8769518336FBE00855B3E /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 06A8769418336FBE00855B3E /* libz.dylib */; };
 		06A876981833807B00855B3E /* XJSServerDelegate_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 06A876961833807B00855B3E /* XJSServerDelegate_Private.h */; };
 		06A876991833807B00855B3E /* XJSServerDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 06A876971833807B00855B3E /* XJSServerDelegate.m */; };
+		06F95D8C1838C3F000E34922 /* MainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06F95D8A1838C3F000E34922 /* MainWindowController.m */; };
+		06F95D8D1838C3F000E34922 /* MainWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06F95D8B1838C3F000E34922 /* MainWindowController.xib */; };
+		06F95D991845DDA400E34922 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0663F186182A2EE500587A38 /* XCTest.framework */; };
+		06F95D9F1845DDA400E34922 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 06F95D9D1845DDA400E34922 /* InfoPlist.strings */; };
+		06F95DA11845DDA400E34922 /* XJSInspectorTerminalTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 06F95DA01845DDA400E34922 /* XJSInspectorTerminalTests.m */; };
 		1EE75F3DCC6246748E668136 /* libPods-XJSInspectorTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F64C0D321764CCDAD44C429 /* libPods-XJSInspectorTests.a */; };
 		3EA24ED65A0D47F7BFDFD4AC /* libPods-XJSInspectorTests-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DEF823BD03F4C589F664B6E /* libPods-XJSInspectorTests-ios.a */; };
 		48E4982BDAE642FB9A5F9FF0 /* libPods-XJSInspector-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 67BDBE06BC984D7990229045 /* libPods-XJSInspector-ios.a */; };
 		9CD45122FE734B2B95937550 /* libPods-XJSInspectorTests-ios-device.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F8DD6C93F0C6437EB3B6A591 /* libPods-XJSInspectorTests-ios-device.a */; };
 		A3E8EE00FA9F4491B2AB44CA /* libPods-XJSInspector.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FB02BEC8203948538687CBEF /* libPods-XJSInspector.a */; };
+		F7740BCAAD484082A6069A68 /* libPods-XJSInspectorTerminal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CF1ADD11F1F4D2EA6E19D2B /* libPods-XJSInspectorTerminal.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		061B33FA1837530B00F5DA08 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0663F16A182A2EE500587A38 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 061B33DC1837530A00F5DA08;
-			remoteInfo = XJSInspectorTerminal;
-		};
 		0624ECA518372E9400D2F7BC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0663F16A182A2EE500587A38 /* Project object */;
@@ -100,6 +95,13 @@
 			remoteGlobalIDString = 0663F171182A2EE500587A38;
 			remoteInfo = XJSInspector;
 		};
+		06F95DA31845DDA400E34922 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0663F16A182A2EE500587A38 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 061B33DC1837530A00F5DA08;
+			remoteInfo = XJSInspectorTerminal;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -121,14 +123,10 @@
 		061B33E51837530A00F5DA08 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		061B33E71837530A00F5DA08 /* XJSInspectorTerminal-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "XJSInspectorTerminal-Prefix.pch"; sourceTree = "<group>"; };
 		061B33E91837530A00F5DA08 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
-		061B33EB1837530A00F5DA08 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		061B33EC1837530A00F5DA08 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		061B33EB1837530A00F5DA08 /* XJSInspectorTerminalAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XJSInspectorTerminalAppDelegate.h; sourceTree = "<group>"; };
+		061B33EC1837530A00F5DA08 /* XJSInspectorTerminalAppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = XJSInspectorTerminalAppDelegate.mm; sourceTree = "<group>"; };
 		061B33EF1837530A00F5DA08 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		061B33F11837530A00F5DA08 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		061B33F71837530B00F5DA08 /* XJSInspectorTerminalTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XJSInspectorTerminalTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		061B33FE1837530B00F5DA08 /* XJSInspectorTerminalTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "XJSInspectorTerminalTests-Info.plist"; sourceTree = "<group>"; };
-		061B34001837530B00F5DA08 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		061B34021837530B00F5DA08 /* XJSInspectorTerminalTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XJSInspectorTerminalTests.m; sourceTree = "<group>"; };
 		0624EC79183701C600D2F7BC /* XJSServerDelegateTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XJSServerDelegateTests.m; sourceTree = "<group>"; };
 		0624EC7F18372E9400D2F7BC /* XJSInspectorDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XJSInspectorDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0624EC8018372E9400D2F7BC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -166,13 +164,23 @@
 		06A876961833807B00855B3E /* XJSServerDelegate_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XJSServerDelegate_Private.h; sourceTree = "<group>"; };
 		06A876971833807B00855B3E /* XJSServerDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XJSServerDelegate.m; sourceTree = "<group>"; };
 		06A8769B18360BBA00855B3E /* XJSInspectorMessageProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XJSInspectorMessageProtocol.h; path = Shared/XJSInspectorMessageProtocol.h; sourceTree = SOURCE_ROOT; };
+		06F95D891838C3F000E34922 /* MainWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainWindowController.h; sourceTree = "<group>"; };
+		06F95D8A1838C3F000E34922 /* MainWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainWindowController.m; sourceTree = "<group>"; };
+		06F95D8B1838C3F000E34922 /* MainWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindowController.xib; sourceTree = "<group>"; };
+		06F95D981845DDA300E34922 /* XJSInspectorTerminalTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XJSInspectorTerminalTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		06F95D9C1845DDA400E34922 /* XJSInspectorTerminalTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "XJSInspectorTerminalTests-Info.plist"; sourceTree = "<group>"; };
+		06F95D9E1845DDA400E34922 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		06F95DA01845DDA400E34922 /* XJSInspectorTerminalTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XJSInspectorTerminalTests.m; sourceTree = "<group>"; };
+		06F95DA21845DDA400E34922 /* XJSInspectorTerminalTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "XJSInspectorTerminalTests-Prefix.pch"; sourceTree = "<group>"; };
 		67BDBE06BC984D7990229045 /* libPods-XJSInspector-ios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XJSInspector-ios.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		68730B313A68434F957138C4 /* Pods-XJSInspector-ios.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XJSInspector-ios.xcconfig"; path = "Pods/Pods-XJSInspector-ios.xcconfig"; sourceTree = "<group>"; };
 		6B1335043D494AD5B785535A /* Pods-XJSInspectorTests-ios-device.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XJSInspectorTests-ios-device.xcconfig"; path = "Pods/Pods-XJSInspectorTests-ios-device.xcconfig"; sourceTree = "<group>"; };
 		7DEF823BD03F4C589F664B6E /* libPods-XJSInspectorTests-ios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XJSInspectorTests-ios.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		86A0DAF32B0A4EF49A6F1D0B /* Pods-XJSInspector.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XJSInspector.xcconfig"; path = "Pods/Pods-XJSInspector.xcconfig"; sourceTree = "<group>"; };
+		9CF1ADD11F1F4D2EA6E19D2B /* libPods-XJSInspectorTerminal.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XJSInspectorTerminal.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F5F8167BC93414D8B54E981 /* Pods-XJSInspectorTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XJSInspectorTests.xcconfig"; path = "Pods/Pods-XJSInspectorTests.xcconfig"; sourceTree = "<group>"; };
 		9F64C0D321764CCDAD44C429 /* libPods-XJSInspectorTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XJSInspectorTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B929120D962849E18BF6320E /* Pods-XJSInspectorTerminal.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XJSInspectorTerminal.xcconfig"; path = "Pods/Pods-XJSInspectorTerminal.xcconfig"; sourceTree = "<group>"; };
 		F8DD6C93F0C6437EB3B6A591 /* libPods-XJSInspectorTests-ios-device.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XJSInspectorTests-ios-device.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB02BEC8203948538687CBEF /* libPods-XJSInspector.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XJSInspector.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD2E7EAB408A4621AE4CC366 /* Pods-XJSInspectorTests-ios.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XJSInspectorTests-ios.xcconfig"; path = "Pods/Pods-XJSInspectorTests-ios.xcconfig"; sourceTree = "<group>"; };
@@ -184,15 +192,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				061B33DE1837530A00F5DA08 /* Cocoa.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		061B33F41837530B00F5DA08 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				061B33F91837530B00F5DA08 /* Cocoa.framework in Frameworks */,
-				061B33F81837530B00F5DA08 /* XCTest.framework in Frameworks */,
+				F7740BCAAD484082A6069A68 /* libPods-XJSInspectorTerminal.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -263,14 +263,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		06F95D951845DDA300E34922 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				06F95D991845DDA400E34922 /* XCTest.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		061B33DF1837530A00F5DA08 /* XJSInspectorTerminal */ = {
 			isa = PBXGroup;
 			children = (
-				061B33EB1837530A00F5DA08 /* AppDelegate.h */,
-				061B33EC1837530A00F5DA08 /* AppDelegate.m */,
+				06F95D881838C3BC00E34922 /* MainWindowController */,
+				061B33EB1837530A00F5DA08 /* XJSInspectorTerminalAppDelegate.h */,
+				061B33EC1837530A00F5DA08 /* XJSInspectorTerminalAppDelegate.mm */,
 				061B33EE1837530A00F5DA08 /* MainMenu.xib */,
 				061B33F11837530A00F5DA08 /* Images.xcassets */,
 				061B33E01837530A00F5DA08 /* Supporting Files */,
@@ -286,24 +295,6 @@
 				061B33E51837530A00F5DA08 /* main.m */,
 				061B33E71837530A00F5DA08 /* XJSInspectorTerminal-Prefix.pch */,
 				061B33E81837530A00F5DA08 /* Credits.rtf */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		061B33FC1837530B00F5DA08 /* XJSInspectorTerminalTests */ = {
-			isa = PBXGroup;
-			children = (
-				061B34021837530B00F5DA08 /* XJSInspectorTerminalTests.m */,
-				061B33FD1837530B00F5DA08 /* Supporting Files */,
-			);
-			path = XJSInspectorTerminalTests;
-			sourceTree = "<group>";
-		};
-		061B33FD1837530B00F5DA08 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				061B33FE1837530B00F5DA08 /* XJSInspectorTerminalTests-Info.plist */,
-				061B33FF1837530B00F5DA08 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -342,7 +333,7 @@
 				0663F18C182A2EE500587A38 /* XJSInspectorTests */,
 				0624EC8618372E9400D2F7BC /* XJSInspectorDemo */,
 				061B33DF1837530A00F5DA08 /* XJSInspectorTerminal */,
-				061B33FC1837530B00F5DA08 /* XJSInspectorTerminalTests */,
+				06F95D9A1845DDA400E34922 /* XJSInspectorTerminalTests */,
 				0663F174182A2EE500587A38 /* Frameworks */,
 				0663F173182A2EE500587A38 /* Products */,
 				86A0DAF32B0A4EF49A6F1D0B /* Pods-XJSInspector.xcconfig */,
@@ -350,6 +341,7 @@
 				68730B313A68434F957138C4 /* Pods-XJSInspector-ios.xcconfig */,
 				FD2E7EAB408A4621AE4CC366 /* Pods-XJSInspectorTests-ios.xcconfig */,
 				6B1335043D494AD5B785535A /* Pods-XJSInspectorTests-ios-device.xcconfig */,
+				B929120D962849E18BF6320E /* Pods-XJSInspectorTerminal.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -363,7 +355,7 @@
 				0624ECB918372EDE00D2F7BC /* libXJSInspector-ios.a */,
 				0624ECC618372EDE00D2F7BC /* XJSInspectorTests-ios.xctest */,
 				061B33DD1837530A00F5DA08 /* XJSInspectorTerminal.app */,
-				061B33F71837530B00F5DA08 /* XJSInspectorTerminalTests.xctest */,
+				06F95D981845DDA300E34922 /* XJSInspectorTerminalTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -384,6 +376,7 @@
 				67BDBE06BC984D7990229045 /* libPods-XJSInspector-ios.a */,
 				7DEF823BD03F4C589F664B6E /* libPods-XJSInspectorTests-ios.a */,
 				F8DD6C93F0C6437EB3B6A591 /* libPods-XJSInspectorTests-ios-device.a */,
+				9CF1ADD11F1F4D2EA6E19D2B /* libPods-XJSInspectorTerminal.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -445,6 +438,35 @@
 			name = Shared;
 			sourceTree = "<group>";
 		};
+		06F95D881838C3BC00E34922 /* MainWindowController */ = {
+			isa = PBXGroup;
+			children = (
+				06F95D891838C3F000E34922 /* MainWindowController.h */,
+				06F95D8A1838C3F000E34922 /* MainWindowController.m */,
+				06F95D8B1838C3F000E34922 /* MainWindowController.xib */,
+			);
+			name = MainWindowController;
+			sourceTree = "<group>";
+		};
+		06F95D9A1845DDA400E34922 /* XJSInspectorTerminalTests */ = {
+			isa = PBXGroup;
+			children = (
+				06F95DA01845DDA400E34922 /* XJSInspectorTerminalTests.m */,
+				06F95D9B1845DDA400E34922 /* Supporting Files */,
+			);
+			path = XJSInspectorTerminalTests;
+			sourceTree = "<group>";
+		};
+		06F95D9B1845DDA400E34922 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				06F95D9C1845DDA400E34922 /* XJSInspectorTerminalTests-Info.plist */,
+				06F95D9D1845DDA400E34922 /* InfoPlist.strings */,
+				06F95DA21845DDA400E34922 /* XJSInspectorTerminalTests-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -463,9 +485,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 061B34041837530B00F5DA08 /* Build configuration list for PBXNativeTarget "XJSInspectorTerminal" */;
 			buildPhases = (
+				34419A9CDB0240A8A150F4BD /* Check Pods Manifest.lock */,
 				061B33D91837530A00F5DA08 /* Sources */,
 				061B33DA1837530A00F5DA08 /* Frameworks */,
 				061B33DB1837530A00F5DA08 /* Resources */,
+				3A4053F5BFD140929DEC100D /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -475,24 +499,6 @@
 			productName = XJSInspectorTerminal;
 			productReference = 061B33DD1837530A00F5DA08 /* XJSInspectorTerminal.app */;
 			productType = "com.apple.product-type.application";
-		};
-		061B33F61837530B00F5DA08 /* XJSInspectorTerminalTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 061B34071837530B00F5DA08 /* Build configuration list for PBXNativeTarget "XJSInspectorTerminalTests" */;
-			buildPhases = (
-				061B33F31837530B00F5DA08 /* Sources */,
-				061B33F41837530B00F5DA08 /* Frameworks */,
-				061B33F51837530B00F5DA08 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				061B33FB1837530B00F5DA08 /* PBXTargetDependency */,
-			);
-			name = XJSInspectorTerminalTests;
-			productName = XJSInspectorTerminalTests;
-			productReference = 061B33F71837530B00F5DA08 /* XJSInspectorTerminalTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		0624EC7E18372E9400D2F7BC /* XJSInspectorDemo */ = {
 			isa = PBXNativeTarget;
@@ -610,6 +616,24 @@
 			productReference = 0663F185182A2EE500587A38 /* XJSInspectorTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		06F95D971845DDA300E34922 /* XJSInspectorTerminalTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 06F95DA51845DDA400E34922 /* Build configuration list for PBXNativeTarget "XJSInspectorTerminalTests" */;
+			buildPhases = (
+				06F95D941845DDA300E34922 /* Sources */,
+				06F95D951845DDA300E34922 /* Frameworks */,
+				06F95D961845DDA300E34922 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				06F95DA41845DDA400E34922 /* PBXTargetDependency */,
+			);
+			name = XJSInspectorTerminalTests;
+			productName = XJSInspectorTerminalTests;
+			productReference = 06F95D981845DDA300E34922 /* XJSInspectorTerminalTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -619,9 +643,6 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Xiliang Chen";
 				TargetAttributes = {
-					061B33F61837530B00F5DA08 = {
-						TestTargetID = 0624EC7E18372E9400D2F7BC;
-					};
 					0624ECA018372E9400D2F7BC = {
 						TestTargetID = 0624EC7E18372E9400D2F7BC;
 					};
@@ -630,6 +651,9 @@
 					};
 					0663F184182A2EE500587A38 = {
 						TestTargetID = 0624EC7E18372E9400D2F7BC;
+					};
+					06F95D971845DDA300E34922 = {
+						TestTargetID = 061B33DC1837530A00F5DA08;
 					};
 				};
 			};
@@ -653,7 +677,7 @@
 				0624EC7E18372E9400D2F7BC /* XJSInspectorDemo */,
 				0624ECA018372E9400D2F7BC /* XJSInspectorTests-ios-device */,
 				061B33DC1837530A00F5DA08 /* XJSInspectorTerminal */,
-				061B33F61837530B00F5DA08 /* XJSInspectorTerminalTests */,
+				06F95D971845DDA300E34922 /* XJSInspectorTerminalTests */,
 			);
 		};
 /* End PBXProject section */
@@ -667,14 +691,7 @@
 				061B33F21837530A00F5DA08 /* Images.xcassets in Resources */,
 				061B33EA1837530A00F5DA08 /* Credits.rtf in Resources */,
 				061B33F01837530A00F5DA08 /* MainMenu.xib in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		061B33F51837530B00F5DA08 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				061B34011837530B00F5DA08 /* InfoPlist.strings in Resources */,
+				06F95D8D1838C3F000E34922 /* MainWindowController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -711,6 +728,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		06F95D961845DDA300E34922 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				06F95D9F1845DDA400E34922 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
@@ -744,6 +769,21 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		34419A9CDB0240A8A150F4BD /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 		39D15AA1D22A49469474528A /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -757,6 +797,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Pods-XJSInspectorTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3A4053F5BFD140929DEC100D /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-XJSInspectorTerminal-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		5815231244AC4F6ABDB2EA7F /* Copy Pods Resources */ = {
@@ -871,16 +926,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				061B33ED1837530A00F5DA08 /* AppDelegate.m in Sources */,
+				06F95D8C1838C3F000E34922 /* MainWindowController.m in Sources */,
+				061B33ED1837530A00F5DA08 /* XJSInspectorTerminalAppDelegate.mm in Sources */,
 				061B33E61837530A00F5DA08 /* main.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		061B33F31837530B00F5DA08 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				061B34031837530B00F5DA08 /* XJSInspectorTerminalTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -939,14 +987,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		06F95D941845DDA300E34922 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				06F95DA11845DDA400E34922 /* XJSInspectorTerminalTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		061B33FB1837530B00F5DA08 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 061B33DC1837530A00F5DA08 /* XJSInspectorTerminal */;
-			targetProxy = 061B33FA1837530B00F5DA08 /* PBXContainerItemProxy */;
-		};
 		0624ECA618372E9400D2F7BC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 0624EC7E18372E9400D2F7BC /* XJSInspectorDemo */;
@@ -966,6 +1017,11 @@
 			isa = PBXTargetDependency;
 			target = 0663F171182A2EE500587A38 /* XJSInspector */;
 			targetProxy = 0663F189182A2EE500587A38 /* PBXContainerItemProxy */;
+		};
+		06F95DA41845DDA400E34922 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 061B33DC1837530A00F5DA08 /* XJSInspectorTerminal */;
+			targetProxy = 06F95DA31845DDA400E34922 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -992,14 +1048,6 @@
 				061B33EF1837530A00F5DA08 /* Base */,
 			);
 			name = MainMenu.xib;
-			sourceTree = "<group>";
-		};
-		061B33FF1837530B00F5DA08 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				061B34001837530B00F5DA08 /* en */,
-			);
-			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 		0624EC8918372E9400D2F7BC /* InfoPlist.strings */ = {
@@ -1034,21 +1082,35 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
+		06F95D9D1845DDA400E34922 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				06F95D9E1845DDA400E34922 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		061B34051837530B00F5DA08 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B929120D962849E18BF6320E /* Pods-XJSInspectorTerminal.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "XJSInspectorTerminal/XJSInspectorTerminal-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
+				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
 				INFOPLIST_FILE = "XJSInspectorTerminal/XJSInspectorTerminal-Info.plist";
+				LIBRARY_SEARCH_PATHS = "\"${PODS_ROOT}/XJSBinding/Spidermonkey/debug\"";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-ljs_static",
+					"-lz",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1056,54 +1118,23 @@
 		};
 		061B34061837530B00F5DA08 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B929120D962849E18BF6320E /* Pods-XJSInspectorTerminal.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "XJSInspectorTerminal/XJSInspectorTerminal-Prefix.pch";
 				INFOPLIST_FILE = "XJSInspectorTerminal/XJSInspectorTerminal-Info.plist";
+				LIBRARY_SEARCH_PATHS = "\"${PODS_ROOT}/XJSBinding/Spidermonkey/release\"";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-ljs_static",
+					"-lz",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
-			};
-			name = Release;
-		};
-		061B34081837530B00F5DA08 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/XJSInspectorDemo.app/XJSInspectorDemo";
-				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(inherited)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "XJSInspectorTerminal/XJSInspectorTerminal-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "XJSInspectorTerminalTests/XJSInspectorTerminalTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Debug;
-		};
-		061B34091837530B00F5DA08 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/XJSInspectorDemo.app/XJSInspectorDemo";
-				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(inherited)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "XJSInspectorTerminal/XJSInspectorTerminal-Prefix.pch";
-				INFOPLIST_FILE = "XJSInspectorTerminalTests/XJSInspectorTerminalTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
 			};
 			name = Release;
 		};
@@ -1265,7 +1296,7 @@
 			baseConfigurationReference = FD2E7EAB408A4621AE4CC366 /* Pods-XJSInspectorTests-ios.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/XJSInspectorDemo.app/XJSInspectorDemo";
+				BUNDLE_LOADER = "";
 				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -1287,7 +1318,7 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
-				TEST_HOST = "$(BUNDLE_LOADER)";
+				TEST_HOST = "";
 				WRAPPER_EXTENSION = xctest;
 			};
 			name = Debug;
@@ -1297,7 +1328,7 @@
 			baseConfigurationReference = FD2E7EAB408A4621AE4CC366 /* Pods-XJSInspectorTests-ios.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/XJSInspectorDemo.app/XJSInspectorDemo";
+				BUNDLE_LOADER = "";
 				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -1315,7 +1346,7 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
-				TEST_HOST = "$(BUNDLE_LOADER)";
+				TEST_HOST = "";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -1419,7 +1450,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9F5F8167BC93414D8B54E981 /* Pods-XJSInspectorTests.xcconfig */;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/XJSInspectorDemo.app/XJSInspectorDemo";
+				BUNDLE_LOADER = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
@@ -1438,7 +1469,7 @@
 					"-ljs_static",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
+				TEST_HOST = "";
 				WRAPPER_EXTENSION = xctest;
 			};
 			name = Debug;
@@ -1447,7 +1478,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9F5F8167BC93414D8B54E981 /* Pods-XJSInspectorTests.xcconfig */;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/XJSInspectorDemo.app/XJSInspectorDemo";
+				BUNDLE_LOADER = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
@@ -1460,6 +1491,56 @@
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-ljs_static",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+		06F95DA61845DDA400E34922 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/XJSInspectorTerminal.app/Contents/MacOS/XJSInspectorTerminal";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "XJSInspectorTerminalTests/XJSInspectorTerminalTests-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "XJSInspectorTerminalTests/XJSInspectorTerminalTests-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					XCTest,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		06F95DA71845DDA400E34922 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/XJSInspectorTerminal.app/Contents/MacOS/XJSInspectorTerminal";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "XJSInspectorTerminalTests/XJSInspectorTerminalTests-Prefix.pch";
+				INFOPLIST_FILE = "XJSInspectorTerminalTests/XJSInspectorTerminalTests-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					XCTest,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
@@ -1477,14 +1558,7 @@
 				061B34061837530B00F5DA08 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-		};
-		061B34071837530B00F5DA08 /* Build configuration list for PBXNativeTarget "XJSInspectorTerminalTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				061B34081837530B00F5DA08 /* Debug */,
-				061B34091837530B00F5DA08 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0624ECAF18372E9400D2F7BC /* Build configuration list for PBXNativeTarget "XJSInspectorDemo" */ = {
 			isa = XCConfigurationList;
@@ -1548,6 +1622,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		06F95DA51845DDA400E34922 /* Build configuration list for PBXNativeTarget "XJSInspectorTerminalTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				06F95DA61845DDA400E34922 /* Debug */,
+				06F95DA71845DDA400E34922 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};

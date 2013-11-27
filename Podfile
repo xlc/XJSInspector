@@ -31,10 +31,17 @@ target 'XJSInspector-ios' do
     end
 end
 
+target 'XJSInspectorTerminal' do
+    platform :osx, '10.8'
+
+    import_pods
+    pod 'XJSInspector'
+end
+
 post_install do |installer|
     default_library = installer.libraries.each do |lib|
         name = lib.target_definition.name
-        if name.start_with?('XJSInspector') and not name.include?('Tests')
+        if name.start_with?('XJSInspector') and not name.include?('Tests') and name != 'XJSInspectorTerminal'
             config_file_path = lib.library.xcconfig_path
 
             File.open("config.tmp", "w") do |io|

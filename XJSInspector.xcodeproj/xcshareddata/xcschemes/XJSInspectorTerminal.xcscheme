@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "0624ECB818372EDE00D2F7BC"
-               BuildableName = "libXJSInspector-ios.a"
-               BlueprintName = "XJSInspector-ios"
+               BlueprintIdentifier = "061B33DC1837530A00F5DA08"
+               BuildableName = "XJSInspectorTerminal.app"
+               BlueprintName = "XJSInspectorTerminal"
                ReferencedContainer = "container:XJSInspector.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -32,13 +32,22 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "0624ECC518372EDE00D2F7BC"
-               BuildableName = "XJSInspectorTests-ios.xctest"
-               BlueprintName = "XJSInspectorTests-ios"
+               BlueprintIdentifier = "06F95D971845DDA300E34922"
+               BuildableName = "XJSInspectorTerminalTests.xctest"
+               BlueprintName = "XJSInspectorTerminalTests"
                ReferencedContainer = "container:XJSInspector.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "061B33DC1837530A00F5DA08"
+            BuildableName = "XJSInspectorTerminal.app"
+            BlueprintName = "XJSInspectorTerminal"
+            ReferencedContainer = "container:XJSInspector.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </TestAction>
    <LaunchAction
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
@@ -49,6 +58,15 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
+      <BuildableProductRunnable>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "061B33DC1837530A00F5DA08"
+            BuildableName = "XJSInspectorTerminal.app"
+            BlueprintName = "XJSInspectorTerminal"
+            ReferencedContainer = "container:XJSInspector.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -58,6 +76,15 @@
       useCustomWorkingDirectory = "NO"
       buildConfiguration = "Release"
       debugDocumentVersioning = "YES">
+      <BuildableProductRunnable>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "061B33DC1837530A00F5DA08"
+            BuildableName = "XJSInspectorTerminal.app"
+            BlueprintName = "XJSInspectorTerminal"
+            ReferencedContainer = "container:XJSInspector.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
