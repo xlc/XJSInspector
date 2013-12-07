@@ -8,15 +8,17 @@
 
 #import "XJSInspector.h"
 
-#import "ThoMoNetworking.h"
-#import "XLCLogging.h"
+#import <ThoMoNetworking/ThoMoNetworking.h>
+#import <XLCUtils/XLCUtils.h>
 
 #import "XJSInspectorMessageProtocol.h"
+#import "XJSServerDelegate_Private.h"
 
 @implementation XJSInspector
 
 static NSString *_protocolIdentifier;
-ThoMoServerStub *_server;
+static ThoMoServerStub *_server;
+static XJSContext *_context;
 
 + (void)setProtocolIdentifier:(NSString *)iden
 {
@@ -50,6 +52,8 @@ ThoMoServerStub *_server;
         if (_server) return;
         
         ThoMoServerStub *server = [[ThoMoServerStub alloc] initWithProtocolIdentifier:protocolIden];
+        _context = [[XJSContext alloc] init];
+        server.delegate = [[XJSServerDelegate alloc] initWithContext:_context];
         [server start];
         
         _server = server;
