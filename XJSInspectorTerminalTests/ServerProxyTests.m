@@ -58,6 +58,13 @@
     [_mockServer verify];
 }
 
+- (void)testSendEmptyScript
+{
+    [_proxy sendScript:@"\n"];
+    
+    [_mockServer verify];
+}
+
 - (void)testDelegateDidExecuteScript
 {
     NSError *error = [NSError errorWithDomain:@"test" code:1 userInfo:nil];

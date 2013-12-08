@@ -40,6 +40,11 @@
 
 - (void)sendScript:(NSString *)script
 {
+    script = [script stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    if ([script length] == 0) { // no need to send empty string
+        return;
+    }
+    
     [self.proxy sendObject:@{ kXJSInspectorMessageTypeKey : @(XJSInspectorMessageTypeJavascript),
                           kXJSInspectorMessageStringKey : script
                           }];
