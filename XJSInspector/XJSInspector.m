@@ -55,6 +55,7 @@ static XJSServerDelegate *_delegate;
         
         ThoMoServerStub *server = [[ThoMoServerStub alloc] initWithProtocolIdentifier:protocolIden];
         _context = [[XJSContext alloc] init];
+        [_context createObjCRuntimeWithNamespace:@"objc"];
         _delegate = [[XJSServerDelegate alloc] initWithContext:_context];
         server.delegate = _delegate;
         [server start];
