@@ -36,6 +36,10 @@ target 'XJSInspectorTerminal' do
 
     import_pods
     pod 'XJSInspector', :head
+
+   target 'XJSInspectorTerminalTests', :exclusive => true do
+        import_pods_test
+   end
 end
 
 post_install do |installer|

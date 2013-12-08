@@ -27,7 +27,7 @@
 
 - (void)server:(ServerProxy *)proxy didExecutedScriptWithOutput:(NSString *)output error:(NSError *)error;
 - (void)serverRequireMoreScript:(ServerProxy *)proxy;
-- (void)serverReceivedLogMessage:(NSString *)string withLevel:(NSUInteger)level;
+- (void)server:(ServerProxy *)proxy receivedLogMessage:(NSString *)string withLevel:(NSUInteger)level;
 
 - (void)serverDisconnected:(ServerProxy *)proxy;
 - (void)serverConnected:(ServerProxy *)proxy;

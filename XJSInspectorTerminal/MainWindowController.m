@@ -71,7 +71,7 @@
     XILOG(@"disconnected %@", proxy);
 }
 
-- (void)serverReceivedLogMessage:(NSString *)string withLevel:(NSUInteger)level
+- (void)server:(ServerProxy *)proxy receivedLogMessage:(NSString *)string withLevel:(NSUInteger)level
 {
     [self.terminalView appendLog:string level:level];
 }
