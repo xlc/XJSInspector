@@ -50,6 +50,8 @@
 		0663F18B182A2EE500587A38 /* libXJSInspector.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0663F172182A2EE500587A38 /* libXJSInspector.a */; };
 		0663F191182A2EE500587A38 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0663F18F182A2EE500587A38 /* InfoPlist.strings */; };
 		0663F193182A2EE500587A38 /* XJSInspectorTests.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0663F192182A2EE500587A38 /* XJSInspectorTests.mm */; };
+		0674ACD718507472004491AD /* TerminalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0674ACD618507472004491AD /* TerminalView.m */; };
+		0674ACDA1852C05E004491AD /* ServerProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0674ACD91852C05E004491AD /* ServerProxy.m */; };
 		06A8769518336FBE00855B3E /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 06A8769418336FBE00855B3E /* libz.dylib */; };
 		06A876981833807B00855B3E /* XJSServerDelegate_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 06A876961833807B00855B3E /* XJSServerDelegate_Private.h */; };
 		06A876991833807B00855B3E /* XJSServerDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 06A876971833807B00855B3E /* XJSServerDelegate.m */; };
@@ -160,6 +162,10 @@
 		0663F18E182A2EE500587A38 /* XJSInspectorTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "XJSInspectorTests-Info.plist"; sourceTree = "<group>"; };
 		0663F190182A2EE500587A38 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		0663F192182A2EE500587A38 /* XJSInspectorTests.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = XJSInspectorTests.mm; sourceTree = "<group>"; };
+		0674ACD518507472004491AD /* TerminalView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TerminalView.h; sourceTree = "<group>"; };
+		0674ACD618507472004491AD /* TerminalView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TerminalView.m; sourceTree = "<group>"; };
+		0674ACD81852C05E004491AD /* ServerProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerProxy.h; sourceTree = "<group>"; };
+		0674ACD91852C05E004491AD /* ServerProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerProxy.m; sourceTree = "<group>"; };
 		06A8769418336FBE00855B3E /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		06A876961833807B00855B3E /* XJSServerDelegate_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XJSServerDelegate_Private.h; sourceTree = "<group>"; };
 		06A876971833807B00855B3E /* XJSServerDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XJSServerDelegate.m; sourceTree = "<group>"; };
@@ -430,6 +436,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		0674ACD41850743F004491AD /* TerminalView */ = {
+			isa = PBXGroup;
+			children = (
+				0674ACD518507472004491AD /* TerminalView.h */,
+				0674ACD618507472004491AD /* TerminalView.m */,
+			);
+			name = TerminalView;
+			sourceTree = "<group>";
+		};
 		06A8769C18360BC200855B3E /* Shared */ = {
 			isa = PBXGroup;
 			children = (
@@ -441,9 +456,12 @@
 		06F95D881838C3BC00E34922 /* MainWindowController */ = {
 			isa = PBXGroup;
 			children = (
+				0674ACD41850743F004491AD /* TerminalView */,
 				06F95D891838C3F000E34922 /* MainWindowController.h */,
 				06F95D8A1838C3F000E34922 /* MainWindowController.m */,
 				06F95D8B1838C3F000E34922 /* MainWindowController.xib */,
+				0674ACD81852C05E004491AD /* ServerProxy.h */,
+				0674ACD91852C05E004491AD /* ServerProxy.m */,
 			);
 			name = MainWindowController;
 			sourceTree = "<group>";
@@ -926,6 +944,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0674ACDA1852C05E004491AD /* ServerProxy.m in Sources */,
+				0674ACD718507472004491AD /* TerminalView.m in Sources */,
 				06F95D8C1838C3F000E34922 /* MainWindowController.m in Sources */,
 				061B33ED1837530A00F5DA08 /* XJSInspectorTerminalAppDelegate.mm in Sources */,
 				061B33E61837530A00F5DA08 /* main.m in Sources */,
@@ -1630,6 +1650,7 @@
 				06F95DA71845DDA400E34922 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

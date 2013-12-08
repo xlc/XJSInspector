@@ -8,11 +8,14 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class ThoMoClientStub;
+
 @class MainWindowController;
 
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 
 @property (nonatomic, copy, readonly) NSArray *mainWindowControllers;
+@property (nonatomic, strong, readonly) ThoMoClientStub *client;
 
 - (IBAction)newWindow;
 

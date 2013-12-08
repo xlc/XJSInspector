@@ -8,7 +8,11 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class ServerProxy;
+
 @interface MainWindowController : NSWindowController
+
+@property (nonatomic, strong) ServerProxy *server;
 
 - (id)init;
 
