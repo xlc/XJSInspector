@@ -21,7 +21,7 @@ typedef NS_ENUM(NSUInteger, XJSInspectorMessageType)
     XJSInspectorMessageTypeExecuted,
     // incompleted script, need more input, keys: none
     XJSInspectorMessageTypeIncompletedScript,
-    // log from XLCLOG, keys: string, logging level
+    // log from XLCLOG, keys: string, logging level, timestamp
     XJSInspectorMessageTypeRedirectedLog,
 };
 
@@ -30,3 +30,4 @@ typedef NS_ENUM(NSUInteger, XJSInspectorMessageType)
 #define kXJSInspectorMessageStringKey @"kXJSInspectorMessageStringKey"
 #define kXJSInspectorMessageErrorKey @"kXJSInspectorMessageErrorKey"
 #define kXJSInspectorMessageLoggingLevelKey @"kXJSInspectorMessageLoggingLevelKey"
+#define kXJSInspectorMessageTimestamp @"kXJSInspectorMessageTimestamp"
