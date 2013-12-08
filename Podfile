@@ -35,7 +35,7 @@ target 'XJSInspectorTerminal' do
     platform :osx, '10.8'
 
     import_pods
-    pod 'XJSInspector'
+    pod 'XJSInspector', :head
 end
 
 post_install do |installer|

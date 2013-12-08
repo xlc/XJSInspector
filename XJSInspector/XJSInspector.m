@@ -10,6 +10,7 @@
 
 #import <ThoMoNetworking/ThoMoNetworking.h>
 #import <XLCUtils/XLCUtils.h>
+#import <XJSBinding/XJSBinding.h>
 
 #import "XJSInspectorMessageProtocol.h"
 #import "XJSServerDelegate_Private.h"
@@ -19,6 +20,7 @@
 static NSString *_protocolIdentifier;
 static ThoMoServerStub *_server;
 static XJSContext *_context;
+static XJSServerDelegate *_delegate;
 
 + (void)setProtocolIdentifier:(NSString *)iden
 {
@@ -53,7 +55,8 @@ static XJSContext *_context;
         
         ThoMoServerStub *server = [[ThoMoServerStub alloc] initWithProtocolIdentifier:protocolIden];
         _context = [[XJSContext alloc] init];
-        server.delegate = [[XJSServerDelegate alloc] initWithContext:_context];
+        _delegate = [[XJSServerDelegate alloc] initWithContext:_context];
+        server.delegate = _delegate;
         [server start];
         
         _server = server;
@@ -64,6 +67,8 @@ static XJSContext *_context;
 {
     ThoMoServerStub *server = _server;
     _server = nil;
+    _context = nil;
+    _delegate = nil;
     [server stop];
 }
 
