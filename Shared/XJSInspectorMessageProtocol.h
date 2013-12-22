@@ -12,8 +12,10 @@ typedef NS_ENUM(NSUInteger, XJSInspectorMessageType)
 {
     XJSInspectorMessageTypeClientCodeBegin = 0,
     
-    // js code to execute, keys: string
+    // user entered js code to execute, keys: string
     XJSInspectorMessageTypeJavascript,
+    // js code command to execute, keys: string
+    XJSInspectorMessageTypeCommand,
     
     XJSInspectorMessageTypeServerCodeBegin = 100,
     
@@ -25,9 +27,10 @@ typedef NS_ENUM(NSUInteger, XJSInspectorMessageType)
     XJSInspectorMessageTypeRedirectedLog,
 };
 
-
+#define kXJSInspectorMessageIDKey @"kXJSInspectorMessageIDKey"
 #define kXJSInspectorMessageTypeKey @"kXJSInspectorMessageTypeKey"
 #define kXJSInspectorMessageStringKey @"kXJSInspectorMessageStringKey"
 #define kXJSInspectorMessageErrorKey @"kXJSInspectorMessageErrorKey"
 #define kXJSInspectorMessageLoggingLevelKey @"kXJSInspectorMessageLoggingLevelKey"
-#define kXJSInspectorMessageTimestamp @"kXJSInspectorMessageTimestamp"
+#define kXJSInspectorMessageTimestampKey @"kXJSInspectorMessageTimestampKey"
+#define kXJSInspectorMessageDataKey @"kXJSInspectorMessageDataKey"

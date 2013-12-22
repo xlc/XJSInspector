@@ -50,11 +50,13 @@
 - (void)testHandleMessage
 {
     [[_mockServer expect] send:@{ kXJSInspectorMessageTypeKey : @(XJSInspectorMessageTypeExecuted),
-                                  kXJSInspectorMessageStringKey : @"84" }
+                                  kXJSInspectorMessageStringKey : @"84",
+                                  kXJSInspectorMessageIDKey : @42 }
                       toClient:@"client"];
     
     NSData *data = [NSKeyedArchiver archivedDataWithRootObject:@{ kXJSInspectorMessageTypeKey : @(XJSInspectorMessageTypeJavascript),
-                                                                  kXJSInspectorMessageStringKey : @"a = 42\n b = a * 2" }];
+                                                                  kXJSInspectorMessageStringKey : @"a = 42\n b = a * 2",
+                                                                  kXJSInspectorMessageIDKey : @42 }];
     
     [_delegate server:_mockServer didReceiveData:data fromClient:@"client"];
     
@@ -112,7 +114,7 @@
                       toClient:@"client"];
     
     data = [NSKeyedArchiver archivedDataWithRootObject:@{ kXJSInspectorMessageTypeKey : @(XJSInspectorMessageTypeJavascript),
-                                                          kXJSInspectorMessageStringKey : @"a=42" }];
+                                                          kXJSInspectorMessageStringKey : @"{\na=42" }];
     
     [_delegate server:_mockServer didReceiveData:data fromClient:@"client"];
     
@@ -123,7 +125,7 @@
                       toClient:@"client"];
     
     data = [NSKeyedArchiver archivedDataWithRootObject:@{ kXJSInspectorMessageTypeKey : @(XJSInspectorMessageTypeJavascript),
-                                                          kXJSInspectorMessageStringKey : @"}" }];
+                                                          kXJSInspectorMessageStringKey : @"{\na=42\n}" }];
     
     [_delegate server:_mockServer didReceiveData:data fromClient:@"client"];
     

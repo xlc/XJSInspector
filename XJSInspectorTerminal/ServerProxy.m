@@ -72,7 +72,7 @@
         case XJSInspectorMessageTypeRedirectedLog:
             [self.delegate server:self receivedLogMessage:dict[kXJSInspectorMessageStringKey]
                         withLevel:[dict[kXJSInspectorMessageLoggingLevelKey] unsignedIntegerValue]
-                        timestamp:dict[kXJSInspectorMessageTimestamp]];
+                        timestamp:dict[kXJSInspectorMessageTimestampKey]];
             break;
             
         default:

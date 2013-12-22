@@ -44,7 +44,7 @@ static XJSServerDelegate *_delegate;
             NSDictionary *dict = @{ kXJSInspectorMessageTypeKey : @(XJSInspectorMessageTypeRedirectedLog),
                                     kXJSInspectorMessageLoggingLevelKey : @(level),
                                     kXJSInspectorMessageStringKey : [NSString stringWithFormat:@"%s:%d\t- %@", function, lineno, message],
-                                    kXJSInspectorMessageTimestamp : [NSDate date] };
+                                    kXJSInspectorMessageTimestampKey : [NSDate date] };
             [_server sendToAllClients:dict];
         }];
     });

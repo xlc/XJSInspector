@@ -94,7 +94,7 @@
     NSDictionary *dict = @{ kXJSInspectorMessageTypeKey : @(XJSInspectorMessageTypeRedirectedLog),
                             kXJSInspectorMessageStringKey : @"log",
                             kXJSInspectorMessageLoggingLevelKey : @0,
-                            kXJSInspectorMessageTimestamp : date };
+                            kXJSInspectorMessageTimestampKey : date };
     NSData *data = [NSKeyedArchiver archivedDataWithRootObject:dict];
     [_proxy serverProxy:_mockServer didReceiveData:data];
 }

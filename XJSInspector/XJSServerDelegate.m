@@ -16,13 +16,12 @@
 @interface XJSServerDelegate ()
 
 - (NSDictionary *)handleMessage:(NSDictionary *)message;
-- (NSDictionary *)handleScript:(NSString *)script;
+- (NSDictionary *)handleScript:(NSString *)script returnString:(BOOL)returnStr;
 
 @end
 
 @implementation XJSServerDelegate
 {
-    NSMutableString *_buffer;
     BOOL _executing;
 }
 
@@ -36,7 +35,6 @@
     self = [super init];
     if (self) {
         _context = context;
-        _buffer = [NSMutableString string];
     }
     return self;
 }
@@ -74,35 +72,70 @@
         return nil;
     }
     
+    id iden = message[kXJSInspectorMessageIDKey];
+    
+    NSDictionary *reply;
+    
     switch ([type unsignedIntegerValue]) {
         case XJSInspectorMessageTypeJavascript:
-            return [self handleScript:message[kXJSInspectorMessageStringKey]];
+            reply = [self handleScript:message[kXJSInspectorMessageStringKey] returnString:YES];
+            break;
+            
+        case XJSInspectorMessageTypeCommand:
+            reply = [self handleScript:message[kXJSInspectorMessageStringKey] returnString:NO];
+            break;
             
         default:
             XFAIL(@"Unexpected object received: %@", message);
             return nil;
     }
+    
+    if (iden) {
+        NSMutableDictionary *dict = [reply mutableCopy];
+        dict[kXJSInspectorMessageIDKey] = iden;
+        reply = dict;
+    }
+    
+    return reply;
 }
 
-- (NSDictionary *)handleScript:(NSString *)script
+- (NSDictionary *)handleScript:(NSString *)script returnString:(BOOL)returnStr
 {
     if (![script length]) {
         return nil;
     }
     
-    [_buffer appendString:script];
-    [_buffer appendString:@"\n"];
-    
-    if (![_context isStringCompilableUnit:_buffer]) {
+    if (![_context isStringCompilableUnit:script]) {
         return @{ kXJSInspectorMessageTypeKey : @(XJSInspectorMessageTypeIncompletedScript) };
     }
     
     NSError *error;
-    XJSValue *val = [_context evaluateString:_buffer error:&error];
+    XJSValue *val = [_context evaluateString:script error:&error];
     if (val) {
-        return @{ kXJSInspectorMessageTypeKey : @(XJSInspectorMessageTypeExecuted),
-                  kXJSInspectorMessageStringKey :val.toString
-                  };
+        if (returnStr) {
+            return @{ kXJSInspectorMessageTypeKey : @(XJSInspectorMessageTypeExecuted),
+                      kXJSInspectorMessageStringKey :val.toString
+                      };
+        } else {
+            id obj = val.toObject;
+            
+            if (![obj isKindOfClass:[NSData class]]) {
+                if ([obj conformsToProtocol:@protocol(NSCoding)]) {
+                    obj = [NSKeyedArchiver archivedDataWithRootObject:obj];
+                } else {
+                    XWLOG(@"Object returned from command cannotbe archived. \nCommand: %@\n Returned object:%@", script, obj);
+                    obj = [NSNull null];
+                }
+            }
+            
+            if (!obj) {
+                obj = [NSNull null];
+            }
+            
+            return @{ kXJSInspectorMessageTypeKey : @(XJSInspectorMessageTypeExecuted),
+                      kXJSInspectorMessageDataKey : obj
+                      };
+        }
     }
     
     return @{ kXJSInspectorMessageTypeKey : @(XJSInspectorMessageTypeExecuted),
