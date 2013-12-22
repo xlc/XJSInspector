@@ -88,11 +88,13 @@
 
 - (void)testDelegateRedirectedLog
 {
-    [[_delegate expect] server:_proxy receivedLogMessage:@"log" withLevel:0];
+    NSDate *date = [NSDate date];
+    [[_delegate expect] server:_proxy receivedLogMessage:@"log" withLevel:0 timestamp:date];
     
     NSDictionary *dict = @{ kXJSInspectorMessageTypeKey : @(XJSInspectorMessageTypeRedirectedLog),
                             kXJSInspectorMessageStringKey : @"log",
-                            kXJSInspectorMessageLoggingLevelKey : @0 };
+                            kXJSInspectorMessageLoggingLevelKey : @0,
+                            kXJSInspectorMessageTimestamp : date };
     NSData *data = [NSKeyedArchiver archivedDataWithRootObject:dict];
     [_proxy serverProxy:_mockServer didReceiveData:data];
 }

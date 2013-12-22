@@ -12,6 +12,8 @@
 
 @interface TerminalView () <NSTextViewDelegate>
 
+- (void)appendString:(NSString *)string attritubes:(NSDictionary *)attr;
+
 @end
 
 @implementation TerminalView
@@ -23,19 +25,23 @@
 
 - (void)appendOutput:(NSString *)output
 {
-    [self.textStorage appendAttributedString:[[NSAttributedString alloc] initWithString:output]];
-    _startIndex = self.textStorage.length;
+    [self appendString:output attritubes:nil];
 }
 
 - (void)appendError:(NSString *)errorMessage
 {
-    [self.textStorage appendAttributedString:[[NSAttributedString alloc] initWithString:errorMessage]];
-    _startIndex = self.textStorage.length;
+    [self appendString:errorMessage attritubes:nil];
 }
 
-- (void)appendLog:(NSString *)log level:(NSUInteger)level
+- (void)appendString:(NSString *)string attritubes:(NSDictionary *)attr
 {
-    [self.textStorage appendAttributedString:[[NSAttributedString alloc] initWithString:log]];
+    if ([string length] == 0) {
+        return;
+    }
+    if (![string hasSuffix:@"\n"]) {
+        string = [string stringByAppendingString:@"\n"];
+    }
+    [self.textStorage appendAttributedString:[[NSAttributedString alloc] initWithString:string attributes:attr]];
     _startIndex = self.textStorage.length;
 }
 

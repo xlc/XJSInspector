@@ -71,9 +71,9 @@
     XILOG(@"disconnected %@", proxy);
 }
 
-- (void)server:(ServerProxy *)proxy receivedLogMessage:(NSString *)string withLevel:(NSUInteger)level
+- (void)server:(ServerProxy *)proxy receivedLogMessage:(NSString *)string withLevel:(NSUInteger)level timestamp:(NSDate *)date
 {
-    [self.terminalView appendLog:string level:level];
+    // TODO
 }
 
 -(void)serverRequireMoreScript:(ServerProxy *)proxy

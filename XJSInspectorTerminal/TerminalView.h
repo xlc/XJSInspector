@@ -14,6 +14,5 @@
 
 - (void)appendOutput:(NSString *)output;
 - (void)appendError:(NSString *)errorMessage;
-- (void)appendLog:(NSString *)log level:(NSUInteger)level;
 
 @end
