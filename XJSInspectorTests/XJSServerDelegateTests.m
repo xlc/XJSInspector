@@ -154,4 +154,44 @@
     [_mockServer verify];
 }
 
+- (void)testCommandReturnArray
+{
+    [[_mockServer expect] send:@{ kXJSInspectorMessageTypeKey : @(XJSInspectorMessageTypeExecuted),
+                                  kXJSInspectorMessageDataKey : [NSKeyedArchiver archivedDataWithRootObject:[@[@1, @"test", @YES] mutableCopy]],
+                                  kXJSInspectorMessageIDKey : @42 }
+                      toClient:@"client"];
+    
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:@{ kXJSInspectorMessageTypeKey : @(XJSInspectorMessageTypeCommand),
+                                                                  kXJSInspectorMessageStringKey : @"a=42;[1, 'test', true]",
+                                                                  kXJSInspectorMessageIDKey : @42 }];
+    
+    [_delegate server:_mockServer didReceiveData:data fromClient:@"client"];
+    
+    [_mockServer verify];
+    
+    {
+        XJSValue *val = _delegate.context[@"a"];
+        XCTAssertTrue(val.isNumber);
+        XCTAssertEqual(val.toInt32, 42);
+    }
+}
+
+- (void)testCommandReturnData
+{
+    [_delegate.context createObjCRuntimeWithNamespace:@"objc"];
+    
+    [[_mockServer expect] send:@{ kXJSInspectorMessageTypeKey : @(XJSInspectorMessageTypeExecuted),
+                                  kXJSInspectorMessageDataKey : [NSKeyedArchiver archivedDataWithRootObject:[@[@1, @"test", @YES] mutableCopy]],
+                                  kXJSInspectorMessageIDKey : @42 }
+                      toClient:@"client"];
+    
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:@{ kXJSInspectorMessageTypeKey : @(XJSInspectorMessageTypeCommand),
+                                                                  kXJSInspectorMessageStringKey : @"objc.NSKeyedArchiver.archivedDataWithRootObject([1, 'test', true])",
+                                                                  kXJSInspectorMessageIDKey : @42 }];
+    
+    [_delegate server:_mockServer didReceiveData:data fromClient:@"client"];
+    
+    [_mockServer verify];
+}
+
 @end
