@@ -116,28 +116,29 @@
     XJSValue *val = [cx evaluateString:script error:&error];
     if (val) {
         if (!isCommand) {
+            if (val.isUndefined) {
+                return @{ kXJSInspectorMessageTypeKey : @(XJSInspectorMessageTypeExecuted) };
+            }
             return @{ kXJSInspectorMessageTypeKey : @(XJSInspectorMessageTypeExecuted),
                       kXJSInspectorMessageStringKey :val.toString
                       };
         } else {
             id obj = val.toObject;
             
-            if (![obj isKindOfClass:[NSData class]]) {
+            if (obj && ![obj isKindOfClass:[NSData class]]) {
                 if ([obj conformsToProtocol:@protocol(NSCoding)]) {
                     obj = [NSKeyedArchiver archivedDataWithRootObject:obj];
                 } else {
                     XWLOG(@"Object returned from command cannotbe archived. \nCommand: %@\n Returned object:%@", script, obj);
-                    obj = [NSNull null];
                 }
             }
             
-            if (!obj) {
-                obj = [NSNull null];
+            if (obj) {
+                return @{ kXJSInspectorMessageTypeKey : @(XJSInspectorMessageTypeExecuted),
+                          kXJSInspectorMessageDataKey : obj
+                          };
             }
-            
-            return @{ kXJSInspectorMessageTypeKey : @(XJSInspectorMessageTypeExecuted),
-                      kXJSInspectorMessageDataKey : obj
-                      };
+            return @{ kXJSInspectorMessageTypeKey : @(XJSInspectorMessageTypeExecuted) };
         }
     }
     

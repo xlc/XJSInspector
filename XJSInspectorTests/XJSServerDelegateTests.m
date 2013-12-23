@@ -154,6 +154,36 @@
     [_mockServer verify];
 }
 
+- (void)testScriptReturnUndefined
+{
+    [[_mockServer expect] send:@{ kXJSInspectorMessageTypeKey : @(XJSInspectorMessageTypeExecuted),
+                                  kXJSInspectorMessageIDKey : @42 }
+                      toClient:@"client"];
+    
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:@{ kXJSInspectorMessageTypeKey : @(XJSInspectorMessageTypeJavascript),
+                                                                  kXJSInspectorMessageStringKey : @"undefined",
+                                                                  kXJSInspectorMessageIDKey : @42 }];
+    
+    [_delegate server:_mockServer didReceiveData:data fromClient:@"client"];
+    
+    [_mockServer verify];
+}
+
+- (void)testCommandReturnUndefined
+{
+    [[_mockServer expect] send:@{ kXJSInspectorMessageTypeKey : @(XJSInspectorMessageTypeExecuted),
+                                  kXJSInspectorMessageIDKey : @42 }
+                      toClient:@"client"];
+    
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:@{ kXJSInspectorMessageTypeKey : @(XJSInspectorMessageTypeCommand),
+                                                                  kXJSInspectorMessageStringKey : @"undefined",
+                                                                  kXJSInspectorMessageIDKey : @42 }];
+    
+    [_delegate server:_mockServer didReceiveData:data fromClient:@"client"];
+    
+    [_mockServer verify];
+}
+
 - (void)testCommandReturnArray
 {
     [[_mockServer expect] send:@{ kXJSInspectorMessageTypeKey : @(XJSInspectorMessageTypeExecuted),
