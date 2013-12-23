@@ -14,7 +14,8 @@
 
 @interface XJSServerDelegate : NSObject <ThoMoServerDelegateProtocol>
 
-@property (strong, readonly) XJSContext *context;
+@property (strong) XJSContext *context;
+@property (strong, readonly) XJSContext *commandContext;
 
 - (id)initWithContext:(XJSContext *)context;
 

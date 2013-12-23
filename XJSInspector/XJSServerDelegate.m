@@ -16,7 +16,7 @@
 @interface XJSServerDelegate ()
 
 - (NSDictionary *)handleMessage:(NSDictionary *)message;
-- (NSDictionary *)handleScript:(NSString *)script returnString:(BOOL)returnStr;
+- (NSDictionary *)handleScript:(NSString *)script isCommand:(BOOL)isCommand;
 
 @end
 
@@ -35,6 +35,7 @@
     self = [super init];
     if (self) {
         _context = context;
+        _commandContext = context;
     }
     return self;
 }
@@ -78,11 +79,11 @@
     
     switch ([type unsignedIntegerValue]) {
         case XJSInspectorMessageTypeJavascript:
-            reply = [self handleScript:message[kXJSInspectorMessageStringKey] returnString:YES];
+            reply = [self handleScript:message[kXJSInspectorMessageStringKey] isCommand:NO];
             break;
             
         case XJSInspectorMessageTypeCommand:
-            reply = [self handleScript:message[kXJSInspectorMessageStringKey] returnString:NO];
+            reply = [self handleScript:message[kXJSInspectorMessageStringKey] isCommand:YES];
             break;
             
         default:
@@ -99,20 +100,22 @@
     return reply;
 }
 
-- (NSDictionary *)handleScript:(NSString *)script returnString:(BOOL)returnStr
+- (NSDictionary *)handleScript:(NSString *)script isCommand:(BOOL)isCommand
 {
     if (![script length]) {
         return nil;
     }
     
-    if (![_context isStringCompilableUnit:script]) {
+    XJSContext *cx = isCommand ? self.context : self.commandContext;
+    
+    if (![cx isStringCompilableUnit:script]) {
         return @{ kXJSInspectorMessageTypeKey : @(XJSInspectorMessageTypeIncompletedScript) };
     }
     
     NSError *error;
-    XJSValue *val = [_context evaluateString:script error:&error];
+    XJSValue *val = [cx evaluateString:script error:&error];
     if (val) {
-        if (returnStr) {
+        if (!isCommand) {
             return @{ kXJSInspectorMessageTypeKey : @(XJSInspectorMessageTypeExecuted),
                       kXJSInspectorMessageStringKey :val.toString
                       };

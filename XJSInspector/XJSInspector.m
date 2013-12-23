@@ -15,6 +15,12 @@
 #import "XJSInspectorMessageProtocol.h"
 #import "XJSServerDelegate_Private.h"
 
+@interface XJSInspector ()
+
++ (void)setContext:(XJSContext *)cx;
+
+@end
+
 @implementation XJSInspector
 
 static NSString *_protocolIdentifier;
@@ -56,7 +62,10 @@ static XJSServerDelegate *_delegate;
         
         ThoMoServerStub *server = [[ThoMoServerStub alloc] initWithProtocolIdentifier:protocolIden];
         _context = [[XJSContext alloc] init];
-        [_context createObjCRuntimeWithNamespace:@"objc"];
+        [_context createObjCRuntimeWithNamespace:nil];
+        [_context createModuleManager];
+        _context.name = @"XJSInspectorContext";
+        
         _delegate = [[XJSServerDelegate alloc] initWithContext:_context];
         server.delegate = _delegate;
         [server start];
@@ -72,6 +81,11 @@ static XJSServerDelegate *_delegate;
     _context = nil;
     _delegate = nil;
     [server stop];
+}
+
++ (void)setContext:(XJSContext *)cx
+{
+    _delegate.context = cx;
 }
 
 @end
