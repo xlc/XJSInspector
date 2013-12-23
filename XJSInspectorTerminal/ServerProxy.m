@@ -8,6 +8,7 @@
 
 #import "ServerProxy.h"
 
+#import <libkern/OSAtomic.h>
 #import <ThoMoNetworking/ThoMoNetworking.h>
 #import <XLCUtils/XLCUtils.h>
 
@@ -15,9 +16,17 @@
 
 @interface ServerProxy () <ThoMoServerProxyDelegate>
 
+- (void)sendScript:(NSString *)script isCommand:(BOOL)isCommand withCompletionHandler:(void (^)(BOOL completed, id result, NSError *error))handler;
+
+- (id)nextID;
+
 @end
 
 @implementation ServerProxy
+{
+    volatile int32_t _count;
+    NSMutableDictionary *_handlerDict;
+}
 
 - (id)initWithThoMoServerProxy:(ThoMoServerProxy *)proxy
 {
@@ -25,6 +34,7 @@
     if (self) {
         _proxy = proxy;
         _proxy.delegate = self;
+        _handlerDict = [NSMutableDictionary dictionary];
     }
     return self;
 }
@@ -38,16 +48,38 @@
 
 #pragma mark -
 
-- (void)sendScript:(NSString *)script
+- (id)nextID
+{
+    return @(OSAtomicIncrement32(&_count));
+}
+
+- (void)sendScript:(NSString *)script withCompletionHandler:(void (^)(BOOL completed, NSString *result, NSError *error))handler
+{
+    [self sendScript:script isCommand:NO withCompletionHandler:handler];
+}
+
+- (void)sendCommand:(NSString *)script withCompletionHandler:(void (^)(BOOL completed, NSData *result, NSError *error))handler
+{
+    [self sendScript:script isCommand:YES withCompletionHandler:handler];
+}
+
+- (void)sendScript:(NSString *)script isCommand:(BOOL)isCommand withCompletionHandler:(void (^)(BOOL completed, id result, NSError *error))handler
 {
     script = [script stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     if ([script length] == 0) { // no need to send empty string
         return;
     }
     
-    [self.proxy sendObject:@{ kXJSInspectorMessageTypeKey : @(XJSInspectorMessageTypeJavascript),
-                          kXJSInspectorMessageStringKey : script
-                          }];
+    id nextID = [self nextID];
+    
+    if (handler) {
+        _handlerDict[nextID] = [handler copy];
+    }
+    
+    [self.proxy sendObject:@{ kXJSInspectorMessageTypeKey : @(isCommand ? XJSInspectorMessageTypeCommand : XJSInspectorMessageTypeJavascript),
+                              kXJSInspectorMessageStringKey : script,
+                              kXJSInspectorMessageIDKey : nextID
+                              }];
 }
 
 #pragma mark - ThoMoServerProxyDelegate
@@ -59,14 +91,21 @@
         XFAIL(@"Unexpected object received: %@, from data: %@", dict, data);
         return;
     }
+
+    void (^handler)(BOOL completed, id result, NSError *error) = _handlerDict[dict[kXJSInspectorMessageIDKey]];
     
     switch ([dict[kXJSInspectorMessageTypeKey] unsignedIntegerValue]) {
         case XJSInspectorMessageTypeExecuted:
-            [self.delegate server:self didExecutedScriptWithOutput:dict[kXJSInspectorMessageStringKey] error:dict[kXJSInspectorMessageErrorKey]];
+            if (handler) {
+                id result = dict[kXJSInspectorMessageStringKey] ?: dict[kXJSInspectorMessageDataKey];
+                handler(YES, result, dict[kXJSInspectorMessageErrorKey]);
+            }
             break;
             
         case XJSInspectorMessageTypeIncompletedScript:
-            [self.delegate serverRequireMoreScript:self];
+            if (handler) {
+                handler(NO, nil, nil);
+            }
             break;
             
         case XJSInspectorMessageTypeRedirectedLog:

@@ -36,7 +36,17 @@
     __weak __typeof__(self) weakSelf = self;
     [self.terminalView setInputHandler:^(NSString *input) {
         __typeof__(self) strongSelf = weakSelf;
-        [strongSelf.server sendScript:input];
+        [strongSelf.server sendScript:input withCompletionHandler:^(BOOL completed, NSString *result, NSError *error) {
+            if (!completed) {
+                // TODO
+            }
+            if (result) {
+                [strongSelf.terminalView appendOutput:result];
+            }
+            if (error) {
+                [strongSelf.terminalView appendError:[error description]];
+            }
+        }];
     }];
 }
 
@@ -51,16 +61,6 @@
 
 #pragma mark - ServerProxyDelegate
 
-- (void)server:(ServerProxy *)proxy didExecutedScriptWithOutput:(NSString *)output error:(NSError *)error
-{
-    if (output) {
-        [self.terminalView appendOutput:output];
-    }
-    if (error) {
-        [self.terminalView appendError:[error description]];
-    }
-}
-
 - (void)serverConnected:(ServerProxy *)proxy
 {
     XILOG("connected %@", proxy);
@@ -72,11 +72,6 @@
 }
 
 - (void)server:(ServerProxy *)proxy receivedLogMessage:(NSString *)string withLevel:(NSUInteger)level timestamp:(NSDate *)date
-{
-    // TODO
-}
-
--(void)serverRequireMoreScript:(ServerProxy *)proxy
 {
     // TODO
 }

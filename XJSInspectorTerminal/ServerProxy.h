@@ -19,14 +19,13 @@
 
 - (id)initWithThoMoServerProxy:(ThoMoServerProxy *)proxy;
 
-- (void)sendScript:(NSString *)script;
+- (void)sendScript:(NSString *)script withCompletionHandler:(void (^)(BOOL completed, NSString *result, NSError *error))handler;
+- (void)sendCommand:(NSString *)script withCompletionHandler:(void (^)(BOOL completed, NSData *result, NSError *error))handler;
 
 @end
 
 @protocol ServerProxyDelegate <NSObject>
 
-- (void)server:(ServerProxy *)proxy didExecutedScriptWithOutput:(NSString *)output error:(NSError *)error;
-- (void)serverRequireMoreScript:(ServerProxy *)proxy;
 - (void)server:(ServerProxy *)proxy receivedLogMessage:(NSString *)string withLevel:(NSUInteger)level timestamp:(NSDate *)date;
 
 - (void)serverDisconnected:(ServerProxy *)proxy;
