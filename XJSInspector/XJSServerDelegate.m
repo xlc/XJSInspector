@@ -119,8 +119,9 @@
             if (val.isUndefined) {
                 return @{ kXJSInspectorMessageTypeKey : @(XJSInspectorMessageTypeExecuted) };
             }
+            NSString *str = val.isObject ? [val.toObject description] : [val description];
             return @{ kXJSInspectorMessageTypeKey : @(XJSInspectorMessageTypeExecuted),
-                      kXJSInspectorMessageStringKey :val.toString
+                      kXJSInspectorMessageStringKey : str,
                       };
         } else {
             id obj = val.toObject;
