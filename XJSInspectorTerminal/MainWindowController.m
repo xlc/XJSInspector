@@ -33,6 +33,8 @@
 {
     [super windowDidLoad];
     
+    [self.terminalView setAutomaticQuoteSubstitutionEnabled:NO];
+    
     __weak __typeof__(self) weakSelf = self;
     [self.terminalView setInputHandler:^(NSString *input) {
         __typeof__(self) strongSelf = weakSelf;
