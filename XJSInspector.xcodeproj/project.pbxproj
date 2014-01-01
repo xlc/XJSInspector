@@ -43,6 +43,8 @@
 		0624ECE5183736A600D2F7BC /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0624ECE4183736A600D2F7BC /* libz.dylib */; };
 		0624ECE6183736B500D2F7BC /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0624ECE4183736A600D2F7BC /* libz.dylib */; };
 		0624ECE7183736BA00D2F7BC /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0624ECE4183736A600D2F7BC /* libz.dylib */; };
+		064C3F8918742E47005BD67A /* ContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 064C3F8818742E47005BD67A /* ContentView.m */; };
+		064C3F8C18742E54005BD67A /* AttritubeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 064C3F8B18742E54005BD67A /* AttritubeView.m */; };
 		0663F176182A2EE500587A38 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0663F175182A2EE500587A38 /* Cocoa.framework */; };
 		0663F180182A2EE500587A38 /* XJSInspector.m in Sources */ = {isa = PBXBuildFile; fileRef = 0663F17F182A2EE500587A38 /* XJSInspector.m */; };
 		0663F187182A2EE500587A38 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0663F186182A2EE500587A38 /* XCTest.framework */; };
@@ -151,6 +153,10 @@
 		0624ECB918372EDE00D2F7BC /* libXJSInspector-ios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libXJSInspector-ios.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0624ECC618372EDE00D2F7BC /* XJSInspectorTests-ios.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "XJSInspectorTests-ios.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0624ECE4183736A600D2F7BC /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/usr/lib/libz.dylib; sourceTree = DEVELOPER_DIR; };
+		064C3F8718742E47005BD67A /* ContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentView.h; sourceTree = "<group>"; };
+		064C3F8818742E47005BD67A /* ContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentView.m; sourceTree = "<group>"; };
+		064C3F8A18742E54005BD67A /* AttritubeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttritubeView.h; sourceTree = "<group>"; };
+		064C3F8B18742E54005BD67A /* AttritubeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttritubeView.m; sourceTree = "<group>"; };
 		0663F172182A2EE500587A38 /* libXJSInspector.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libXJSInspector.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		0663F175182A2EE500587A38 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		0663F178182A2EE500587A38 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -444,13 +450,17 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		0674ACD41850743F004491AD /* TerminalView */ = {
+		0674ACD41850743F004491AD /* View */ = {
 			isa = PBXGroup;
 			children = (
 				0674ACD518507472004491AD /* TerminalView.h */,
 				0674ACD618507472004491AD /* TerminalView.m */,
+				064C3F8718742E47005BD67A /* ContentView.h */,
+				064C3F8818742E47005BD67A /* ContentView.m */,
+				064C3F8A18742E54005BD67A /* AttritubeView.h */,
+				064C3F8B18742E54005BD67A /* AttritubeView.m */,
 			);
-			name = TerminalView;
+			name = View;
 			sourceTree = "<group>";
 		};
 		06A8769C18360BC200855B3E /* Shared */ = {
@@ -464,7 +474,7 @@
 		06F95D881838C3BC00E34922 /* MainWindowController */ = {
 			isa = PBXGroup;
 			children = (
-				0674ACD41850743F004491AD /* TerminalView */,
+				0674ACD41850743F004491AD /* View */,
 				06F95D891838C3F000E34922 /* MainWindowController.h */,
 				06F95D8A1838C3F000E34922 /* MainWindowController.m */,
 				06F95D8B1838C3F000E34922 /* MainWindowController.xib */,
@@ -987,9 +997,11 @@
 			files = (
 				0674ACDA1852C05E004491AD /* ServerProxy.m in Sources */,
 				0674ACD718507472004491AD /* TerminalView.m in Sources */,
+				064C3F8918742E47005BD67A /* ContentView.m in Sources */,
 				06F95D8C1838C3F000E34922 /* MainWindowController.m in Sources */,
 				061B33ED1837530A00F5DA08 /* XJSInspectorTerminalAppDelegate.mm in Sources */,
 				061B33E61837530A00F5DA08 /* main.m in Sources */,
+				064C3F8C18742E54005BD67A /* AttritubeView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

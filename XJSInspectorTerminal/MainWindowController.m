@@ -17,6 +17,8 @@
 
 @property (nonatomic, strong) IBOutlet NSToolbar *toolbar;
 @property (nonatomic, strong) IBOutlet TerminalView *terminalView;
+@property (nonatomic, strong) IBOutlet NSTextView *logView;
+@property (nonatomic, strong) IBOutlet NSOutlineView *outlineView;
 
 @property (nonatomic, strong) NSArray *toolbarItems;
 
@@ -75,7 +77,7 @@
 
 - (void)server:(ServerProxy *)proxy receivedLogMessage:(NSString *)string withLevel:(NSUInteger)level timestamp:(NSDate *)date
 {
-    // TODO
+    [self.logView.textStorage appendAttributedString:[[NSAttributedString alloc] initWithString:[string stringByAppendingString:@"\n"] attributes:nil]];
 }
 
 @end
