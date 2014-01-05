@@ -22,6 +22,9 @@
 - (void)sendScript:(NSString *)script withCompletionHandler:(void (^)(BOOL completed, NSString *result, NSError *error))handler;
 - (void)sendCommand:(NSString *)script withCompletionHandler:(void (^)(BOOL completed, NSData *result, NSError *error))handler;
 
+- (void)getContextList:(void (^)(NSArray *contexts))handler;
+- (void)setContext:(NSUInteger)contextIndex;
+
 @end
 
 @protocol ServerProxyDelegate <NSObject>

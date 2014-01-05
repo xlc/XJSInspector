@@ -35,6 +35,8 @@
         _proxy = proxy;
         _proxy.delegate = self;
         _handlerDict = [NSMutableDictionary dictionary];
+        
+        [self sendCommand:@"require.provide('global', function(){})" withCompletionHandler:nil];
     }
     return self;
 }
@@ -80,6 +82,62 @@
                               kXJSInspectorMessageStringKey : script,
                               kXJSInspectorMessageIDKey : nextID
                               }];
+}
+
+#pragma mark -
+
+- (void)getContextList:(void (^)(NSArray *contexts))handler
+{
+    XASSERT_NOTNULL(handler);
+    NSString *script =
+    @"(function(){"
+    "var cxs = require('xjs/objc').XJSContext.allContexts();"
+    "var arr = [];"
+    "for (var i = 0; i < cxs.length; i++) {"
+        "var cx = cxs[i];"
+        "var name = cx.name();"
+        "if (name) {"
+            "arr.push([name, cx]);"
+        "}"
+    "};"
+    "arr.sort();"
+    "var contextList = [];"
+    "var names = [];"
+    "for (var i = 0; i < arr.length; i++) {"
+        "names.push(arr[i][0]);"
+        "contextList.push(arr[i][1]);"
+    "};"
+    "require('global').contextList = contextList;"
+    "return names;"
+    "})()"
+    ;
+    
+    [self sendCommand:script withCompletionHandler:^(BOOL completed, NSData *result, NSError *error) {
+        if (error) {
+            XILOG(@"failed to request context list with error: %@", error);
+            handler(nil);
+            return;
+        }
+        if (result) {
+            NSArray *arr = [NSKeyedUnarchiver unarchiveObjectWithData:result];
+            if (![arr isKindOfClass:[NSArray class]]) {
+                XWLOG(@"unexpected object received: %@", arr);
+                handler(nil);
+                return;
+            }
+            handler(arr);
+        }
+    }];
+}
+
+- (void)setContext:(NSUInteger)contextIndex
+{
+    NSString *script = [NSString stringWithFormat:
+                        @"require('xjs/objc').XJSInspector.setContext(require('global').contextList[%d]);"
+                        , (unsigned)contextIndex];
+    
+    [self sendCommand:script withCompletionHandler:nil];
+    
 }
 
 #pragma mark - ThoMoServerProxyDelegate

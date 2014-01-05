@@ -19,13 +19,13 @@
 
 @property (nonatomic, readonly) NSMutableArray *mutableMainWindowControllers;
 @property (nonatomic, strong) ThoMoClientStub *client;
+@property (nonatomic, strong) XJSContext *context;
 
 @end
 
 @implementation AppDelegate
 
 @synthesize mutableMainWindowControllers = _mutableMainWindowControllers;
-@synthesize client = _client;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
@@ -39,6 +39,13 @@
     self.client = client;
     
     [self.client start];
+    
+    XJSContext *cx = [[XJSContext alloc] init];
+    cx.name = @"main";
+    [cx createModuleManager];
+    [cx createObjCRuntimeWithNamespace:nil];
+    cx.moduleManager.paths = @[ [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"Scripts"] ];
+    self.context = cx;
 }
 
 #pragma mark -
@@ -64,16 +71,16 @@
     
     [self.mutableMainWindowControllers addObject:controller];
     
+    NSString *serverString = [self.client.connectedServers lastObject];
+    if (serverString) {
+        controller.server = [[ServerProxy alloc] initWithThoMoServerProxy:[self.client serverProxyForId:serverString]];
+    }
+    
     __block __weak id observer = [[NSNotificationCenter defaultCenter] addObserverForName:NSWindowWillCloseNotification object:controller.window queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note) {
         [self.mutableMainWindowControllers removeObject:controller];
         
         [[NSNotificationCenter defaultCenter] removeObserver:observer];
     }];
-    
-    NSString *serverString = [self.client.connectedServers lastObject];
-    if (serverString) {
-        controller.server = [[ServerProxy alloc] initWithThoMoServerProxy:[self.client serverProxyForId:serverString]];
-    }
     
     [controller showWindow:self];
 }

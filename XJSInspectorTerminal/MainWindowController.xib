@@ -7,6 +7,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="MainWindowController">
             <connections>
+                <outlet property="contextComboBox" destination="bKb-cU-wep" id="TQY-08-Ldl"/>
                 <outlet property="logView" destination="9VK-p8-RhM" id="GsN-ip-Heu"/>
                 <outlet property="outlineView" destination="5SI-AT-iVT" id="lqj-ZR-Tmi"/>
                 <outlet property="terminalView" destination="du4-QR-4Qo" id="nfT-Qv-TIK"/>
@@ -23,7 +24,7 @@
             <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1418"/>
             <view key="contentView" id="2">
                 <rect key="frame" x="0.0" y="0.0" width="1048" height="727"/>
-                <autoresizingMask key="autoresizingMask"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <splitView dividerStyle="thin" vertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cwo-4v-19O">
                         <rect key="frame" x="0.0" y="0.0" width="1048" height="727"/>
@@ -138,10 +139,10 @@
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <size key="minSize" width="716" height="173"/>
-                                                            <size key="maxSize" width="716" height="10000000"/>
+                                                            <size key="maxSize" width="718" height="10000000"/>
                                                             <color key="insertionPointColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                             <size key="minSize" width="716" height="173"/>
-                                                            <size key="maxSize" width="716" height="10000000"/>
+                                                            <size key="maxSize" width="718" height="10000000"/>
                                                         </textView>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -167,10 +168,10 @@
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <size key="minSize" width="716" height="173"/>
-                                                            <size key="maxSize" width="716" height="10000000"/>
+                                                            <size key="maxSize" width="718" height="10000000"/>
                                                             <color key="insertionPointColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                             <size key="minSize" width="716" height="173"/>
-                                                            <size key="maxSize" width="716" height="10000000"/>
+                                                            <size key="maxSize" width="718" height="10000000"/>
                                                         </textView>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -216,8 +217,25 @@
                 </constraints>
             </view>
             <toolbar key="toolbar" implicitIdentifier="2D6BC21A-D8BC-49AC-AB21-7B95B4B0B51F" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="regular" id="3xd-ZV-8Ji">
-                <allowedToolbarItems/>
-                <defaultToolbarItems/>
+                <allowedToolbarItems>
+                    <toolbarItem implicitItemIdentifier="2803C781-AB87-488B-A44F-B234DC92ACA5" label="Context" paletteLabel="Context" id="4ls-eg-g8M">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="99" height="26"/>
+                        <size key="maxSize" width="99" height="26"/>
+                        <comboBox key="view" verticalHuggingPriority="750" id="bKb-cU-wep">
+                            <rect key="frame" x="0.0" y="14" width="99" height="26"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="HHQ-oF-TUo">
+                                <font key="font" metaFont="system"/>
+                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </comboBoxCell>
+                        </comboBox>
+                    </toolbarItem>
+                </allowedToolbarItems>
+                <defaultToolbarItems>
+                    <toolbarItem reference="4ls-eg-g8M"/>
+                </defaultToolbarItems>
             </toolbar>
             <connections>
                 <outlet property="delegate" destination="-2" id="4"/>

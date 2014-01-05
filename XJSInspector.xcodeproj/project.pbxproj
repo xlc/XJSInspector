@@ -45,6 +45,7 @@
 		0624ECE7183736BA00D2F7BC /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0624ECE4183736A600D2F7BC /* libz.dylib */; };
 		064C3F8918742E47005BD67A /* ContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 064C3F8818742E47005BD67A /* ContentView.m */; };
 		064C3F8C18742E54005BD67A /* AttritubeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 064C3F8B18742E54005BD67A /* AttritubeView.m */; };
+		064C3F8E1878E86E005BD67A /* Scripts in Resources */ = {isa = PBXBuildFile; fileRef = 064C3F8D1878E86E005BD67A /* Scripts */; };
 		0663F176182A2EE500587A38 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0663F175182A2EE500587A38 /* Cocoa.framework */; };
 		0663F180182A2EE500587A38 /* XJSInspector.m in Sources */ = {isa = PBXBuildFile; fileRef = 0663F17F182A2EE500587A38 /* XJSInspector.m */; };
 		0663F187182A2EE500587A38 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0663F186182A2EE500587A38 /* XCTest.framework */; };
@@ -157,6 +158,7 @@
 		064C3F8818742E47005BD67A /* ContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentView.m; sourceTree = "<group>"; };
 		064C3F8A18742E54005BD67A /* AttritubeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttritubeView.h; sourceTree = "<group>"; };
 		064C3F8B18742E54005BD67A /* AttritubeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttritubeView.m; sourceTree = "<group>"; };
+		064C3F8D1878E86E005BD67A /* Scripts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Scripts; sourceTree = "<group>"; };
 		0663F172182A2EE500587A38 /* libXJSInspector.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libXJSInspector.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		0663F175182A2EE500587A38 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		0663F178182A2EE500587A38 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -295,6 +297,7 @@
 		061B33DF1837530A00F5DA08 /* XJSInspectorTerminal */ = {
 			isa = PBXGroup;
 			children = (
+				064C3F8D1878E86E005BD67A /* Scripts */,
 				06F95D881838C3BC00E34922 /* MainWindowController */,
 				061B33EB1837530A00F5DA08 /* XJSInspectorTerminalAppDelegate.h */,
 				061B33EC1837530A00F5DA08 /* XJSInspectorTerminalAppDelegate.mm */,
@@ -729,6 +732,7 @@
 				061B33E41837530A00F5DA08 /* InfoPlist.strings in Resources */,
 				061B33F21837530A00F5DA08 /* Images.xcassets in Resources */,
 				061B33EA1837530A00F5DA08 /* Credits.rtf in Resources */,
+				064C3F8E1878E86E005BD67A /* Scripts in Resources */,
 				061B33F01837530A00F5DA08 /* MainMenu.xib in Resources */,
 				06F95D8D1838C3F000E34922 /* MainWindowController.xib in Resources */,
 			);
