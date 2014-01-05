@@ -106,7 +106,7 @@
         return nil;
     }
     
-    XJSContext *cx = isCommand ? self.context : self.commandContext;
+    XJSContext *cx = isCommand ? self.commandContext : self.context;
     
     if (![cx isStringCompilableUnit:script]) {
         return @{ kXJSInspectorMessageTypeKey : @(XJSInspectorMessageTypeIncompletedScript) };
