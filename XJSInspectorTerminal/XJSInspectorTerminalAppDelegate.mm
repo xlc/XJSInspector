@@ -14,12 +14,14 @@
 
 #import "MainWindowController.h"
 #import "ServerProxy.h"
+#import "PathUtil.h"
 
 @interface AppDelegate () <ThoMoClientDelegateProtocol>
 
 @property (nonatomic, readonly) NSMutableArray *mutableMainWindowControllers;
 @property (nonatomic, strong) ThoMoClientStub *client;
 @property (nonatomic, strong) XJSContext *context;
+@property (weak) IBOutlet NSMenuItem *createWindowMenuItem;
 
 @end
 
@@ -32,7 +34,9 @@
     [XJSInspector setProtocolIdentifier:@"xjs"];
     [XJSInspector startServer];
     
-    [self newWindow];
+    self.createWindowMenuItem.action = @selector(createWindow);
+    
+    [self createWindow];
     
     ThoMoClientStub *client = [[ThoMoClientStub alloc] initWithProtocolIdentifier:@"xjs"];
     client.delegate = self;
@@ -44,7 +48,7 @@
     cx.name = @"main";
     [cx createModuleManager];
     [cx createObjCRuntimeWithNamespace:nil];
-    cx.moduleManager.paths = @[ [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"Scripts"] ];
+    cx.moduleManager.paths = @[ [PathUtil scriptDirectoryPath] ];
     self.context = cx;
 }
 
@@ -65,7 +69,7 @@
 
 #pragma mark -
 
-- (IBAction)newWindow
+- (IBAction)createWindow
 {
     MainWindowController *controller = [[MainWindowController alloc] init];
     

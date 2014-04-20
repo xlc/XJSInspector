@@ -17,6 +17,6 @@
 @property (nonatomic, copy, readonly) NSArray *mainWindowControllers;
 @property (nonatomic, strong, readonly) ThoMoClientStub *client;
 
-- (IBAction)newWindow;
+- (IBAction)createWindow;
 
 @end

@@ -1,0 +1,6 @@
+<NSSplitView
+    xmlns:x='https://github.com/xlc/XLCUtils'
+    >
+    <TerminalView x:name='terminalView' />
+    <LogView x:name='logView' />
+</NSSplitView>

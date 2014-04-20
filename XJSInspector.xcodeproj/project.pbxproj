@@ -12,7 +12,6 @@
 		061B33E61837530A00F5DA08 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 061B33E51837530A00F5DA08 /* main.m */; };
 		061B33EA1837530A00F5DA08 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 061B33E81837530A00F5DA08 /* Credits.rtf */; };
 		061B33ED1837530A00F5DA08 /* XJSInspectorTerminalAppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 061B33EC1837530A00F5DA08 /* XJSInspectorTerminalAppDelegate.mm */; };
-		061B33F01837530A00F5DA08 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 061B33EE1837530A00F5DA08 /* MainMenu.xib */; };
 		061B33F21837530A00F5DA08 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 061B33F11837530A00F5DA08 /* Images.xcassets */; };
 		0624EC7A183701C600D2F7BC /* XJSServerDelegateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0624EC79183701C600D2F7BC /* XJSServerDelegateTests.m */; };
 		0624EC8118372E9400D2F7BC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0624EC8018372E9400D2F7BC /* Foundation.framework */; };
@@ -43,8 +42,6 @@
 		0624ECE5183736A600D2F7BC /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0624ECE4183736A600D2F7BC /* libz.dylib */; };
 		0624ECE6183736B500D2F7BC /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0624ECE4183736A600D2F7BC /* libz.dylib */; };
 		0624ECE7183736BA00D2F7BC /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0624ECE4183736A600D2F7BC /* libz.dylib */; };
-		064C3F8918742E47005BD67A /* ContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 064C3F8818742E47005BD67A /* ContentView.m */; };
-		064C3F8C18742E54005BD67A /* AttritubeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 064C3F8B18742E54005BD67A /* AttritubeView.m */; };
 		064C3F8E1878E86E005BD67A /* Scripts in Resources */ = {isa = PBXBuildFile; fileRef = 064C3F8D1878E86E005BD67A /* Scripts */; };
 		0663F176182A2EE500587A38 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0663F175182A2EE500587A38 /* Cocoa.framework */; };
 		0663F180182A2EE500587A38 /* XJSInspector.m in Sources */ = {isa = PBXBuildFile; fileRef = 0663F17F182A2EE500587A38 /* XJSInspector.m */; };
@@ -59,8 +56,11 @@
 		06A8769518336FBE00855B3E /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 06A8769418336FBE00855B3E /* libz.dylib */; };
 		06A876981833807B00855B3E /* XJSServerDelegate_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 06A876961833807B00855B3E /* XJSServerDelegate_Private.h */; };
 		06A876991833807B00855B3E /* XJSServerDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 06A876971833807B00855B3E /* XJSServerDelegate.m */; };
+		06B443A11903891A006F7245 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 061B33EE1837530A00F5DA08 /* MainMenu.xib */; };
+		06B443A519039C38006F7245 /* MainWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06B443A419039C38006F7245 /* MainWindowController.xib */; };
+		06F50A9E1903A673000E5D58 /* PathUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 06F50A9D1903A673000E5D58 /* PathUtil.m */; };
+		06F50AA11903B46D000E5D58 /* LogView.m in Sources */ = {isa = PBXBuildFile; fileRef = 06F50AA01903B46D000E5D58 /* LogView.m */; };
 		06F95D8C1838C3F000E34922 /* MainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06F95D8A1838C3F000E34922 /* MainWindowController.m */; };
-		06F95D8D1838C3F000E34922 /* MainWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06F95D8B1838C3F000E34922 /* MainWindowController.xib */; };
 		06F95D991845DDA400E34922 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0663F186182A2EE500587A38 /* XCTest.framework */; };
 		06F95D9F1845DDA400E34922 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 06F95D9D1845DDA400E34922 /* InfoPlist.strings */; };
 		06F95DA11845DDA400E34922 /* XJSInspectorTerminalTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 06F95DA01845DDA400E34922 /* XJSInspectorTerminalTests.m */; };
@@ -154,10 +154,6 @@
 		0624ECB918372EDE00D2F7BC /* libXJSInspector-ios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libXJSInspector-ios.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0624ECC618372EDE00D2F7BC /* XJSInspectorTests-ios.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "XJSInspectorTests-ios.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0624ECE4183736A600D2F7BC /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/usr/lib/libz.dylib; sourceTree = DEVELOPER_DIR; };
-		064C3F8718742E47005BD67A /* ContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentView.h; sourceTree = "<group>"; };
-		064C3F8818742E47005BD67A /* ContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentView.m; sourceTree = "<group>"; };
-		064C3F8A18742E54005BD67A /* AttritubeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttritubeView.h; sourceTree = "<group>"; };
-		064C3F8B18742E54005BD67A /* AttritubeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttritubeView.m; sourceTree = "<group>"; };
 		064C3F8D1878E86E005BD67A /* Scripts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Scripts; sourceTree = "<group>"; };
 		0663F172182A2EE500587A38 /* libXJSInspector.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libXJSInspector.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		0663F175182A2EE500587A38 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -181,9 +177,13 @@
 		06A876961833807B00855B3E /* XJSServerDelegate_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XJSServerDelegate_Private.h; sourceTree = "<group>"; };
 		06A876971833807B00855B3E /* XJSServerDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XJSServerDelegate.m; sourceTree = "<group>"; };
 		06A8769B18360BBA00855B3E /* XJSInspectorMessageProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XJSInspectorMessageProtocol.h; path = Shared/XJSInspectorMessageProtocol.h; sourceTree = SOURCE_ROOT; };
+		06B443A419039C38006F7245 /* MainWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindowController.xib; sourceTree = "<group>"; };
+		06F50A9C1903A673000E5D58 /* PathUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PathUtil.h; sourceTree = "<group>"; };
+		06F50A9D1903A673000E5D58 /* PathUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PathUtil.m; sourceTree = "<group>"; };
+		06F50A9F1903B46D000E5D58 /* LogView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogView.h; sourceTree = "<group>"; };
+		06F50AA01903B46D000E5D58 /* LogView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogView.m; sourceTree = "<group>"; };
 		06F95D891838C3F000E34922 /* MainWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainWindowController.h; sourceTree = "<group>"; };
 		06F95D8A1838C3F000E34922 /* MainWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainWindowController.m; sourceTree = "<group>"; };
-		06F95D8B1838C3F000E34922 /* MainWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindowController.xib; sourceTree = "<group>"; };
 		06F95D981845DDA300E34922 /* XJSInspectorTerminalTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XJSInspectorTerminalTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		06F95D9C1845DDA400E34922 /* XJSInspectorTerminalTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "XJSInspectorTerminalTests-Info.plist"; sourceTree = "<group>"; };
 		06F95D9E1845DDA400E34922 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -299,6 +299,8 @@
 			children = (
 				064C3F8D1878E86E005BD67A /* Scripts */,
 				06F95D881838C3BC00E34922 /* MainWindowController */,
+				06F50A9C1903A673000E5D58 /* PathUtil.h */,
+				06F50A9D1903A673000E5D58 /* PathUtil.m */,
 				061B33EB1837530A00F5DA08 /* XJSInspectorTerminalAppDelegate.h */,
 				061B33EC1837530A00F5DA08 /* XJSInspectorTerminalAppDelegate.mm */,
 				061B33EE1837530A00F5DA08 /* MainMenu.xib */,
@@ -458,10 +460,8 @@
 			children = (
 				0674ACD518507472004491AD /* TerminalView.h */,
 				0674ACD618507472004491AD /* TerminalView.m */,
-				064C3F8718742E47005BD67A /* ContentView.h */,
-				064C3F8818742E47005BD67A /* ContentView.m */,
-				064C3F8A18742E54005BD67A /* AttritubeView.h */,
-				064C3F8B18742E54005BD67A /* AttritubeView.m */,
+				06F50A9F1903B46D000E5D58 /* LogView.h */,
+				06F50AA01903B46D000E5D58 /* LogView.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -480,7 +480,7 @@
 				0674ACD41850743F004491AD /* View */,
 				06F95D891838C3F000E34922 /* MainWindowController.h */,
 				06F95D8A1838C3F000E34922 /* MainWindowController.m */,
-				06F95D8B1838C3F000E34922 /* MainWindowController.xib */,
+				06B443A419039C38006F7245 /* MainWindowController.xib */,
 				0674ACD81852C05E004491AD /* ServerProxy.h */,
 				0674ACD91852C05E004491AD /* ServerProxy.m */,
 			);
@@ -682,7 +682,7 @@
 		0663F16A182A2EE500587A38 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Xiliang Chen";
 				TargetAttributes = {
 					0624ECA018372E9400D2F7BC = {
@@ -733,8 +733,8 @@
 				061B33F21837530A00F5DA08 /* Images.xcassets in Resources */,
 				061B33EA1837530A00F5DA08 /* Credits.rtf in Resources */,
 				064C3F8E1878E86E005BD67A /* Scripts in Resources */,
-				061B33F01837530A00F5DA08 /* MainMenu.xib in Resources */,
-				06F95D8D1838C3F000E34922 /* MainWindowController.xib in Resources */,
+				06B443A519039C38006F7245 /* MainWindowController.xib in Resources */,
+				06B443A11903891A006F7245 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -999,13 +999,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				06F50A9E1903A673000E5D58 /* PathUtil.m in Sources */,
 				0674ACDA1852C05E004491AD /* ServerProxy.m in Sources */,
+				06F50AA11903B46D000E5D58 /* LogView.m in Sources */,
 				0674ACD718507472004491AD /* TerminalView.m in Sources */,
-				064C3F8918742E47005BD67A /* ContentView.m in Sources */,
 				06F95D8C1838C3F000E34922 /* MainWindowController.m in Sources */,
 				061B33ED1837530A00F5DA08 /* XJSInspectorTerminalAppDelegate.mm in Sources */,
 				061B33E61837530A00F5DA08 /* main.m in Sources */,
-				064C3F8C18742E54005BD67A /* AttritubeView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1175,7 +1175,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B929120D962849E18BF6320E /* Pods-XJSInspectorTerminal.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1198,7 +1197,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B929120D962849E18BF6320E /* Pods-XJSInspectorTerminal.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1219,7 +1217,6 @@
 		0624ECB018372E9400D2F7BC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
@@ -1252,7 +1249,6 @@
 		0624ECB118372E9400D2F7BC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
@@ -1283,7 +1279,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6B1335043D494AD5B785535A /* Pods-XJSInspectorTests-ios-device.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/XJSInspectorDemo.app/XJSInspectorDemo";
 				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1310,7 +1305,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6B1335043D494AD5B785535A /* Pods-XJSInspectorTests-ios-device.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/XJSInspectorDemo.app/XJSInspectorDemo";
 				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1334,7 +1328,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 68730B313A68434F957138C4 /* Pods-XJSInspector-ios.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_ENABLE_MODULES = YES;
 				DSTROOT = /tmp/XJSInspector_ios.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1355,7 +1348,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 68730B313A68434F957138C4 /* Pods-XJSInspector-ios.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_ENABLE_MODULES = YES;
 				DSTROOT = /tmp/XJSInspector_ios.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1373,7 +1365,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = FD2E7EAB408A4621AE4CC366 /* Pods-XJSInspectorTests-ios.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "";
 				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1405,7 +1396,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = FD2E7EAB408A4621AE4CC366 /* Pods-XJSInspectorTests-ios.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "";
 				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1583,6 +1573,7 @@
 			baseConfigurationReference = 121E2D05C85A4F40AA47655E /* Pods-XJSInspectorTerminalTests.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/XJSInspectorTerminal.app/Contents/MacOS/XJSInspectorTerminal";
+				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(inherited)",
@@ -1611,6 +1602,7 @@
 			baseConfigurationReference = 121E2D05C85A4F40AA47655E /* Pods-XJSInspectorTerminalTests.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/XJSInspectorTerminal.app/Contents/MacOS/XJSInspectorTerminal";
+				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(inherited)",

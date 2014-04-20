@@ -19,6 +19,37 @@
 @implementation TerminalView
 {
     NSUInteger _startIndex;
+    NSTextView *_textView;
+    NSScrollView *_scrollView;
+}
+
+- (instancetype)initWithFrame:(NSRect)frameRect
+{
+    self = [super initWithFrame:frameRect];
+    if (self) {
+        _scrollView = [[NSScrollView alloc] initWithFrame:frameRect];
+        
+        _scrollView.borderType = NSNoBorder;
+        _scrollView.hasVerticalScroller = YES;
+        _scrollView.hasHorizontalScroller = NO;
+        _scrollView.autoresizingMask = NSViewWidthSizable | NSViewHeightSizable;
+        
+        _textView = [[NSTextView alloc] initWithFrame:frameRect];
+        _textView.minSize = NSMakeSize(0, frameRect.size.height);
+        _textView.maxSize = NSMakeSize(CGFLOAT_MAX, CGFLOAT_MAX);
+        _textView.verticallyResizable = YES;
+        _textView.horizontallyResizable = NO;
+        _textView.autoresizingMask = NSViewWidthSizable;
+        _textView.textContainer.containerSize = NSMakeSize(frameRect.size.width, CGFLOAT_MAX);
+        _textView.textContainer.widthTracksTextView = YES;
+        
+        _scrollView.documentView = _textView;
+        
+        [self addSubview:_scrollView];
+        
+        self.autoresizingMask = NSViewWidthSizable | NSViewHeightSizable;
+    }
+    return self;
 }
 
 // TODO different font for input/output/error/log
@@ -41,8 +72,8 @@
     if (![string hasSuffix:@"\n"]) {
         string = [string stringByAppendingString:@"\n"];
     }
-    [self.textStorage appendAttributedString:[[NSAttributedString alloc] initWithString:string attributes:attr]];
-    _startIndex = self.textStorage.length;
+    [_textView.textStorage appendAttributedString:[[NSAttributedString alloc] initWithString:string attributes:attr]];
+    _startIndex = _textView.textStorage.length;
 }
 
 #pragma mark -
@@ -53,9 +84,9 @@
     
     if ([theEvent keyCode] == kVK_Return) {
         if (self.inputHandler) {
-            self.inputHandler([self.string substringFromIndex:_startIndex]);
+            self.inputHandler([_textView.string substringFromIndex:_startIndex]);
         }
-        _startIndex = self.textStorage.length;
+        _startIndex = _textView.textStorage.length;
     }
 }
 

@@ -14,6 +14,4 @@
 
 @property (nonatomic, strong) ServerProxy *server;
 
-- (id)init;
-
 @end

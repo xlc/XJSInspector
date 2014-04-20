@@ -8,7 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface TerminalView : NSTextView
+@interface TerminalView : NSView
 
 @property (nonatomic, copy) void (^inputHandler)(NSString *);
 
