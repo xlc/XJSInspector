@@ -60,6 +60,7 @@
 		06B443A519039C38006F7245 /* MainWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06B443A419039C38006F7245 /* MainWindowController.xib */; };
 		06F50A9E1903A673000E5D58 /* PathUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 06F50A9D1903A673000E5D58 /* PathUtil.m */; };
 		06F50AA11903B46D000E5D58 /* LogView.m in Sources */ = {isa = PBXBuildFile; fileRef = 06F50AA01903B46D000E5D58 /* LogView.m */; };
+		06F50AA31903D671000E5D58 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06F50AA21903D671000E5D58 /* Carbon.framework */; };
 		06F95D8C1838C3F000E34922 /* MainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06F95D8A1838C3F000E34922 /* MainWindowController.m */; };
 		06F95D991845DDA400E34922 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0663F186182A2EE500587A38 /* XCTest.framework */; };
 		06F95D9F1845DDA400E34922 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 06F95D9D1845DDA400E34922 /* InfoPlist.strings */; };
@@ -182,6 +183,7 @@
 		06F50A9D1903A673000E5D58 /* PathUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PathUtil.m; sourceTree = "<group>"; };
 		06F50A9F1903B46D000E5D58 /* LogView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogView.h; sourceTree = "<group>"; };
 		06F50AA01903B46D000E5D58 /* LogView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogView.m; sourceTree = "<group>"; };
+		06F50AA21903D671000E5D58 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
 		06F95D891838C3F000E34922 /* MainWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainWindowController.h; sourceTree = "<group>"; };
 		06F95D8A1838C3F000E34922 /* MainWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainWindowController.m; sourceTree = "<group>"; };
 		06F95D981845DDA300E34922 /* XJSInspectorTerminalTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XJSInspectorTerminalTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -210,6 +212,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				06F50AA31903D671000E5D58 /* Carbon.framework in Frameworks */,
 				061B33DE1837530A00F5DA08 /* Cocoa.framework in Frameworks */,
 				F7740BCAAD484082A6069A68 /* libPods-XJSInspectorTerminal.a in Frameworks */,
 			);
@@ -387,6 +390,7 @@
 		0663F174182A2EE500587A38 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				06F50AA21903D671000E5D58 /* Carbon.framework */,
 				0624ECE4183736A600D2F7BC /* libz.dylib */,
 				06A8769418336FBE00855B3E /* libz.dylib */,
 				0663F175182A2EE500587A38 /* Cocoa.framework */,

@@ -56,8 +56,7 @@
         }];
     }];
     
-    [self.server getContextList:^(NSArray *contexts) {}];
-    [self.server setContext:0];
+    [self.window makeFirstResponder:self.terminalView];
 }
 
 #pragma mark -
@@ -68,7 +67,9 @@
     _server = server;
     _server.delegate = self;
     
-    [_server setContext:0];
+    [_server getContextList:^(NSArray *contexts) {
+        [self.server setContext:0];
+    }];
 }
 
 #pragma mark - ServerProxyDelegate

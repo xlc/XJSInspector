@@ -20,7 +20,6 @@
 
 @property (nonatomic, readonly) NSMutableArray *mutableMainWindowControllers;
 @property (nonatomic, strong) ThoMoClientStub *client;
-@property (nonatomic, strong) XJSContext *context;
 @property (weak) IBOutlet NSMenuItem *createWindowMenuItem;
 
 @end

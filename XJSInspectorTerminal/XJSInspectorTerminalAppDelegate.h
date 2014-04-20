@@ -9,13 +9,14 @@
 #import <Cocoa/Cocoa.h>
 
 @class ThoMoClientStub;
-
 @class MainWindowController;
+@class XJSContext;
 
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 
 @property (nonatomic, copy, readonly) NSArray *mainWindowControllers;
 @property (nonatomic, strong, readonly) ThoMoClientStub *client;
+@property (nonatomic, strong) XJSContext *context;
 
 - (IBAction)createWindow;
 

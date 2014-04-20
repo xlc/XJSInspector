@@ -10,7 +10,18 @@
 
 #import <Carbon/Carbon.h>
 
+@interface TerminalViewTextView : NSTextView
+
+@property (nonatomic) NSUInteger caretIndex;
+@property (nonatomic) NSUInteger startIndex;
+
+- (void)updateCaret;
+
+@end
+
 @interface TerminalView () <NSTextViewDelegate>
+
+@property (nonatomic) NSFont *defaultFont;
 
 - (void)appendString:(NSString *)string attritubes:(NSDictionary *)attr;
 
@@ -18,8 +29,7 @@
 
 @implementation TerminalView
 {
-    NSUInteger _startIndex;
-    NSTextView *_textView;
+    TerminalViewTextView *_textView;
     NSScrollView *_scrollView;
 }
 
@@ -34,7 +44,7 @@
         _scrollView.hasHorizontalScroller = NO;
         _scrollView.autoresizingMask = NSViewWidthSizable | NSViewHeightSizable;
         
-        _textView = [[NSTextView alloc] initWithFrame:frameRect];
+        _textView = [[TerminalViewTextView alloc] initWithFrame:frameRect];
         _textView.minSize = NSMakeSize(0, frameRect.size.height);
         _textView.maxSize = NSMakeSize(CGFLOAT_MAX, CGFLOAT_MAX);
         _textView.verticallyResizable = YES;
@@ -42,12 +52,15 @@
         _textView.autoresizingMask = NSViewWidthSizable;
         _textView.textContainer.containerSize = NSMakeSize(frameRect.size.width, CGFLOAT_MAX);
         _textView.textContainer.widthTracksTextView = YES;
+        _textView.delegate = self;
         
         _scrollView.documentView = _textView;
         
         [self addSubview:_scrollView];
         
         self.autoresizingMask = NSViewWidthSizable | NSViewHeightSizable;
+        
+        self.defaultFont = [NSFont fontWithName:@"Menlo" size:12];
     }
     return self;
 }
@@ -56,12 +69,12 @@
 
 - (void)appendOutput:(NSString *)output
 {
-    [self appendString:output attritubes:nil];
+    [self appendString:output attritubes:@{NSFontAttributeName : self.defaultFont}];
 }
 
 - (void)appendError:(NSString *)errorMessage
 {
-    [self appendString:errorMessage attritubes:nil];
+    [self appendString:errorMessage attritubes:@{NSFontAttributeName : self.defaultFont}];
 }
 
 - (void)appendString:(NSString *)string attritubes:(NSDictionary *)attr
@@ -72,29 +85,114 @@
     if (![string hasSuffix:@"\n"]) {
         string = [string stringByAppendingString:@"\n"];
     }
-    [_textView.textStorage appendAttributedString:[[NSAttributedString alloc] initWithString:string attributes:attr]];
-    _startIndex = _textView.textStorage.length;
-}
-
-#pragma mark -
-
-- (void)keyDown:(NSEvent *)theEvent
-{
-    [super keyDown:theEvent];
-    
-    if ([theEvent keyCode] == kVK_Return) {
-        if (self.inputHandler) {
-            self.inputHandler([_textView.string substringFromIndex:_startIndex]);
-        }
-        _startIndex = _textView.textStorage.length;
-    }
+    [_textView.textStorage insertAttributedString:[[NSAttributedString alloc] initWithString:string attributes:attr] atIndex:_textView.startIndex];
+    _textView.startIndex = _textView.textStorage.length;
 }
 
 #pragma mark - NSTextViewDelegate
 
 - (BOOL)textView:(NSTextView *)textView shouldChangeTextInRange:(NSRange)affectedCharRange replacementString:(NSString *)replacementString
 {
-    return YES;
+    if ([replacementString length]) { // insert
+        [_textView.textStorage insertAttributedString:[[NSAttributedString alloc] initWithString:replacementString attributes:@{NSFontAttributeName : self.defaultFont}] atIndex:_textView.caretIndex];
+    } else { // delete
+        if (_textView.caretIndex == _textView.startIndex) {
+            return NO;
+        } else {
+            _textView.caretIndex--;
+            [_textView.textStorage replaceCharactersInRange:NSMakeRange(_textView.caretIndex, 1) withString:@""];
+        }
+    }
+    
+    if ([replacementString rangeOfString:@"\n"].location != NSNotFound) {
+        if (self.inputHandler) {
+            self.inputHandler([_textView.string substringFromIndex:_textView.startIndex]);
+        }
+        _textView.startIndex = _textView.textStorage.length;
+    }
+    return NO;
+}
+
+@end
+
+@implementation TerminalViewTextView {
+    CGRect _prevCaretRect;
+}
+
+- (BOOL)shouldDrawInsertionPoint
+{
+    return NO;
+}
+
+- (void)setSelectedRanges:(NSArray *)ranges affinity:(NSSelectionAffinity)affinity stillSelecting:(BOOL)stillSelectingFlag {
+    if (ranges.count == 1) {
+        NSRange range = [[ranges lastObject] rangeValue];
+        if (range.length == 0) {
+            if (range.location < self.startIndex) {
+                return;
+            } else {
+                self.caretIndex = range.location;
+            }
+        }
+    }
+    
+    [super setSelectedRanges:ranges affinity:affinity stillSelecting:stillSelectingFlag];
+    [self updateCaret];
+}
+
+- (void)drawRect:(NSRect)dirtyRect
+{
+    // clear previous caret
+    [self.backgroundColor drawSwatchInRect:_prevCaretRect];
+    
+    // draw text
+    [super drawRect:dirtyRect];
+    
+    // draw caret
+    NSUInteger rectCount;
+    NSUInteger caretIndex = self.caretIndex;
+    NSRectArray arr = [self.layoutManager rectArrayForCharacterRange:NSMakeRange(caretIndex, caretIndex >= self.textStorage.length ? 0 : 1) withinSelectedCharacterRange:NSMakeRange(NSNotFound, 0) inTextContainer:self.textContainer rectCount:&rectCount];
+    if (arr && rectCount) {
+        _prevCaretRect = arr[0];
+        if (_prevCaretRect.size.width == 0) {
+            CGFloat h = _prevCaretRect.size.height;
+            _prevCaretRect.origin.x += 1;
+            _prevCaretRect.size.width = h / 2;
+        }
+        _prevCaretRect.origin.y += 1;
+        _prevCaretRect.size.height -= 2;
+        NSColor *color = [NSColor colorWithWhite:0 alpha:0.3];
+        [color setFill];
+        if ([[self window] firstResponder] == self) {
+            NSRectFillUsingOperation(_prevCaretRect, NSCompositeSourceOver);
+        } else {
+            NSFrameRect(_prevCaretRect);
+        }
+    }
+}
+
+- (BOOL)becomeFirstResponder
+{
+    [self updateCaret];
+    return [super becomeFirstResponder];
+}
+
+- (BOOL)resignFirstResponder
+{
+    [self updateCaret];
+    return [super resignFirstResponder];
+}
+
+#pragma mark -
+
+- (void)updateCaret
+{
+    if (self.textStorage.length) {
+        CGRect rect = [self.layoutManager lineFragmentRectForGlyphAtIndex:self.textStorage.length-1 effectiveRange:NULL withoutAdditionalLayout:YES];
+        [self setNeedsDisplayInRect:rect avoidAdditionalLayout:YES];
+    } else {
+        [self setNeedsDisplay:YES];
+    }
 }
 
 @end

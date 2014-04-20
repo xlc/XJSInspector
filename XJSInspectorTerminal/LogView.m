@@ -34,6 +34,7 @@
         _textView.autoresizingMask = NSViewWidthSizable;
         _textView.textContainer.containerSize = NSMakeSize(frameRect.size.width, CGFLOAT_MAX);
         _textView.textContainer.widthTracksTextView = YES;
+        _textView.editable = NO;
         
         _scrollView.documentView = _textView;
         
