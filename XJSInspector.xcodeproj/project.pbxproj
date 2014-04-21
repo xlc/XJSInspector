@@ -64,7 +64,6 @@
 		06F95D8C1838C3F000E34922 /* MainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06F95D8A1838C3F000E34922 /* MainWindowController.m */; };
 		06F95D991845DDA400E34922 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0663F186182A2EE500587A38 /* XCTest.framework */; };
 		06F95D9F1845DDA400E34922 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 06F95D9D1845DDA400E34922 /* InfoPlist.strings */; };
-		06F95DA11845DDA400E34922 /* XJSInspectorTerminalTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 06F95DA01845DDA400E34922 /* XJSInspectorTerminalTests.m */; };
 		1EE75F3DCC6246748E668136 /* libPods-XJSInspectorTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F64C0D321764CCDAD44C429 /* libPods-XJSInspectorTests.a */; };
 		3EA24ED65A0D47F7BFDFD4AC /* libPods-XJSInspectorTests-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DEF823BD03F4C589F664B6E /* libPods-XJSInspectorTests-ios.a */; };
 		48E4982BDAE642FB9A5F9FF0 /* libPods-XJSInspector-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 67BDBE06BC984D7990229045 /* libPods-XJSInspector-ios.a */; };
@@ -189,7 +188,6 @@
 		06F95D981845DDA300E34922 /* XJSInspectorTerminalTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XJSInspectorTerminalTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		06F95D9C1845DDA400E34922 /* XJSInspectorTerminalTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "XJSInspectorTerminalTests-Info.plist"; sourceTree = "<group>"; };
 		06F95D9E1845DDA400E34922 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		06F95DA01845DDA400E34922 /* XJSInspectorTerminalTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XJSInspectorTerminalTests.m; sourceTree = "<group>"; };
 		06F95DA21845DDA400E34922 /* XJSInspectorTerminalTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "XJSInspectorTerminalTests-Prefix.pch"; sourceTree = "<group>"; };
 		121E2D05C85A4F40AA47655E /* Pods-XJSInspectorTerminalTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XJSInspectorTerminalTests.xcconfig"; path = "Pods/Pods-XJSInspectorTerminalTests.xcconfig"; sourceTree = "<group>"; };
 		67BDBE06BC984D7990229045 /* libPods-XJSInspector-ios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XJSInspector-ios.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -494,7 +492,6 @@
 		06F95D9A1845DDA400E34922 /* XJSInspectorTerminalTests */ = {
 			isa = PBXGroup;
 			children = (
-				06F95DA01845DDA400E34922 /* XJSInspectorTerminalTests.m */,
 				0674ACDC1853F4B6004491AD /* ServerProxyTests.m */,
 				06F95D9B1845DDA400E34922 /* Supporting Files */,
 			);
@@ -1072,7 +1069,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				06F95DA11845DDA400E34922 /* XJSInspectorTerminalTests.m in Sources */,
 				0674ACDD1853F4B6004491AD /* ServerProxyTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
