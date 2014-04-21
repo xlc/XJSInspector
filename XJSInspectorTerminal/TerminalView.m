@@ -57,13 +57,9 @@
         [self addSubview:_scrollView];
         
         self.autoresizingMask = NSViewWidthSizable | NSViewHeightSizable;
-        
-        self.inputTextAttritube = @{NSFontAttributeName : [NSFont fontWithName:@"Menlo" size:12]};
     }
     return self;
 }
-
-// TODO different font for input/output/error/log
 
 - (void)appendOutput:(NSString *)output
 {
@@ -83,9 +79,24 @@
     if (![string hasSuffix:@"\n"]) {
         string = [string stringByAppendingString:@"\n"];
     }
-    [_textView.textStorage insertAttributedString:[[NSAttributedString alloc] initWithString:string attributes:attr] atIndex:_textView.startIndex];
-    _textView.startIndex = _textView.textStorage.length;
-    _textView.caretIndex = _textView.startIndex;
+    NSUInteger loc = [_textView.textStorage.string rangeOfString:@"\n" options:NSBackwardsSearch].location;
+    if (loc == NSNotFound) {
+        loc = 0;
+    } else {
+        loc++;
+    }
+    _textView.caretIndex += string.length;
+    _textView.startIndex += string.length;
+    [_textView.textStorage insertAttributedString:[[NSAttributedString alloc] initWithString:string attributes:attr] atIndex:loc];
+    
+    [_textView scrollRangeToVisible:NSMakeRange(_textView.caretIndex, 0)];
+}
+
+- (void)viewWillMoveToWindow:(NSWindow *)newWindow {
+    if (newWindow && _textView.textStorage.length == 0) {
+        [_textView.textStorage appendAttributedString:[[NSAttributedString alloc] initWithString:@">>> " attributes:self.inputTextAttritube]];
+        _textView.startIndex = _textView.caretIndex = _textView.textStorage.length;
+    }
 }
 
 #pragma mark - NSTextViewDelegate
@@ -104,23 +115,24 @@
         [_textView.textStorage insertAttributedString:[[NSAttributedString alloc] initWithString:replacementString attributes:self.inputTextAttritube] atIndex:_textView.caretIndex - 1];
         
         if (hasEnter) {
-            [_textView.textStorage appendAttributedString:[[NSAttributedString alloc] initWithString:@"\n"]];
-            
             if (self.inputHandler) {
                 self.inputHandler([_textView.string substringFromIndex:_textView.startIndex]);
             }
+            
+            [_textView.textStorage appendAttributedString:[[NSAttributedString alloc] initWithString:@"\n>>> " attributes:self.inputTextAttritube]];
+            
             _textView.startIndex = _textView.textStorage.length;
             _textView.caretIndex = _textView.startIndex;
         }
         
     } else { // delete
-        if (_textView.caretIndex == _textView.startIndex) {
-            return NO;
-        } else {
+        if (_textView.caretIndex != _textView.startIndex) {
             _textView.caretIndex--;
             [_textView.textStorage replaceCharactersInRange:NSMakeRange(_textView.caretIndex, 1) withString:@""];
         }
     }
+    
+    [_textView scrollRangeToVisible:NSMakeRange(_textView.caretIndex, 0)];
     
     return NO;
 }
