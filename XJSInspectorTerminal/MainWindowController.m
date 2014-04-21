@@ -9,6 +9,7 @@
 #import "MainWindowController.h"
 
 #import <XLCUtils/XLCUtils.h>
+#import <XJSBinding/NSError_XJSErrorConstants.h>
 
 #import "TerminalView.h"
 #import "LogView.h"
@@ -52,7 +53,14 @@
                 [strongSelf.terminalView appendOutput:result];
             }
             if (error) {
-                [strongSelf.terminalView appendError:[error description]];
+                NSString *errorMessage;
+                if ([[error domain] isEqualTo:XJSErrorDomain]) {
+                    errorMessage = [error userInfo][XJSErrorMessageKey];
+                }
+                if ([errorMessage length] == 0) {
+                    errorMessage = [error description];
+                }
+                [strongSelf.terminalView appendError:errorMessage];
             }
         }];
     }];
