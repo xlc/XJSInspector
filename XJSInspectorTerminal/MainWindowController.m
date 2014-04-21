@@ -36,7 +36,7 @@
     
     NSDictionary *dict;
     
-    self.window.contentView = [[XLCXMLObject objectWithContentsOfURL:[PathUtil URLForFileAtScriptDirectory:@"MainWindowController.xml"] error:NULL] createWithOutputDictionary:&dict];;
+    self.window.contentView = [[XLCXMLObject objectWithContentsOfURL:[PathUtil URLForFileAtScriptDirectory:@"MainWindowController.xml"] error:NULL] createWithOutputDictionary:&dict];
     
     self.terminalView = dict[@"terminalView"];
     self.logView = dict[@"logView"];
@@ -46,9 +46,7 @@
         __typeof__(self) strongSelf = weakSelf;
         NSUInteger loc = strongSelf.terminalView.textLength;
         [strongSelf.server sendScript:input withCompletionHandler:^(BOOL completed, NSString *result, NSError *error) {
-            if (!completed) {
-                [strongSelf.terminalView markIncomplete:loc];
-            }
+            [strongSelf.terminalView markComplete:completed atLocation:loc];
             if (result) {
                 [strongSelf.terminalView appendOutput:result];
             }
@@ -64,8 +62,6 @@
             }
         }];
     }];
-    
-    [self.window makeFirstResponder:self.terminalView];
 }
 
 #pragma mark -

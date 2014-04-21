@@ -29,6 +29,7 @@
 {
     TerminalViewTextView *_textView;
     NSScrollView *_scrollView;
+    BOOL _wasCompleted;
 }
 
 - (instancetype)initWithFrame:(NSRect)frameRect
@@ -57,6 +58,8 @@
         [self addSubview:_scrollView];
         
         self.autoresizingMask = NSViewWidthSizable | NSViewHeightSizable;
+        
+        _wasCompleted = YES;
     }
     return self;
 }
@@ -106,9 +109,10 @@
     [_textView scrollRangeToVisible:NSMakeRange(_textView.caretIndex, 0)];
 }
 
-- (void)markIncomplete:(NSUInteger)loc
+- (void)markComplete:(BOOL)complete atLocation:(NSUInteger)loc
 {
-    [_textView.textStorage replaceCharactersInRange:NSMakeRange(loc+1, 3) withString:@"..."];
+    [_textView.textStorage replaceCharactersInRange:NSMakeRange(loc+1, 3) withString:complete ? @">>>" : @"..."];
+    _wasCompleted = complete;
 }
 
 #pragma mark - NSTextViewDelegate
@@ -131,7 +135,7 @@
                 self.inputHandler([_textView.string substringFromIndex:_textView.startIndex]);
             }
             
-            [_textView.textStorage appendAttributedString:[[NSAttributedString alloc] initWithString:@"\n>>> " attributes:self.inputTextAttritube]];
+            [_textView.textStorage appendAttributedString:[[NSAttributedString alloc] initWithString:_wasCompleted ? @"\n>>> " : @"\n... " attributes:self.inputTextAttritube]];
             
             _textView.startIndex = _textView.textStorage.length;
             _textView.caretIndex = _textView.startIndex;

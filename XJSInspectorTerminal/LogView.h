@@ -10,6 +10,8 @@
 
 @interface LogView : NSView
 
+@property (nonatomic) NSArray *messageAttributes;
+
 - (void)appendMessage:(NSString *)message withLevel:(NSUInteger)level timestamp:(NSDate *)date;
 
 @end

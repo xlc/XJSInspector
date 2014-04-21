@@ -20,6 +20,6 @@
 - (void)appendOutput:(NSString *)output;
 - (void)appendError:(NSString *)errorMessage;
 
-- (void)markIncomplete:(NSUInteger)loc;
+- (void)markComplete:(BOOL)complete atLocation:(NSUInteger)loc;
 
 @end
