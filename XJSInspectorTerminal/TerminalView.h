@@ -12,6 +12,10 @@
 
 @property (nonatomic, copy) void (^inputHandler)(NSString *);
 
+@property (nonatomic, strong) NSDictionary *inputTextAttritube;
+@property (nonatomic, strong) NSDictionary *messageTextAttritube;
+@property (nonatomic, strong) NSDictionary *errorTextAttritube;
+
 - (void)appendOutput:(NSString *)output;
 - (void)appendError:(NSString *)errorMessage;
 

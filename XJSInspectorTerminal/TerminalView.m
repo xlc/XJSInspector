@@ -21,8 +21,6 @@
 
 @interface TerminalView () <NSTextViewDelegate>
 
-@property (nonatomic) NSFont *defaultFont;
-
 - (void)appendString:(NSString *)string attritubes:(NSDictionary *)attr;
 
 @end
@@ -60,7 +58,7 @@
         
         self.autoresizingMask = NSViewWidthSizable | NSViewHeightSizable;
         
-        self.defaultFont = [NSFont fontWithName:@"Menlo" size:12];
+        self.inputTextAttritube = @{NSFontAttributeName : [NSFont fontWithName:@"Menlo" size:12]};
     }
     return self;
 }
@@ -69,12 +67,12 @@
 
 - (void)appendOutput:(NSString *)output
 {
-    [self appendString:output attritubes:@{NSFontAttributeName : self.defaultFont}];
+    [self appendString:output attritubes:self.messageTextAttritube];
 }
 
 - (void)appendError:(NSString *)errorMessage
 {
-    [self appendString:errorMessage attritubes:@{NSFontAttributeName : self.defaultFont}];
+    [self appendString:errorMessage attritubes:self.errorTextAttritube];
 }
 
 - (void)appendString:(NSString *)string attritubes:(NSDictionary *)attr
@@ -87,6 +85,7 @@
     }
     [_textView.textStorage insertAttributedString:[[NSAttributedString alloc] initWithString:string attributes:attr] atIndex:_textView.startIndex];
     _textView.startIndex = _textView.textStorage.length;
+    _textView.caretIndex = _textView.startIndex;
 }
 
 #pragma mark - NSTextViewDelegate
@@ -94,7 +93,26 @@
 - (BOOL)textView:(NSTextView *)textView shouldChangeTextInRange:(NSRange)affectedCharRange replacementString:(NSString *)replacementString
 {
     if ([replacementString length]) { // insert
-        [_textView.textStorage insertAttributedString:[[NSAttributedString alloc] initWithString:replacementString attributes:@{NSFontAttributeName : self.defaultFont}] atIndex:_textView.caretIndex];
+        
+        BOOL hasEnter = NO;
+        if ([replacementString rangeOfString:@"\n"].location != NSNotFound) {
+            replacementString = [replacementString stringByReplacingOccurrencesOfString:@"\n" withString:@""]; // remove new line
+            hasEnter = YES;
+        }
+        
+        _textView.caretIndex++;
+        [_textView.textStorage insertAttributedString:[[NSAttributedString alloc] initWithString:replacementString attributes:self.inputTextAttritube] atIndex:_textView.caretIndex - 1];
+        
+        if (hasEnter) {
+            [_textView.textStorage appendAttributedString:[[NSAttributedString alloc] initWithString:@"\n"]];
+            
+            if (self.inputHandler) {
+                self.inputHandler([_textView.string substringFromIndex:_textView.startIndex]);
+            }
+            _textView.startIndex = _textView.textStorage.length;
+            _textView.caretIndex = _textView.startIndex;
+        }
+        
     } else { // delete
         if (_textView.caretIndex == _textView.startIndex) {
             return NO;
@@ -104,12 +122,6 @@
         }
     }
     
-    if ([replacementString rangeOfString:@"\n"].location != NSNotFound) {
-        if (self.inputHandler) {
-            self.inputHandler([_textView.string substringFromIndex:_textView.startIndex]);
-        }
-        _textView.startIndex = _textView.textStorage.length;
-    }
     return NO;
 }
 
@@ -129,7 +141,7 @@
         NSRange range = [[ranges lastObject] rangeValue];
         if (range.length == 0) {
             if (range.location < self.startIndex) {
-                return;
+                ranges = @[ [NSValue valueWithRange:NSMakeRange(self.caretIndex, 0)] ];
             } else {
                 self.caretIndex = range.location;
             }

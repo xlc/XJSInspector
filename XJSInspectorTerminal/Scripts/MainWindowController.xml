@@ -1,6 +1,57 @@
 <NSSplitView
     xmlns:x='https://github.com/xlc/XLCUtils'
     >
-    <TerminalView x:name='terminalView' />
+    <TerminalView x:name='terminalView'>
+        <TerminalView.inputTextAttritube>
+            <NSDictionary>
+                <x:PostAction>
+                    <x:Set>
+                        <x:Set.key>
+                            <x:Symbol name='NSFontAttributeName' />
+                        </x:Set.key>
+                        <x:Set.value>
+                            <NSFont name='Menlo' size='12' />
+                        </x:Set.value>
+                    </x:Set>
+                </x:PostAction>
+            </NSDictionary>
+        </TerminalView.inputTextAttritube>
+        <TerminalView.messageTextAttritube>
+            <NSDictionary>
+                <x:PostAction>
+                    <x:Set>
+                        <x:Set.key>
+                            <x:Symbol name='NSFontAttributeName' />
+                        </x:Set.key>
+                        <x:Set.value>
+                            <NSFont size='12' />
+                        </x:Set.value>
+                    </x:Set>
+                </x:PostAction>
+            </NSDictionary>
+        </TerminalView.messageTextAttritube>
+        <TerminalView.errorTextAttritube>
+            <NSDictionary>
+                <x:PostAction>
+                    <x:Set>
+                        <x:Set.key>
+                            <x:Symbol name='NSFontAttributeName' />
+                        </x:Set.key>
+                        <x:Set.value>
+                            <NSFont name='Menlo' size='12' />
+                        </x:Set.value>
+                    </x:Set>
+                    <x:Set>
+                        <x:Set.key>
+                            <x:Symbol name='NSForegroundColorAttributeName' />
+                        </x:Set.key>
+                        <x:Set.value>
+                            <NSColor name='red' />
+                        </x:Set.value>
+                    </x:Set>
+                </x:PostAction>
+            </NSDictionary>
+        </TerminalView.errorTextAttritube>
+    </TerminalView>
     <LogView x:name='logView' />
 </NSSplitView>
