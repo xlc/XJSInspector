@@ -15,8 +15,11 @@
 @property (nonatomic, strong) NSDictionary *inputTextAttritube;
 @property (nonatomic, strong) NSDictionary *messageTextAttritube;
 @property (nonatomic, strong) NSDictionary *errorTextAttritube;
+@property (nonatomic, readonly) NSUInteger textLength;
 
 - (void)appendOutput:(NSString *)output;
 - (void)appendError:(NSString *)errorMessage;
+
+- (void)markIncomplete:(NSUInteger)loc;
 
 @end

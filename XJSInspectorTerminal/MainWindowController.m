@@ -43,9 +43,10 @@
     __weak __typeof__(self) weakSelf = self;
     [self.terminalView setInputHandler:^(NSString *input) {
         __typeof__(self) strongSelf = weakSelf;
+        NSUInteger loc = strongSelf.terminalView.textLength;
         [strongSelf.server sendScript:input withCompletionHandler:^(BOOL completed, NSString *result, NSError *error) {
             if (!completed) {
-                // TODO
+                [strongSelf.terminalView markIncomplete:loc];
             }
             if (result) {
                 [strongSelf.terminalView appendOutput:result];

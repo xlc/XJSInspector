@@ -61,6 +61,20 @@
     return self;
 }
 
+- (void)viewWillMoveToWindow:(NSWindow *)newWindow {
+    if (newWindow && _textView.textStorage.length == 0) {
+        [_textView.textStorage appendAttributedString:[[NSAttributedString alloc] initWithString:@">>> " attributes:self.inputTextAttritube]];
+        _textView.startIndex = _textView.caretIndex = _textView.textStorage.length;
+    }
+}
+
+#pragma mark -
+
+- (NSUInteger)textLength
+{
+    return _textView.textStorage.length;
+}
+
 - (void)appendOutput:(NSString *)output
 {
     [self appendString:output attritubes:self.messageTextAttritube];
@@ -92,11 +106,9 @@
     [_textView scrollRangeToVisible:NSMakeRange(_textView.caretIndex, 0)];
 }
 
-- (void)viewWillMoveToWindow:(NSWindow *)newWindow {
-    if (newWindow && _textView.textStorage.length == 0) {
-        [_textView.textStorage appendAttributedString:[[NSAttributedString alloc] initWithString:@">>> " attributes:self.inputTextAttritube]];
-        _textView.startIndex = _textView.caretIndex = _textView.textStorage.length;
-    }
+- (void)markIncomplete:(NSUInteger)loc
+{
+    [_textView.textStorage replaceCharactersInRange:NSMakeRange(loc+1, 3) withString:@"..."];
 }
 
 #pragma mark - NSTextViewDelegate

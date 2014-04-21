@@ -15,14 +15,15 @@
 
 @interface XJSServerDelegate ()
 
-- (NSDictionary *)handleMessage:(NSDictionary *)message;
-- (NSDictionary *)handleScript:(NSString *)script isCommand:(BOOL)isCommand;
+- (NSDictionary *)handleMessage:(NSDictionary *)message from:(NSString *)client;
+- (NSDictionary *)handleScript:(NSString *)script isCommand:(BOOL)isCommand from:(NSString *)client;
 
 @end
 
 @implementation XJSServerDelegate
 {
     BOOL _executing;
+    NSMutableDictionary *_buffer;
 }
 
 - (id)init
@@ -36,6 +37,7 @@
     if (self) {
         _context = context;
         _commandContext = context;
+        _buffer = [NSMutableDictionary dictionary];
     }
     return self;
 }
@@ -44,7 +46,7 @@
 {
     id obj = [NSKeyedUnarchiver unarchiveObjectWithData:theData];
     if ([obj isKindOfClass:[NSDictionary class]]) {
-        NSDictionary *reply = [self handleMessage:obj];
+        NSDictionary *reply = [self handleMessage:obj from:aClientIdString];
         if (reply) {
             [theServer send:reply toClient:aClientIdString];
         }
@@ -61,11 +63,12 @@
 - (void)server:(ThoMoServerStub *)theServer lostConnectionToClient:(NSString *)aClientIdString error:(NSError *)error
 {
     XILOG(@"Disconnect from client: %@", aClientIdString);
+    [_buffer removeObjectForKey:aClientIdString];
 }
 
 #pragma mark -
 
-- (NSDictionary *)handleMessage:(NSDictionary *)message
+- (NSDictionary *)handleMessage:(NSDictionary *)message from:(NSString *)client
 {
     NSNumber *type = message[kXJSInspectorMessageTypeKey];
     if (!type) {
@@ -79,11 +82,11 @@
     
     switch ([type unsignedIntegerValue]) {
         case XJSInspectorMessageTypeJavascript:
-            reply = [self handleScript:message[kXJSInspectorMessageStringKey] isCommand:NO];
+            reply = [self handleScript:message[kXJSInspectorMessageStringKey] isCommand:NO from:client];
             break;
             
         case XJSInspectorMessageTypeCommand:
-            reply = [self handleScript:message[kXJSInspectorMessageStringKey] isCommand:YES];
+            reply = [self handleScript:message[kXJSInspectorMessageStringKey] isCommand:YES from:client];
             break;
             
         default:
@@ -100,17 +103,24 @@
     return reply;
 }
 
-- (NSDictionary *)handleScript:(NSString *)script isCommand:(BOOL)isCommand
+- (NSDictionary *)handleScript:(NSString *)script isCommand:(BOOL)isCommand from:(NSString *)client
 {
-    if (![script length]) {
-        return nil;
+    NSMutableString *strbuf = _buffer[client];
+    if (strbuf) {
+        [strbuf appendString:script];
+        script = strbuf;
     }
     
     XJSContext *cx = isCommand ? self.commandContext : self.context;
     
     if (![cx isStringCompilableUnit:script]) {
+        if (!strbuf) {
+            _buffer[client] = [script mutableCopy];
+        }
         return @{ kXJSInspectorMessageTypeKey : @(XJSInspectorMessageTypeIncompletedScript) };
     }
+    
+    [_buffer removeObjectForKey:client];
     
     NSError *error;
     XJSValue *val = [cx evaluateString:script error:&error];
