@@ -91,13 +91,13 @@
 {
     {
         [[_mockServer expect] sendObject:@{ kXJSInspectorMessageTypeKey : @(XJSInspectorMessageTypeJavascript),
-                                            kXJSInspectorMessageStringKey : @"{a=",
+                                            kXJSInspectorMessageStringKey : @"{",
                                             kXJSInspectorMessageIDKey : @2
                                             }];
         
         __block BOOL received = NO;
         
-        [_proxy sendScript:@"{a=" withCompletionHandler:^(BOOL completed, NSString *result, NSError *receivedError) {
+        [_proxy sendScript:@"{" withCompletionHandler:^(BOOL completed, NSString *result, NSError *receivedError) {
             XCTAssertFalse(completed);
             received = YES;
         }];
@@ -115,20 +115,44 @@
     
     {
         [[_mockServer expect] sendObject:@{ kXJSInspectorMessageTypeKey : @(XJSInspectorMessageTypeJavascript),
-                                            kXJSInspectorMessageStringKey : @"1}",
+                                            kXJSInspectorMessageStringKey : @"a=1",
                                             kXJSInspectorMessageIDKey : @3
                                             }];
         
         __block BOOL received = NO;
         
-        [_proxy sendScript:@"1}" withCompletionHandler:^(BOOL completed, NSString *result, NSError *receivedError) {
+        [_proxy sendScript:@"a=1" withCompletionHandler:^(BOOL completed, NSString *result, NSError *receivedError) {
+            XCTAssertFalse(completed);
+            received = YES;
+        }];
+        
+        NSDictionary *dict = @{ kXJSInspectorMessageTypeKey : @(XJSInspectorMessageTypeIncompletedScript),
+                                kXJSInspectorMessageIDKey : @3
+                                };
+        NSData *data = [NSKeyedArchiver archivedDataWithRootObject:dict];
+        [_proxy serverProxy:_mockServer didReceiveData:data];
+        
+        [_mockServer verify];
+        
+        XCTAssertTrue(received, "completion handler should be executed");
+    }
+    
+    {
+        [[_mockServer expect] sendObject:@{ kXJSInspectorMessageTypeKey : @(XJSInspectorMessageTypeJavascript),
+                                            kXJSInspectorMessageStringKey : @"b=2}",
+                                            kXJSInspectorMessageIDKey : @4
+                                            }];
+        
+        __block BOOL received = NO;
+        
+        [_proxy sendScript:@"b=2}" withCompletionHandler:^(BOOL completed, NSString *result, NSError *receivedError) {
             XCTAssertTrue(completed);
             received = YES;
         }];
         
         NSDictionary *dict = @{ kXJSInspectorMessageTypeKey : @(XJSInspectorMessageTypeExecuted),
-                                kXJSInspectorMessageStringKey : @"1",
-                                kXJSInspectorMessageIDKey : @3
+                                kXJSInspectorMessageStringKey : @"2",
+                                kXJSInspectorMessageIDKey : @4
                                 };
         NSData *data = [NSKeyedArchiver archivedDataWithRootObject:dict];
         [_proxy serverProxy:_mockServer didReceiveData:data];

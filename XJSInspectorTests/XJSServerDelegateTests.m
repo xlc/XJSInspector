@@ -75,7 +75,7 @@
     }
     
     [[_mockServer expect] send:@{ kXJSInspectorMessageTypeKey : @(XJSInspectorMessageTypeExecuted),
-                                  kXJSInspectorMessageStringKey : @"b" }
+                                  kXJSInspectorMessageStringKey : @"\"b\"" }
                       toClient:@"client"];
     
     data = [NSKeyedArchiver archivedDataWithRootObject:@{ kXJSInspectorMessageTypeKey : @(XJSInspectorMessageTypeJavascript),
@@ -114,18 +114,18 @@
                       toClient:@"client"];
     
     data = [NSKeyedArchiver archivedDataWithRootObject:@{ kXJSInspectorMessageTypeKey : @(XJSInspectorMessageTypeJavascript),
-                                                          kXJSInspectorMessageStringKey : @"{\na=42" }];
+                                                          kXJSInspectorMessageStringKey : @"a=42" }];
     
     [_delegate server:_mockServer didReceiveData:data fromClient:@"client"];
     
     [_mockServer verify];
     
     [[_mockServer expect] send:@{ kXJSInspectorMessageTypeKey : @(XJSInspectorMessageTypeExecuted),
-                                  kXJSInspectorMessageStringKey : @"42" }
+                                  kXJSInspectorMessageStringKey : @"23" }
                       toClient:@"client"];
     
     data = [NSKeyedArchiver archivedDataWithRootObject:@{ kXJSInspectorMessageTypeKey : @(XJSInspectorMessageTypeJavascript),
-                                                          kXJSInspectorMessageStringKey : @"{\na=42\n}" }];
+                                                          kXJSInspectorMessageStringKey : @"b=23}" }];
     
     [_delegate server:_mockServer didReceiveData:data fromClient:@"client"];
     
@@ -135,6 +135,12 @@
         XJSValue *val = _delegate.context[@"a"];
         XCTAssertTrue(val.isNumber);
         XCTAssertEqual(val.toInt32, 42);
+    }
+    
+    {
+        XJSValue *val = _delegate.context[@"b"];
+        XCTAssertTrue(val.isNumber);
+        XCTAssertEqual(val.toInt32, 23);
     }
 }
 

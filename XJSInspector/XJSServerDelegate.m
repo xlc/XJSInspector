@@ -108,6 +108,7 @@
     NSMutableString *strbuf = _buffer[client];
     if (strbuf) {
         [strbuf appendString:script];
+        [strbuf appendString:@"\n"];
         script = strbuf;
     }
     
