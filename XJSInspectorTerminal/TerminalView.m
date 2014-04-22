@@ -66,7 +66,7 @@
 
 - (void)viewWillMoveToWindow:(NSWindow *)newWindow {
     if (newWindow && _textView.textStorage.length == 0) {
-        [_textView.textStorage appendAttributedString:[[NSAttributedString alloc] initWithString:@">>> " attributes:self.inputTextAttritube]];
+        [_textView.textStorage appendAttributedString:[[NSAttributedString alloc] initWithString:@"> " attributes:self.inputTextAttritube]];
         _textView.startIndex = _textView.caretIndex = _textView.textStorage.length;
     }
 }
@@ -111,7 +111,7 @@
 
 - (void)markComplete:(BOOL)complete atLocation:(NSUInteger)loc
 {
-    [_textView.textStorage replaceCharactersInRange:NSMakeRange(loc+1, 3) withString:complete ? @">>>" : @"..."];
+    [_textView.textStorage replaceCharactersInRange:NSMakeRange(loc+1, 1) withString:complete ? @">" : @" "];
     _wasCompleted = complete;
 }
 
@@ -122,8 +122,10 @@
     if ([replacementString length]) { // insert
         
         BOOL hasEnter = NO;
-        if ([replacementString rangeOfString:@"\n"].location != NSNotFound) {
-            replacementString = [replacementString stringByReplacingOccurrencesOfString:@"\n" withString:@""]; // remove new line
+        if ([replacementString isEqualTo:@"\n"]) {
+            replacementString = @"";
+            hasEnter = YES;
+        } else if ([replacementString rangeOfString:@"\n"].location != NSNotFound) { // multi-line string
             hasEnter = YES;
         }
         
@@ -135,7 +137,7 @@
                 self.inputHandler([_textView.string substringFromIndex:_textView.startIndex]);
             }
             
-            [_textView.textStorage appendAttributedString:[[NSAttributedString alloc] initWithString:_wasCompleted ? @"\n>>> " : @"\n... " attributes:self.inputTextAttritube]];
+            [_textView.textStorage appendAttributedString:[[NSAttributedString alloc] initWithString:_wasCompleted ? @"\n> " : @"\n  " attributes:self.inputTextAttritube]];
             
             _textView.startIndex = _textView.textStorage.length;
             _textView.caretIndex = _textView.startIndex;
