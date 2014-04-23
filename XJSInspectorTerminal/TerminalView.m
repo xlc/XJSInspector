@@ -10,7 +10,12 @@
 
 #import <Carbon/Carbon.h>
 
+#import <XLCUtils/XLCUtils.h>
+
 @interface TerminalViewTextView : NSTextView
+
+@property (nonatomic, copy) void (^upKeyHandler)();
+@property (nonatomic, copy) void (^downKeyHandler)();
 
 @property (nonatomic) NSUInteger caretIndex;
 @property (nonatomic) NSUInteger startIndex;
@@ -21,7 +26,12 @@
 
 @interface TerminalView () <NSTextViewDelegate>
 
+@property (nonatomic, strong) NSString *inputString;
+
 - (void)appendString:(NSString *)string attritubes:(NSDictionary *)attr;
+- (void)handleInput:(NSString *)input;
+- (void)historyUp;
+- (void)historyDown;
 
 @end
 
@@ -30,6 +40,8 @@
     TerminalViewTextView *_textView;
     NSScrollView *_scrollView;
     BOOL _wasCompleted;
+    NSMutableArray *_history;
+    NSUInteger _currentHistoryIndex;
 }
 
 - (instancetype)initWithFrame:(NSRect)frameRect
@@ -53,6 +65,15 @@
         _textView.textContainer.widthTracksTextView = YES;
         _textView.delegate = self;
         
+        __weak __typeof__(self) weakSelf = self;
+        [_textView setUpKeyHandler:^{
+            [weakSelf historyUp];
+        }];
+        
+        [_textView setDownKeyHandler:^{
+            [weakSelf historyDown];
+        }];
+        
         _scrollView.documentView = _textView;
         
         [self addSubview:_scrollView];
@@ -60,6 +81,7 @@
         self.autoresizingMask = NSViewWidthSizable | NSViewHeightSizable;
         
         _wasCompleted = YES;
+        _history = [NSMutableArray array];
     }
     return self;
 }
@@ -76,6 +98,16 @@
 - (NSUInteger)textLength
 {
     return _textView.textStorage.length;
+}
+
+- (NSString *)inputString
+{
+    return [_textView.string substringFromIndex:_textView.startIndex];
+}
+
+- (void)setInputString:(NSString *)inputString
+{
+    [_textView.textStorage replaceCharactersInRange:NSMakeRange(_textView.startIndex, _textView.textStorage.length - _textView.startIndex) withString:inputString];
 }
 
 - (void)appendOutput:(NSString *)output
@@ -115,6 +147,46 @@
     _wasCompleted = complete;
 }
 
+- (void)handleInput:(NSString *)input
+{
+    if (self.inputHandler) {
+        self.inputHandler(input);
+    }
+    
+    if ([input xlc_hasNonWhitespaceCharacter]) {
+        if (_history.count && [[_history lastObject] length] == 0) {
+            _history[_history.count - 1] = input;
+        } else {
+            [_history addObject:input];
+        }
+        _currentHistoryIndex = [_history count];
+    }
+}
+
+- (void)historyUp
+{
+    if (_currentHistoryIndex == 0) {
+        NSBeep();
+        return;
+    }
+    
+    _history[_currentHistoryIndex] = self.inputString;
+    _currentHistoryIndex--;
+    self.inputString = _history[_currentHistoryIndex];
+}
+
+- (void)historyDown
+{
+    if (_currentHistoryIndex >= _history.count - 1) {
+        NSBeep();
+        return;
+    }
+    
+    _history[_currentHistoryIndex] = self.inputString;
+    _currentHistoryIndex++;
+    self.inputString = _history[_currentHistoryIndex];
+}
+
 #pragma mark - NSTextViewDelegate
 
 - (BOOL)textView:(NSTextView *)textView shouldChangeTextInRange:(NSRange)affectedCharRange replacementString:(NSString *)replacementString
@@ -133,10 +205,8 @@
         [_textView.textStorage insertAttributedString:[[NSAttributedString alloc] initWithString:replacementString attributes:self.inputTextAttritube] atIndex:_textView.caretIndex - 1];
         
         if (hasEnter) {
-            if (self.inputHandler) {
-                self.inputHandler([_textView.string substringFromIndex:_textView.startIndex]);
-            }
             
+            [self handleInput:self.inputString];
             [_textView.textStorage appendAttributedString:[[NSAttributedString alloc] initWithString:_wasCompleted ? @"\n> " : @"\n  " attributes:self.inputTextAttritube]];
             
             _textView.startIndex = _textView.textStorage.length;
@@ -223,6 +293,24 @@
 {
     [self updateCaret];
     return [super resignFirstResponder];
+}
+
+- (void)keyDown:(NSEvent *)theEvent
+{
+    [super keyDown:theEvent];
+    
+    switch ([theEvent keyCode]) {
+        case kVK_UpArrow:
+            if (self.upKeyHandler) {
+                self.upKeyHandler();
+            }
+            break;
+        case kVK_DownArrow:
+            if (self.downKeyHandler) {
+                self.downKeyHandler();
+            }
+            break;
+    }
 }
 
 #pragma mark -
