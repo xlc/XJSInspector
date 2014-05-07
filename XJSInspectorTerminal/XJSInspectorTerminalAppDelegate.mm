@@ -16,10 +16,9 @@
 #import "ServerProxy.h"
 #import "PathUtil.h"
 
-@interface AppDelegate () <ThoMoClientDelegateProtocol>
+@interface AppDelegate ()
 
 @property (nonatomic, readonly) NSMutableArray *mutableMainWindowControllers;
-@property (nonatomic, strong) ThoMoClientStub *client;
 @property (weak) IBOutlet NSMenuItem *createWindowMenuItem;
 
 @end
@@ -36,12 +35,6 @@
     self.createWindowMenuItem.action = @selector(createWindow);
     
     [self createWindow];
-    
-    ThoMoClientStub *client = [[ThoMoClientStub alloc] initWithProtocolIdentifier:@"xjs"];
-    client.delegate = self;
-    self.client = client;
-    
-    [self.client start];
     
     XJSContext *cx = [[XJSContext alloc] init];
     cx.name = @"main";
@@ -74,11 +67,6 @@
     
     [self.mutableMainWindowControllers addObject:controller];
     
-    NSString *serverString = [self.client.connectedServers lastObject];
-    if (serverString) {
-        controller.server = [[ServerProxy alloc] initWithThoMoServerProxy:[self.client serverProxyForId:serverString]];
-    }
-    
     __block __weak id observer = [[NSNotificationCenter defaultCenter] addObserverForName:NSWindowWillCloseNotification object:controller.window queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note) {
         [self.mutableMainWindowControllers removeObject:controller];
         
@@ -86,18 +74,6 @@
     }];
     
     [controller showWindow:self];
-}
-
-#pragma mark - ThoMoClientDelegateProtocol
-
-- (void)client:(ThoMoClientStub *)theClient didConnectToServer:(NSString *)aServerIdString
-{
-    // TODO what to do?
-    for (MainWindowController *controller in self.mainWindowControllers) {
-        if (!controller.server) {
-            controller.server = [[ServerProxy alloc] initWithThoMoServerProxy:[theClient serverProxyForId:aServerIdString]];
-        }
-    }
 }
 
 @end

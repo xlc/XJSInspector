@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment defaultVersion="1080" identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
@@ -7,6 +7,9 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="MainWindowController">
             <connections>
+                <outlet property="applicationTextField" destination="7Fx-AB-Aqv" id="Ixm-gV-YJE"/>
+                <outlet property="contextButton" destination="49a-i2-Cng" id="19c-L3-vgp"/>
+                <outlet property="contextMenu" destination="NaT-vU-zpC" id="b88-dH-NNV"/>
                 <outlet property="window" destination="1" id="3"/>
             </connections>
         </customObject>
@@ -21,6 +24,65 @@
                 <rect key="frame" x="0.0" y="0.0" width="1048" height="727"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             </view>
+            <toolbar key="toolbar" implicitIdentifier="6DDF49A9-C633-4DB3-AFBC-3D7E5C6248A0" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="regular" id="ag3-BZ-f3y">
+                <allowedToolbarItems>
+                    <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="DYZ-Lx-5gI"/>
+                    <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="vEP-Cw-NB2"/>
+                    <toolbarItem implicitItemIdentifier="9EEEF5C0-67D2-453C-93B2-7EAB6A68B3F5" label="Context" paletteLabel="Context" id="m3l-Hw-xXB">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="100" height="28"/>
+                        <size key="maxSize" width="200" height="28"/>
+                        <popUpButton key="view" verticalHuggingPriority="750" id="49a-i2-Cng">
+                            <rect key="frame" x="0.0" y="14" width="150" height="28"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <popUpButtonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="PT7-Fi-nkZ">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                                <menu key="menu" title="OtherViews" id="NaT-vU-zpC"/>
+                            </popUpButtonCell>
+                            <connections>
+                                <action selector="selectContext:" target="-2" id="Pye-FV-G8I"/>
+                            </connections>
+                        </popUpButton>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="5BB2A2D6-6E91-4083-8098-B6C06B71B570" label="Application" paletteLabel="Application" id="Hxx-kl-QZM">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="96" height="22"/>
+                        <size key="maxSize" width="96" height="22"/>
+                        <textField key="view" verticalHuggingPriority="750" id="7Fx-AB-Aqv">
+                            <rect key="frame" x="0.0" y="14" width="96" height="22"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="JA1-S1-p2b">
+                                <font key="font" metaFont="system"/>
+                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="E6C00665-6546-4B8A-89B1-F98F24843E54" label="" paletteLabel="" id="YZI-fA-bre">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="100" height="19"/>
+                        <size key="maxSize" width="100" height="19"/>
+                        <button key="view" verticalHuggingPriority="750" id="Q2O-Io-6CQ">
+                            <rect key="frame" x="0.0" y="14" width="100" height="19"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="roundRect" title="Connect" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="WAs-sR-3p7">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="controlContent"/>
+                                <connections>
+                                    <action selector="connect:" target="-2" id="AeQ-a9-Rnb"/>
+                                </connections>
+                            </buttonCell>
+                        </button>
+                    </toolbarItem>
+                </allowedToolbarItems>
+                <defaultToolbarItems>
+                    <toolbarItem reference="Hxx-kl-QZM"/>
+                    <toolbarItem reference="YZI-fA-bre"/>
+                    <toolbarItem reference="vEP-Cw-NB2"/>
+                    <toolbarItem reference="m3l-Hw-xXB"/>
+                </defaultToolbarItems>
+            </toolbar>
             <connections>
                 <outlet property="delegate" destination="-2" id="4"/>
             </connections>

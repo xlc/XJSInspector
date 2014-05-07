@@ -100,7 +100,7 @@
             "arr.push([name, cx]);"
         "}"
     "};"
-    "arr.sort();"
+    "arr.sort(function(a,b){return a[0].toLowerCase().localeCompare(b[0].toLowerCase());});"
     "var contextList = [];"
     "var names = [];"
     "for (var i = 0; i < arr.length; i++) {"
