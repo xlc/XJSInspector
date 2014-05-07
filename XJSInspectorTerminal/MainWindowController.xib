@@ -37,7 +37,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <popUpButtonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="PT7-Fi-nkZ">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                <font key="font" metaFont="system"/>
+                                <font key="font" metaFont="menu"/>
                                 <menu key="menu" title="OtherViews" id="NaT-vU-zpC"/>
                             </popUpButtonCell>
                             <connections>
@@ -68,17 +68,41 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <buttonCell key="cell" type="roundRect" title="Connect" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="WAs-sR-3p7">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                <font key="font" metaFont="controlContent"/>
+                                <font key="font" metaFont="cellTitle"/>
                                 <connections>
                                     <action selector="connect:" target="-2" id="AeQ-a9-Rnb"/>
                                 </connections>
                             </buttonCell>
                         </button>
                     </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="2840F9D8-C707-418A-AF5D-D9C4F1175061" label="" paletteLabel="" id="RqH-aX-sNx">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="100" height="19"/>
+                        <size key="maxSize" width="100" height="19"/>
+                        <button key="view" verticalHuggingPriority="750" id="zLa-f1-FlM">
+                            <rect key="frame" x="0.0" y="14" width="100" height="19"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="roundRect" title="Run Script" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="eCl-Tf-1Af">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="cellTitle"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="runScript:" target="-2" id="c7f-U9-IGx"/>
+                            </connections>
+                        </button>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="525C149E-F73B-4049-B95A-03AF9E2B1A35" label="Re-run" paletteLabel="Re-run" tag="-1" image="NSRefreshFreestandingTemplate" id="j0J-mH-vfs">
+                        <connections>
+                            <action selector="rerunScript:" target="-2" id="O0L-d5-Sf3"/>
+                        </connections>
+                    </toolbarItem>
                 </allowedToolbarItems>
                 <defaultToolbarItems>
                     <toolbarItem reference="Hxx-kl-QZM"/>
                     <toolbarItem reference="YZI-fA-bre"/>
+                    <toolbarItem reference="vEP-Cw-NB2"/>
+                    <toolbarItem reference="RqH-aX-sNx"/>
+                    <toolbarItem reference="j0J-mH-vfs"/>
                     <toolbarItem reference="vEP-Cw-NB2"/>
                     <toolbarItem reference="m3l-Hw-xXB"/>
                 </defaultToolbarItems>
@@ -88,4 +112,7 @@
             </connections>
         </window>
     </objects>
+    <resources>
+        <image name="NSRefreshFreestandingTemplate" width="14" height="14"/>
+    </resources>
 </document>

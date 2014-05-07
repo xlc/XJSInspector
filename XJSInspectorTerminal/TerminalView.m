@@ -177,7 +177,7 @@
 
 - (void)historyDown
 {
-    if (_currentHistoryIndex >= _history.count - 1) {
+    if (_history.count == 0 || _currentHistoryIndex >= _history.count - 1) {
         NSBeep();
         return;
     }

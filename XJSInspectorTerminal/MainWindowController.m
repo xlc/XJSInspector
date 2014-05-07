@@ -29,14 +29,18 @@
 
 - (IBAction)connect:(id)sender;
 - (IBAction)selectContext:(id)sender;
+- (IBAction)runScript:(id)sender;
+- (IBAction)rerunScript:(id)sender;
 
 - (void)updateContexts;
+- (void)sendScriptWithContent:(NSString *)content;
 
 @end
 
 @implementation MainWindowController {
     BOOL _connected;
     NSString *_currentContext;
+    NSURL *_lastScript;
 }
 
 - (id)init
@@ -94,6 +98,19 @@
     [self connect:nil];
 }
 
+- (void)updateContexts
+{
+    [self.server getContextList:^(NSArray *contexts) {
+        [self.contextButton removeAllItems];
+        [self.contextButton addItemsWithTitles:contexts];
+        if (!_currentContext && contexts.count) {
+            _currentContext = contexts[0];
+            [self.server setContext:0];
+        }
+        [self.contextButton selectItemWithTitle:_currentContext];
+    }];
+}
+
 - (IBAction)connect:(id)sender
 {
     [self.client stop];
@@ -106,22 +123,68 @@
     [self.client start];
 }
 
-- (IBAction)selectContext:(id)sender {
+- (IBAction)selectContext:(id)sender
+{
     [self.server setContext:self.contextButton.indexOfSelectedItem];
     _currentContext = self.contextButton.titleOfSelectedItem;
     // TODO indicate context changed
 }
 
-- (void)updateContexts
+- (IBAction)runScript:(id)sender
 {
-    [self.server getContextList:^(NSArray *contexts) {
-        [self.contextButton removeAllItems];
-        [self.contextButton addItemsWithTitles:contexts];
-        if (!_currentContext && contexts.count) {
-            _currentContext = contexts[0];
-            [self.server setContext:0];
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSOpenPanel *panel = [NSOpenPanel openPanel];
+    
+    panel.canChooseDirectories = NO;
+    panel.canChooseFiles = YES;
+    panel.allowsMultipleSelection = NO;
+    panel.allowedFileTypes = @[@"js"];
+    panel.allowsOtherFileTypes = YES;
+    
+    NSString *lastDir = [userDefaults objectForKey:@"LastUsedScriptDirectory"];
+    if (lastDir) {
+        panel.directoryURL = [NSURL URLWithString:lastDir];
+    }
+    
+    [panel runModal];
+
+    [userDefaults setObject:[panel.directoryURL absoluteString] forKey:@"LastUsedScriptDirectory"];
+    [userDefaults synchronize];
+    
+    NSURL *selectedFile = [panel URL];
+    if (selectedFile) {
+        NSString *content = [[NSString alloc] initWithContentsOfURL:selectedFile usedEncoding:NULL error:NULL];
+        if (content) {
+            _lastScript = selectedFile;
+            [self sendScriptWithContent:content];
         }
-        [self.contextButton selectItemWithTitle:_currentContext];
+    }
+}
+
+- (IBAction)rerunScript:(id)sender {
+    if (_lastScript) {
+        NSString *content = [[NSString alloc] initWithContentsOfURL:_lastScript usedEncoding:NULL error:NULL];
+        [self sendScriptWithContent:content];
+    }
+}
+
+- (void)sendScriptWithContent:(NSString *)content
+{
+    [self.terminalView appendOutput:[NSString stringWithFormat:@"Script: %@", [_lastScript relativePath]]];
+    [self.server sendScript:content withCompletionHandler:^(BOOL completed, NSString *result, NSError *error) {
+        if (result) {
+            [self.terminalView appendOutput:result];
+        }
+        if (error) {
+            NSString *errorMessage;
+            if ([[error domain] isEqualTo:XJSErrorDomain]) {
+                errorMessage = [error userInfo][XJSErrorMessageKey];
+            }
+            if ([errorMessage length] == 0) {
+                errorMessage = [error description];
+            }
+            [self.terminalView appendError:errorMessage];
+        }
     }];
 }
 
