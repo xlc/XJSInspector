@@ -130,7 +130,7 @@
             if (val.isUndefined) {
                 return @{ kXJSInspectorMessageTypeKey : @(XJSInspectorMessageTypeExecuted) };
             }
-            NSString *str = val.isObject ? [val.toObject description] : [val description];
+            NSString *str = val.isObject ? [val.toObject description] : [val toString];
             return @{ kXJSInspectorMessageTypeKey : @(XJSInspectorMessageTypeExecuted),
                       kXJSInspectorMessageStringKey : str,
                       };
