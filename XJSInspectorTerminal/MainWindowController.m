@@ -41,6 +41,7 @@
     BOOL _connected;
     NSString *_currentContext;
     NSURL *_lastScript;
+    NSTimer *_updateContextTimer;
 }
 
 - (id)init
@@ -93,9 +94,15 @@
         }
     }];
     
-    self.applicationTextField.stringValue = @"xjs";
     self.applicationTextField.delegate = self;
     [self connect:nil];
+    
+    _updateContextTimer = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(updateContexts) userInfo:nil repeats:YES];
+}
+
+- (void)windowWillClose:(NSNotification *)notification {
+    [_updateContextTimer invalidate];
+    _updateContextTimer = nil;
 }
 
 - (void)updateContexts
@@ -113,6 +120,16 @@
 
 - (IBAction)connect:(id)sender
 {
+    NSString *iden = self.applicationTextField.stringValue;
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    if ([iden length]) {
+        [userDefaults setObject:iden forKey:@"LastProtocolIdentifier"];
+        [userDefaults synchronize];
+    } else {
+        iden = [userDefaults stringForKey:@"LastProtocolIdentifier"];
+        self.applicationTextField.stringValue = iden;
+    }
+    
     [self.client stop];
     self.server = nil;
     
@@ -212,6 +229,8 @@
 {
     XILOG("connected %@", proxy);
     _connected = YES;
+    
+    [self updateContexts];
 }
 
 - (void)serverDisconnected:(ServerProxy *)proxy
