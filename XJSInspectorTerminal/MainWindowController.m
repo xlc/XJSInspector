@@ -141,7 +141,7 @@
     panel.allowedFileTypes = @[@"js"];
     panel.allowsOtherFileTypes = YES;
     
-    NSString *lastDir = [userDefaults objectForKey:@"LastUsedScriptDirectory"];
+    NSString *lastDir = [userDefaults stringForKey:@"LastUsedScriptDirectory"];
     if (lastDir) {
         panel.directoryURL = [NSURL URLWithString:lastDir];
     }
@@ -162,6 +162,13 @@
 }
 
 - (IBAction)rerunScript:(id)sender {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    if (_lastScript) {
+        [userDefaults setObject:[_lastScript absoluteString] forKey:@"LaseRanScriptFilePath"];
+    } else {
+        _lastScript = [NSURL URLWithString:[userDefaults stringForKey:@"LaseRanScriptFilePath"]];
+    }
+    [userDefaults synchronize];
     if (_lastScript) {
         NSString *content = [[NSString alloc] initWithContentsOfURL:_lastScript usedEncoding:NULL error:NULL];
         [self sendScriptWithContent:content];
