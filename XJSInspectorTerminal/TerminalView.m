@@ -41,6 +41,7 @@
     NSScrollView *_scrollView;
     BOOL _wasCompleted;
     NSUInteger _currentHistoryIndex;
+    NSUInteger _lastCompleteIndex;
 }
 
 - (instancetype)initWithFrame:(NSRect)frameRect
@@ -142,8 +143,16 @@
 
 - (void)markComplete:(BOOL)complete atLocation:(NSUInteger)loc
 {
-    [_textView.textStorage replaceCharactersInRange:NSMakeRange(loc+1, 1) withString:complete ? @">" : @" "];
-    _wasCompleted = complete;
+    NSRange range = NSMakeRange(loc+1, 1);
+    if (loc > _lastCompleteIndex) {
+        _lastCompleteIndex = loc;
+        _wasCompleted = complete;
+    }
+    
+    NSString *oldstr = [[_textView.textStorage string] substringWithRange:range];
+    if ([oldstr isEqualToString:@">"] || [oldstr isEqualToString:@" "]) {
+        [_textView.textStorage replaceCharactersInRange:range withString:complete ? @">" : @" "];
+    }
 }
 
 - (void)handleInput:(NSString *)input

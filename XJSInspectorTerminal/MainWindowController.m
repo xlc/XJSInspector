@@ -9,13 +9,14 @@
 #import "MainWindowController.h"
 
 #import <XLCUtils/XLCUtils.h>
-#import <XJSBinding/NSError_XJSErrorConstants.h>
+#import <XJSBinding/XJSBinding.h>
 #import <ThoMoNetworking/ThoMoNetworking.h>
 
 #import "TerminalView.h"
 #import "LogView.h"
 #import "ServerProxy.h"
 #import "PathUtil.h"
+#import "XJSInspectorTerminalAppDelegate.h"
 
 @interface MainWindowController () <ServerProxyDelegate, ThoMoClientDelegateProtocol, NSTextFieldDelegate>
 
@@ -34,6 +35,10 @@
 
 - (void)updateContexts;
 - (void)sendScriptWithContent:(NSString *)content;
+
+- (void)executeCommand:(NSString *)command completionHandler:(void(^)(NSString *result, NSString *error))handler;
+- (NSString *)sendScript:(NSString *)path;
+- (NSString *)stringByExpandingTildeInPath:(NSString *)string;
 
 @end
 
@@ -65,36 +70,53 @@
         __typeof__(self) strongSelf = weakSelf;
         
         NSUInteger loc = strongSelf.terminalView.textLength;
-        
-        if (strongSelf->_connected) {
-            
-            [strongSelf.server sendScript:input withCompletionHandler:^(BOOL completed, NSString *result, NSError *error) {
-                [strongSelf.terminalView markComplete:completed atLocation:loc];
+
+        if ([input hasPrefix:@"#"]) {
+            [strongSelf executeCommand:input completionHandler:^(NSString *result, NSString *error) {
+                [strongSelf.terminalView markComplete:true atLocation:loc];
+                if (error) {
+                    [strongSelf.terminalView appendError:error];
+                }
                 if (result) {
                     [strongSelf.terminalView appendOutput:result];
-                }
-                if (error) {
-                    NSString *errorMessage;
-                    if ([[error domain] isEqualTo:XJSErrorDomain]) {
-                        errorMessage = [error userInfo][XJSErrorMessageKey];
-                    }
-                    if ([errorMessage length] == 0) {
-                        errorMessage = [error description];
-                    }
-                    [strongSelf.terminalView appendError:errorMessage];
                 }
             }];
             
         } else {
-            dispatch_after(DISPATCH_TIME_NOW, dispatch_get_main_queue(), ^{
-                [strongSelf.terminalView markComplete:true atLocation:loc];
-                [strongSelf.terminalView appendError:@"No server connected"];
-            });
             
+            if (strongSelf->_connected) {
+                
+                [strongSelf.server sendScript:input withCompletionHandler:^(BOOL completed, NSString *result, NSError *error) {
+                    [strongSelf.terminalView markComplete:completed atLocation:loc];
+                    if (result) {
+                        [strongSelf.terminalView appendOutput:result];
+                    }
+                    if (error) {
+                        NSString *errorMessage;
+                        if ([[error domain] isEqualTo:XJSErrorDomain]) {
+                            errorMessage = [error userInfo][XJSErrorMessageKey];
+                        }
+                        if ([errorMessage length] == 0) {
+                            errorMessage = [error description];
+                        }
+                        [strongSelf.terminalView appendError:errorMessage];
+                    }
+                }];
+                
+            } else {
+                dispatch_after(DISPATCH_TIME_NOW, dispatch_get_main_queue(), ^{
+                    [strongSelf.terminalView markComplete:true atLocation:loc];
+                    [strongSelf.terminalView appendError:@"No server connected"];
+                });
+                
+            }
         }
+        
     }];
     
-    NSArray *history = [[NSUserDefaults standardUserDefaults] objectForKey:@"TerminalViewHistory"];
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    
+    NSArray *history = [userDefaults objectForKey:@"TerminalViewHistory"];
     if (history) {
         self.terminalView.history = [history mutableCopy];
     }
@@ -103,17 +125,28 @@
     [self connect:nil];
     
     _updateContextTimer = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(updateContexts) userInfo:nil repeats:YES];
+    
+    NSString *cwd = [userDefaults objectForKey:@"CurrentWorkingDirectory"];
+    if (cwd) {
+        [[NSFileManager defaultManager] changeCurrentDirectoryPath:cwd];
+    }
 }
 
 - (void)windowWillClose:(NSNotification *)notification {
     [_updateContextTimer invalidate];
     _updateContextTimer = nil;
     
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    
     NSMutableArray *history = self.terminalView.history;
     if (history.count > 100) {
         [history removeObjectsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, history.count - 100)]];
     }
-    [[NSUserDefaults standardUserDefaults] setObject:self.terminalView.history forKey:@"TerminalViewHistory"];
+    [userDefaults setObject:self.terminalView.history forKey:@"TerminalViewHistory"];
+    
+    [userDefaults setObject:[[NSFileManager defaultManager] currentDirectoryPath] forKey:@"CurrentWorkingDirectory"];
+    
+    [userDefaults synchronize];
 }
 
 - (void)updateContexts
@@ -223,6 +256,11 @@
     }];
 }
 
+- (NSString *)stringByExpandingTildeInPath:(NSString *)string
+{
+    return [string stringByExpandingTildeInPath];
+}
+
 #pragma mark -
 
 - (void)setServer:(ServerProxy *)server
@@ -232,6 +270,76 @@
     _server.delegate = self;
     
     [self updateContexts];
+}
+
+#pragma mark - handle command
+
+- (void)executeCommand:(NSString *)command completionHandler:(void(^)(NSString *result, NSString *error))handler
+{
+    AppDelegate *delegate = [[NSApplication sharedApplication] delegate];
+    XJSValue *module = [delegate.context.moduleManager requireModule:@"command"];
+    XASSERT_NOTNULL(module);
+    NSArray *arr = [command componentsSeparatedByString:@" "];
+    XJSValue *func = module[[arr[0] substringFromIndex:1]];
+    if (func) {
+        NSMutableArray *args = [arr mutableCopy];
+        args[0] = self;
+        
+        __block NSError *error;
+        void (^oldHandler)(XJSContext *, NSError *) = func.context.errorHandler;
+        [func.context setErrorHandler:^(XJSContext *cx, NSError *err) {
+            if (oldHandler) {
+                oldHandler(cx, error);
+            }
+            error = err;
+        }];
+        XJSValue *result = [func callWithArguments:args];
+        if (handler) {
+            dispatch_after(DISPATCH_TIME_NOW, dispatch_get_main_queue(), ^{
+                NSString *errorMessage = nil;
+                if (error) {
+                    if ([[error domain] isEqualTo:XJSErrorDomain]) {
+                        errorMessage = [error userInfo][XJSErrorMessageKey];
+                    }
+                    if ([errorMessage length] == 0) {
+                        errorMessage = [error description];
+                    }
+                }
+                handler(result.isNullOrUndefined ? nil : result.toString, errorMessage);
+            });
+        }
+    } else {
+        if (handler) {
+            dispatch_after(DISPATCH_TIME_NOW, dispatch_get_main_queue(), ^{
+                handler(nil, @"Invalid command");
+            });
+        }
+    }
+}
+
+- (NSString *)sendScript:(NSString *)path
+{
+    NSError *error;
+    NSString *content = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&error];
+    if (content) {
+        [self.server sendScript:content withCompletionHandler:^(BOOL completed, NSString *result, NSError *error) {
+            if (result) {
+                [self.terminalView appendOutput:result];
+            }
+            if (error) {
+                NSString *errorMessage;
+                if ([[error domain] isEqualTo:XJSErrorDomain]) {
+                    errorMessage = [error userInfo][XJSErrorMessageKey];
+                }
+                if ([errorMessage length] == 0) {
+                    errorMessage = [error description];
+                }
+                [self.terminalView appendError:errorMessage];
+            }
+        }];
+    }
+    
+    return [error description];
 }
 
 #pragma mark - ServerProxyDelegate
