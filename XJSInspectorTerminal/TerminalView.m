@@ -40,7 +40,6 @@
     TerminalViewTextView *_textView;
     NSScrollView *_scrollView;
     BOOL _wasCompleted;
-    NSMutableArray *_history;
     NSUInteger _currentHistoryIndex;
 }
 
@@ -81,7 +80,7 @@
         self.autoresizingMask = NSViewWidthSizable | NSViewHeightSizable;
         
         _wasCompleted = YES;
-        _history = [NSMutableArray array];
+        self.history = [NSMutableArray array];
     }
     return self;
 }
@@ -154,12 +153,12 @@
     }
     
     if ([input xlc_hasNonWhitespaceCharacter]) {
-        if (_history.count && [[_history lastObject] length] == 0) {
-            _history[_history.count - 1] = input;
+        if (self.history.count && [[self.history lastObject] length] == 0) {
+            self.history[self.history.count - 1] = input;
         } else {
-            [_history addObject:input];
+            [self.history addObject:input];
         }
-        _currentHistoryIndex = [_history count];
+        _currentHistoryIndex = [self.history count];
     }
 }
 
@@ -170,21 +169,27 @@
         return;
     }
     
-    _history[_currentHistoryIndex] = self.inputString;
+    self.history[_currentHistoryIndex] = self.inputString;
     _currentHistoryIndex--;
-    self.inputString = _history[_currentHistoryIndex];
+    self.inputString = self.history[_currentHistoryIndex];
 }
 
 - (void)historyDown
 {
-    if (_history.count == 0 || _currentHistoryIndex >= _history.count - 1) {
+    if (self.history.count == 0 || _currentHistoryIndex >= self.history.count - 1) {
         NSBeep();
         return;
     }
     
-    _history[_currentHistoryIndex] = self.inputString;
+    self.history[_currentHistoryIndex] = self.inputString;
     _currentHistoryIndex++;
-    self.inputString = _history[_currentHistoryIndex];
+    self.inputString = self.history[_currentHistoryIndex];
+}
+
+- (void)setHistory:(NSMutableArray *)history
+{
+    _history = history;
+    _currentHistoryIndex = _history.count;
 }
 
 #pragma mark - NSTextViewDelegate

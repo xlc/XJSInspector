@@ -16,6 +16,7 @@
 @property (nonatomic, strong) NSDictionary *messageTextAttritube;
 @property (nonatomic, strong) NSDictionary *errorTextAttritube;
 @property (nonatomic, readonly) NSUInteger textLength;
+@property (nonatomic, strong) NSMutableArray *history;
 
 - (void)appendOutput:(NSString *)output;
 - (void)appendError:(NSString *)errorMessage;

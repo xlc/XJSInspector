@@ -94,6 +94,11 @@
         }
     }];
     
+    NSArray *history = [[NSUserDefaults standardUserDefaults] objectForKey:@"TerminalViewHistory"];
+    if (history) {
+        self.terminalView.history = [history mutableCopy];
+    }
+    
     self.applicationTextField.delegate = self;
     [self connect:nil];
     
@@ -103,6 +108,12 @@
 - (void)windowWillClose:(NSNotification *)notification {
     [_updateContextTimer invalidate];
     _updateContextTimer = nil;
+    
+    NSMutableArray *history = self.terminalView.history;
+    if (history.count > 100) {
+        [history removeObjectsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, history.count - 100)]];
+    }
+    [[NSUserDefaults standardUserDefaults] setObject:self.terminalView.history forKey:@"TerminalViewHistory"];
 }
 
 - (void)updateContexts
