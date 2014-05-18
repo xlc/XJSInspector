@@ -28,3 +28,7 @@ exports.run = function(self, path) {
     path = self.stringByExpandingTildeInPath(path);
     return self.sendScript(path);
 }
+
+exports.upload = function(self, local, remote) {
+    return self.uploadFrom_to(local, remote);
+}

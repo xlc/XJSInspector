@@ -39,6 +39,8 @@
 - (void)executeCommand:(NSString *)command completionHandler:(void(^)(NSString *result, NSString *error))handler;
 - (NSString *)sendScript:(NSString *)path;
 - (NSString *)stringByExpandingTildeInPath:(NSString *)string;
+- (NSString *)uploadFrom:(NSString *)fromPath to:(NSString *)toPath;
+- (NSString *)uploadFileFrom:(NSString *)fromPath to:(NSString *)toPath;
 
 @end
 
@@ -342,6 +344,80 @@
     return [error description];
 }
 
+- (NSString *)uploadFrom:(NSString *)fromPath to:(NSString *)toPath
+{
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    
+    BOOL isDir;
+    if ([fileManager fileExistsAtPath:fromPath isDirectory:&isDir]) {
+        if (isDir) {
+            NSDirectoryEnumerator * dirEnum = [fileManager enumeratorAtPath:fromPath];
+            NSString *file;
+            NSMutableArray *messages = [NSMutableArray array];
+            while ((file = [dirEnum nextObject])) {
+                if ([file hasPrefix:@"."]) {
+                    continue;
+                }
+                NSString *fullPath = [fromPath stringByAppendingPathComponent:file];
+                NSString *fullToPath = [toPath stringByAppendingPathComponent:file];
+                NSString *msg = [self uploadFileFrom:fullPath to:fullToPath];
+                if (msg) {
+                    [messages addObject:msg];
+                }
+            }
+            return [messages componentsJoinedByString:@"\n"];
+        } else {
+            return [self uploadFileFrom:fromPath to:toPath];
+        }
+    } else {
+        return [NSString stringWithFormat:@"File not found: %@", fromPath];
+    }
+}
+
+- (NSString *)uploadFileFrom:(NSString *)fromPath to:(NSString *)toPath
+{
+    NSString *data = [[NSData dataWithContentsOfFile:fromPath] base64Encoding];
+    
+    NSString *command = [NSString stringWithFormat:
+                         @"(function(){\n"
+                         "var objc = require('xjs/objc');\n"
+                         "var log = require('xjs/log');\n"
+                         "var data = '%@';\n"
+                         "var path = '%@';\n"
+                         "var filename = '%@';\n"
+                         "var NSURLIsDirectoryKey = %@;\n"
+                         "var NSDocumentDirectory = %lu;\n"
+                         "var NSUserDomainMask = %lu;\n"
+                         "var fileManager = objc.NSFileManager.defaultManager();\n"
+                         "var documentDirURL = fileManager.URLForDirectory_inDomain_appropriateForURL_create_error(NSDocumentDirectory, NSUserDomainMask, null, true, null);\n"
+                         "var url = documentDirURL.URLByAppendingPathComponent(path);\n"
+                         "var isDir = url.resourceValuesForKeys_error([NSURLIsDirectoryKey], null)[NSURLIsDirectoryKey];\n"
+                         "if (isDir) url = url.URLByAppendingPathComponent(filename);\n"
+                         "log(url);\n"
+                         "var filedata = objc.NSData.alloc().initWithBase64EncodedString_options(data, 0);\n"
+                         "log(filedata.length());\n"
+                         "var success = filedata.writeToURL_atomically(url, true);\n"
+                         "log(success);"
+                         "})();"
+                         ,
+                         data,
+                         toPath,
+                         [fromPath lastPathComponent],
+                         NSURLIsDirectoryKey,
+                         (unsigned long)NSDocumentDirectory,
+                         (unsigned long)NSUserDomainMask
+                         ];
+    
+    [self.server sendCommand:command withCompletionHandler:^(BOOL completed, NSData *result, NSError *error) {
+        if (error) {
+            [self.terminalView appendError:[NSString stringWithFormat:@"Error durint execute command 'upload %@ %@'. Error: %@", fromPath, toPath, error]];
+        }
+    }];
+    
+    return nil;
+}
+
+
 #pragma mark - ServerProxyDelegate
 
 - (void)serverConnected:(ServerProxy *)proxy
@@ -371,6 +447,5 @@
         self.server = [[ServerProxy alloc] initWithThoMoServerProxy:[self.client serverProxyForId:aServerIdString]];
     }
 }
-
 
 @end
