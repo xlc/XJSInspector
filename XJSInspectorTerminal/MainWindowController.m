@@ -149,6 +149,8 @@
     [userDefaults setObject:[[NSFileManager defaultManager] currentDirectoryPath] forKey:@"CurrentWorkingDirectory"];
     
     [userDefaults synchronize];
+    
+    self.client = nil;
 }
 
 - (void)updateContexts
@@ -176,14 +178,10 @@
         self.applicationTextField.stringValue = iden;
     }
     
-    [self.client stop];
     self.server = nil;
     
     ThoMoClientStub *client = [[ThoMoClientStub alloc] initWithProtocolIdentifier:self.applicationTextField.stringValue];
-    client.delegate = self;
     self.client = client;
-    
-    [self.client start];
 }
 
 - (IBAction)selectContext:(id)sender
@@ -272,6 +270,17 @@
     _server.delegate = self;
     
     [self updateContexts];
+}
+
+- (void)setClient:(ThoMoClientStub *)client
+{
+    [_client stop];
+    _client.delegate = nil;
+    
+    _client = client;
+    
+    _client.delegate = self;
+    [_client start];
 }
 
 #pragma mark - handle command
