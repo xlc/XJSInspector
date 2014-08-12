@@ -60,9 +60,9 @@
 {
     [super windowDidLoad];
     
-    NSDictionary *dict;
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     
-    self.window.contentView = [[XLCXMLObject objectWithContentsOfURL:[PathUtil URLForFileAtScriptDirectory:@"MainWindowController.xml"] error:NULL] createWithOutputDictionary:&dict];
+    self.window.contentView = [[XLCXMLObject objectWithContentsOfURL:[PathUtil URLForFileAtScriptDirectory:@"MainWindowController.xml"] error:NULL] createWithContextDictionary:dict];
     
     self.terminalView = dict[@"terminalView"];
     self.logView = dict[@"logView"];
@@ -289,7 +289,7 @@
 {
     AppDelegate *delegate = [[NSApplication sharedApplication] delegate];
     XJSValue *module = [delegate.context.moduleManager requireModule:@"command"];
-    XASSERT_NOTNULL(module);
+    XLCAssertNotNull(module);
     NSArray *arr = [command componentsSeparatedByString:@" "];
     XJSValue *func = module[[arr[0] substringFromIndex:1]];
     if (func) {
@@ -431,7 +431,7 @@
 
 - (void)serverConnected:(ServerProxy *)proxy
 {
-    XILOG("connected %@", proxy);
+    XLCLogInfo("connected %@", proxy);
     _connected = YES;
     
     [self updateContexts];
@@ -439,7 +439,7 @@
 
 - (void)serverDisconnected:(ServerProxy *)proxy
 {
-    XILOG(@"disconnected %@", proxy);
+    XLCLogInfo(@"disconnected %@", proxy);
     _connected = NO;
 }
 

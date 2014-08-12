@@ -11,6 +11,9 @@
 #import <ThoMoNetworking/ThoMoNetworking.h>
 #import <XJSInspector/XJSInspector.h>
 #import <XJSBinding/XJSBinding.h>
+#import <XLCUtils/XLCUtils.h>
+#import "DDTTYLogger.h"
+#import "DDASLLogger.h"
 
 #import "MainWindowController.h"
 #import "ServerProxy.h"
@@ -29,6 +32,13 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
+    id<DDLogger> logger = [DDTTYLogger sharedInstance];
+    [logger setLogFormatter:[[XLCDefaultLogFormatter alloc] init]];
+    [DDLog addLogger:logger];
+    logger = [DDASLLogger sharedInstance];
+    [logger setLogFormatter:[[XLCDefaultLogFormatter alloc] init]];
+    [DDLog addLogger:logger];
+    
     [XJSInspector setProtocolIdentifier:@"xjs"];
     [XJSInspector startServer];
     

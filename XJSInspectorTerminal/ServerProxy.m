@@ -88,7 +88,7 @@
 
 - (void)getContextList:(void (^)(NSArray *contexts))handler
 {
-    XASSERT_NOTNULL(handler);
+    XLCAssertNotNullCritical(handler);
     NSString *script =
     @"(function(){"
     "var cxs = require('xjs/objc').XJSContext.allContexts();"
@@ -114,14 +114,14 @@
     
     [self sendCommand:script withCompletionHandler:^(BOOL completed, NSData *result, NSError *error) {
         if (error) {
-            XILOG(@"failed to request context list with error: %@", error);
+            XLCLogInfo(@"failed to request context list with error: %@", error);
             handler(nil);
             return;
         }
         if (result) {
             NSArray *arr = [NSKeyedUnarchiver unarchiveObjectWithData:result];
             if (![arr isKindOfClass:[NSArray class]]) {
-                XWLOG(@"unexpected object received: %@", arr);
+                XLCLogWarn(@"unexpected object received: %@", arr);
                 handler(nil);
                 return;
             }
@@ -146,7 +146,7 @@
 {
     NSDictionary *dict = [NSKeyedUnarchiver unarchiveObjectWithData:data];
     if (![dict isKindOfClass:[NSDictionary class]]) {
-        XFAIL(@"Unexpected object received: %@, from data: %@", dict, data);
+        XLCFail(@"Unexpected object received: %@, from data: %@", dict, data);
         return;
     }
 
@@ -173,7 +173,7 @@
             break;
             
         default:
-            XFAIL(@"Unexpected object received: %@", dict);
+            XLCFail(@"Unexpected object received: %@", dict);
             break;
     }
 }
