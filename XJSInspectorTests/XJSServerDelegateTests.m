@@ -75,7 +75,7 @@
     }
     
     [[_mockServer expect] send:@{ kXJSInspectorMessageTypeKey : @(XJSInspectorMessageTypeExecuted),
-                                  kXJSInspectorMessageStringKey : @"\"b\"" }
+                                  kXJSInspectorMessageStringKey : @"b" }
                       toClient:@"client"];
     
     data = [NSKeyedArchiver archivedDataWithRootObject:@{ kXJSInspectorMessageTypeKey : @(XJSInspectorMessageTypeJavascript),

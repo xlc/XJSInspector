@@ -15,6 +15,30 @@
 #import "XJSInspectorMessageProtocol.h"
 #import "XJSServerDelegate_Private.h"
 
+static NSString *_protocolIdentifier;
+static ThoMoServerStub *_server;
+static XJSContext *_context;
+static XJSServerDelegate *_delegate;
+
+@interface XJSInspectorLogger : DDAbstractLogger <DDLogger>
+
+@end
+
+@implementation XJSInspectorLogger
+
+- (void)logMessage:(DDLogMessage *)logMessage
+{
+    if (!_server) return;
+    
+    NSDictionary *dict = @{ kXJSInspectorMessageTypeKey : @(XJSInspectorMessageTypeRedirectedLog),
+                            kXJSInspectorMessageLoggingLevelKey : @(logMessage->logFlag),
+                            kXJSInspectorMessageStringKey : [formatter formatLogMessage:logMessage],
+                            kXJSInspectorMessageTimestampKey : logMessage->timestamp };
+    [_server sendToAllClients:dict];
+}
+
+@end
+
 @interface XJSInspector ()
 
 + (void)setContext:(XJSContext *)cx;
@@ -22,11 +46,6 @@
 @end
 
 @implementation XJSInspector
-
-static NSString *_protocolIdentifier;
-static ThoMoServerStub *_server;
-static XJSContext *_context;
-static XJSServerDelegate *_delegate;
 
 + (void)setProtocolIdentifier:(NSString *)iden
 {
@@ -44,15 +63,9 @@ static XJSServerDelegate *_delegate;
     
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        [XLCLogger addLogger:^(XLCLoggingLevel level, const char *function, int lineno, NSString *message) {
-            if (!_server) return;
-            
-            NSDictionary *dict = @{ kXJSInspectorMessageTypeKey : @(XJSInspectorMessageTypeRedirectedLog),
-                                    kXJSInspectorMessageLoggingLevelKey : @(level),
-                                    kXJSInspectorMessageStringKey : [NSString stringWithFormat:@"%s:%d\t- %@", function, lineno, message],
-                                    kXJSInspectorMessageTimestampKey : [NSDate date] };
-            [_server sendToAllClients:dict];
-        }];
+        id<DDLogger> logger = [[XJSInspectorLogger alloc] init];
+        [logger setLogFormatter:[[XLCDefaultLogFormatter alloc] init]];
+        [DDLog addLogger:logger];
     });
     
     NSString *protocolIden = _protocolIdentifier ?: @"xjsinspector";

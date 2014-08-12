@@ -8,7 +8,7 @@
 
 #import "XJSServerDelegate_Private.h"
 
-#import "XLCAssertion.h"
+#import <XLCUtils/XLCUtils.h>
 #import "XJSBinding.h"
 
 #import "XJSInspectorMessageProtocol.h"
@@ -51,18 +51,18 @@
             [theServer send:reply toClient:aClientIdString];
         }
     } else {
-        XFAIL(@"Unexpected object received: %@, from data: %@", obj, theData);
+        XLCFail(@"Unexpected object received: %@, from data: %@", obj, theData);
     }
 }
 
 - (void)server:(ThoMoServerStub *)theServer acceptedConnectionFromClient:(NSString *)aClientIdString
 {
-    XILOG(@"Connect to client: %@", aClientIdString);
+    XLCLogInfo(@"Connect to client: %@", aClientIdString);
 }
 
 - (void)server:(ThoMoServerStub *)theServer lostConnectionToClient:(NSString *)aClientIdString error:(NSError *)error
 {
-    XILOG(@"Disconnect from client: %@", aClientIdString);
+    XLCLogInfo(@"Disconnect from client: %@", aClientIdString);
     [_buffer removeObjectForKey:aClientIdString];
 }
 
@@ -72,7 +72,7 @@
 {
     NSNumber *type = message[kXJSInspectorMessageTypeKey];
     if (!type) {
-        XFAIL(@"Unexpected object received: %@", message);
+        XLCFail(@"Unexpected object received: %@", message);
         return nil;
     }
     
@@ -90,7 +90,7 @@
             break;
             
         default:
-            XFAIL(@"Unexpected object received: %@", message);
+            XLCFail(@"Unexpected object received: %@", message);
             return nil;
     }
     
@@ -141,7 +141,7 @@
                 if ([obj conformsToProtocol:@protocol(NSCoding)]) {
                     obj = [NSKeyedArchiver archivedDataWithRootObject:obj];
                 } else {
-                    XWLOG(@"Object returned from command cannotbe archived. \nCommand: %@\n Returned object:%@", script, obj);
+                    XLCLogWarn(@"Object returned from command cannot be archived. \nCommand: %@\n Returned object:%@", script, obj);
                 }
             }
             
