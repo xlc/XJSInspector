@@ -31,9 +31,9 @@ static XJSServerDelegate *_delegate;
     if (!_server) return;
     
     NSDictionary *dict = @{ kXJSInspectorMessageTypeKey : @(XJSInspectorMessageTypeRedirectedLog),
-                            kXJSInspectorMessageLoggingLevelKey : @(logMessage->logFlag),
-                            kXJSInspectorMessageStringKey : [formatter formatLogMessage:logMessage],
-                            kXJSInspectorMessageTimestampKey : logMessage->timestamp };
+                            kXJSInspectorMessageLoggingLevelKey : @(logMessage.flag),
+                            kXJSInspectorMessageStringKey : [_logFormatter formatLogMessage:logMessage],
+                            kXJSInspectorMessageTimestampKey : logMessage.timestamp };
     [_server sendToAllClients:dict];
 }
 

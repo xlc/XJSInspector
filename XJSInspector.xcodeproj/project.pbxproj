@@ -39,9 +39,7 @@
 		0624ECDF18372FA900D2F7BC /* libXJSInspector-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0624ECB918372EDE00D2F7BC /* libXJSInspector-ios.a */; };
 		0624ECE018372FAE00D2F7BC /* XJSServerDelegateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0624EC79183701C600D2F7BC /* XJSServerDelegateTests.m */; };
 		0624ECE118372FAF00D2F7BC /* XJSInspectorTests.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0663F192182A2EE500587A38 /* XJSInspectorTests.mm */; };
-		0624ECE5183736A600D2F7BC /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0624ECE4183736A600D2F7BC /* libz.dylib */; };
-		0624ECE6183736B500D2F7BC /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0624ECE4183736A600D2F7BC /* libz.dylib */; };
-		0624ECE7183736BA00D2F7BC /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0624ECE4183736A600D2F7BC /* libz.dylib */; };
+		06304C691A05CCC300236930 /* libXJSInspector.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0663F172182A2EE500587A38 /* libXJSInspector.a */; };
 		064C3F8E1878E86E005BD67A /* Scripts in Resources */ = {isa = PBXBuildFile; fileRef = 064C3F8D1878E86E005BD67A /* Scripts */; };
 		0663F176182A2EE500587A38 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0663F175182A2EE500587A38 /* Cocoa.framework */; };
 		0663F180182A2EE500587A38 /* XJSInspector.m in Sources */ = {isa = PBXBuildFile; fileRef = 0663F17F182A2EE500587A38 /* XJSInspector.m */; };
@@ -64,13 +62,13 @@
 		06F95D8C1838C3F000E34922 /* MainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06F95D8A1838C3F000E34922 /* MainWindowController.m */; };
 		06F95D991845DDA400E34922 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0663F186182A2EE500587A38 /* XCTest.framework */; };
 		06F95D9F1845DDA400E34922 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 06F95D9D1845DDA400E34922 /* InfoPlist.strings */; };
-		1EE75F3DCC6246748E668136 /* libPods-XJSInspectorTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F64C0D321764CCDAD44C429 /* libPods-XJSInspectorTests.a */; };
-		3EA24ED65A0D47F7BFDFD4AC /* libPods-XJSInspectorTests-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DEF823BD03F4C589F664B6E /* libPods-XJSInspectorTests-ios.a */; };
-		48E4982BDAE642FB9A5F9FF0 /* libPods-XJSInspector-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 67BDBE06BC984D7990229045 /* libPods-XJSInspector-ios.a */; };
-		9CD45122FE734B2B95937550 /* libPods-XJSInspectorTests-ios-device.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F8DD6C93F0C6437EB3B6A591 /* libPods-XJSInspectorTests-ios-device.a */; };
-		A3E8EE00FA9F4491B2AB44CA /* libPods-XJSInspector.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FB02BEC8203948538687CBEF /* libPods-XJSInspector.a */; };
-		A7FE6D4513614F08844DF770 /* libPods-XJSInspectorTerminalTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D317B7F650BB46FD84A909B1 /* libPods-XJSInspectorTerminalTests.a */; };
-		F7740BCAAD484082A6069A68 /* libPods-XJSInspectorTerminal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CF1ADD11F1F4D2EA6E19D2B /* libPods-XJSInspectorTerminal.a */; };
+		52D87B529A5F4E81B4B72914 /* libPods-XJSInspectorTests-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C8D51779E3D5EDBE5AF5CEE4 /* libPods-XJSInspectorTests-ios.a */; };
+		6944B4F0F23F53497B4F86B3 /* libPods-XJSInspectorTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C5BACA0E7480D1033229AF37 /* libPods-XJSInspectorTests.a */; };
+		721A8134F2682168D85A21AA /* libPods-XJSInspector-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CF6A9FA80C1640FA88ABEB5 /* libPods-XJSInspector-ios.a */; };
+		A3B099105319EDAE479771F1 /* libPods-XJSInspectorTests-ios-device.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BF2C7CFAEA70055ABD1C3F3 /* libPods-XJSInspectorTests-ios-device.a */; };
+		C061FB757313F9EC0657D527 /* libPods-XJSInspectorTerminal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C118A16EC1E5EDA8EE27079 /* libPods-XJSInspectorTerminal.a */; };
+		EF5C4936252857EFCE3E78C3 /* libPods-XJSInspectorTerminalTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6588A123F6A397B17FC4A82B /* libPods-XJSInspectorTerminalTests.a */; };
+		F36F43C902A5FB27E692F540 /* libPods-XJSInspector.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E1F1662C4725070AAD4A477 /* libPods-XJSInspector.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +92,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 0624ECB818372EDE00D2F7BC;
 			remoteInfo = "XJSInspector-ios";
+		};
+		06304C6A1A05CCCA00236930 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0663F16A182A2EE500587A38 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0663F171182A2EE500587A38;
+			remoteInfo = XJSInspector;
 		};
 		0663F189182A2EE500587A38 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -153,7 +158,6 @@
 		0624ECA118372E9400D2F7BC /* XJSInspectorTests-ios-device.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "XJSInspectorTests-ios-device.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0624ECB918372EDE00D2F7BC /* libXJSInspector-ios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libXJSInspector-ios.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0624ECC618372EDE00D2F7BC /* XJSInspectorTests-ios.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "XJSInspectorTests-ios.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		0624ECE4183736A600D2F7BC /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/usr/lib/libz.dylib; sourceTree = DEVELOPER_DIR; };
 		064C3F8D1878E86E005BD67A /* Scripts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Scripts; sourceTree = "<group>"; };
 		0663F172182A2EE500587A38 /* libXJSInspector.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libXJSInspector.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		0663F175182A2EE500587A38 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -189,20 +193,27 @@
 		06F95D9C1845DDA400E34922 /* XJSInspectorTerminalTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "XJSInspectorTerminalTests-Info.plist"; sourceTree = "<group>"; };
 		06F95D9E1845DDA400E34922 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		06F95DA21845DDA400E34922 /* XJSInspectorTerminalTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "XJSInspectorTerminalTests-Prefix.pch"; sourceTree = "<group>"; };
-		121E2D05C85A4F40AA47655E /* Pods-XJSInspectorTerminalTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XJSInspectorTerminalTests.xcconfig"; path = "Pods/Pods-XJSInspectorTerminalTests.xcconfig"; sourceTree = "<group>"; };
-		67BDBE06BC984D7990229045 /* libPods-XJSInspector-ios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XJSInspector-ios.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		68730B313A68434F957138C4 /* Pods-XJSInspector-ios.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XJSInspector-ios.xcconfig"; path = "Pods/Pods-XJSInspector-ios.xcconfig"; sourceTree = "<group>"; };
-		6B1335043D494AD5B785535A /* Pods-XJSInspectorTests-ios-device.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XJSInspectorTests-ios-device.xcconfig"; path = "Pods/Pods-XJSInspectorTests-ios-device.xcconfig"; sourceTree = "<group>"; };
-		7DEF823BD03F4C589F664B6E /* libPods-XJSInspectorTests-ios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XJSInspectorTests-ios.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		86A0DAF32B0A4EF49A6F1D0B /* Pods-XJSInspector.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XJSInspector.xcconfig"; path = "Pods/Pods-XJSInspector.xcconfig"; sourceTree = "<group>"; };
-		9CF1ADD11F1F4D2EA6E19D2B /* libPods-XJSInspectorTerminal.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XJSInspectorTerminal.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		9F5F8167BC93414D8B54E981 /* Pods-XJSInspectorTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XJSInspectorTests.xcconfig"; path = "Pods/Pods-XJSInspectorTests.xcconfig"; sourceTree = "<group>"; };
-		9F64C0D321764CCDAD44C429 /* libPods-XJSInspectorTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XJSInspectorTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		B929120D962849E18BF6320E /* Pods-XJSInspectorTerminal.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XJSInspectorTerminal.xcconfig"; path = "Pods/Pods-XJSInspectorTerminal.xcconfig"; sourceTree = "<group>"; };
-		D317B7F650BB46FD84A909B1 /* libPods-XJSInspectorTerminalTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XJSInspectorTerminalTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		F8DD6C93F0C6437EB3B6A591 /* libPods-XJSInspectorTests-ios-device.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XJSInspectorTests-ios-device.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		FB02BEC8203948538687CBEF /* libPods-XJSInspector.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XJSInspector.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		FD2E7EAB408A4621AE4CC366 /* Pods-XJSInspectorTests-ios.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XJSInspectorTests-ios.xcconfig"; path = "Pods/Pods-XJSInspectorTests-ios.xcconfig"; sourceTree = "<group>"; };
+		07975AE295CF57103BC7C7B4 /* Pods-XJSInspectorTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XJSInspectorTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-XJSInspectorTests/Pods-XJSInspectorTests.release.xcconfig"; sourceTree = "<group>"; };
+		0E1F1662C4725070AAD4A477 /* libPods-XJSInspector.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XJSInspector.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2B997CF49ECDC3790261D4C9 /* Pods-XJSInspectorTests-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XJSInspectorTests-ios.release.xcconfig"; path = "Pods/Target Support Files/Pods-XJSInspectorTests-ios/Pods-XJSInspectorTests-ios.release.xcconfig"; sourceTree = "<group>"; };
+		2BF2C7CFAEA70055ABD1C3F3 /* libPods-XJSInspectorTests-ios-device.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XJSInspectorTests-ios-device.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3FC801BF862032769BC069B7 /* Pods-XJSInspectorTerminal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XJSInspectorTerminal.release.xcconfig"; path = "Pods/Target Support Files/Pods-XJSInspectorTerminal/Pods-XJSInspectorTerminal.release.xcconfig"; sourceTree = "<group>"; };
+		6588A123F6A397B17FC4A82B /* libPods-XJSInspectorTerminalTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XJSInspectorTerminalTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6D34FDDD495A13F43A79C98C /* Pods-XJSInspectorTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XJSInspectorTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-XJSInspectorTests/Pods-XJSInspectorTests.debug.xcconfig"; sourceTree = "<group>"; };
+		76BED4D9720E4CC6B9D5D4A5 /* Pods-XJSInspectorTests-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XJSInspectorTests-ios.debug.xcconfig"; path = "Pods/Target Support Files/Pods-XJSInspectorTests-ios/Pods-XJSInspectorTests-ios.debug.xcconfig"; sourceTree = "<group>"; };
+		7A81744D8D80B0D08B77CC3F /* Pods-XJSInspectorTests-ios-device.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XJSInspectorTests-ios-device.release.xcconfig"; path = "Pods/Target Support Files/Pods-XJSInspectorTests-ios-device/Pods-XJSInspectorTests-ios-device.release.xcconfig"; sourceTree = "<group>"; };
+		7C118A16EC1E5EDA8EE27079 /* libPods-XJSInspectorTerminal.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XJSInspectorTerminal.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7D2F0BE1157474634C4D7BAE /* Pods-XJSInspector-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XJSInspector-ios.debug.xcconfig"; path = "Pods/Target Support Files/Pods-XJSInspector-ios/Pods-XJSInspector-ios.debug.xcconfig"; sourceTree = "<group>"; };
+		7F42776092C6D0C34C080E49 /* Pods-XJSInspector-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XJSInspector-ios.release.xcconfig"; path = "Pods/Target Support Files/Pods-XJSInspector-ios/Pods-XJSInspector-ios.release.xcconfig"; sourceTree = "<group>"; };
+		8CF6A9FA80C1640FA88ABEB5 /* libPods-XJSInspector-ios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XJSInspector-ios.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		913E15317354AE43B7A669BF /* Pods-XJSInspectorTerminalTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XJSInspectorTerminalTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-XJSInspectorTerminalTests/Pods-XJSInspectorTerminalTests.release.xcconfig"; sourceTree = "<group>"; };
+		A06C603797F7D78C8874289C /* Pods-XJSInspector.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XJSInspector.debug.xcconfig"; path = "Pods/Target Support Files/Pods-XJSInspector/Pods-XJSInspector.debug.xcconfig"; sourceTree = "<group>"; };
+		B730044C4A33E8E8CC6DA2DC /* Pods-XJSInspectorTerminal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XJSInspectorTerminal.debug.xcconfig"; path = "Pods/Target Support Files/Pods-XJSInspectorTerminal/Pods-XJSInspectorTerminal.debug.xcconfig"; sourceTree = "<group>"; };
+		C5BACA0E7480D1033229AF37 /* libPods-XJSInspectorTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XJSInspectorTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C8D51779E3D5EDBE5AF5CEE4 /* libPods-XJSInspectorTests-ios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XJSInspectorTests-ios.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EAC2F97ED3D7DC39F7B0201F /* Pods-XJSInspectorTests-ios-device.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XJSInspectorTests-ios-device.debug.xcconfig"; path = "Pods/Target Support Files/Pods-XJSInspectorTests-ios-device/Pods-XJSInspectorTests-ios-device.debug.xcconfig"; sourceTree = "<group>"; };
+		F1185EE7D724C20E7467CE4C /* Pods-XJSInspectorTerminalTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XJSInspectorTerminalTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-XJSInspectorTerminalTests/Pods-XJSInspectorTerminalTests.debug.xcconfig"; sourceTree = "<group>"; };
+		F3476D346AA1280AD92E8DBA /* Pods-XJSInspector.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XJSInspector.release.xcconfig"; path = "Pods/Target Support Files/Pods-XJSInspector/Pods-XJSInspector.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -210,9 +221,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				06304C691A05CCC300236930 /* libXJSInspector.a in Frameworks */,
 				06F50AA31903D671000E5D58 /* Carbon.framework in Frameworks */,
 				061B33DE1837530A00F5DA08 /* Cocoa.framework in Frameworks */,
-				F7740BCAAD484082A6069A68 /* libPods-XJSInspectorTerminal.a in Frameworks */,
+				C061FB757313F9EC0657D527 /* libPods-XJSInspectorTerminal.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -220,7 +232,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0624ECE5183736A600D2F7BC /* libz.dylib in Frameworks */,
 				0624ECDF18372FA900D2F7BC /* libXJSInspector-ios.a in Frameworks */,
 				0624EC8318372E9400D2F7BC /* CoreGraphics.framework in Frameworks */,
 				0624EC8518372E9400D2F7BC /* UIKit.framework in Frameworks */,
@@ -232,11 +243,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0624ECE7183736BA00D2F7BC /* libz.dylib in Frameworks */,
 				0624ECA218372E9400D2F7BC /* XCTest.framework in Frameworks */,
 				0624ECA418372E9400D2F7BC /* UIKit.framework in Frameworks */,
 				0624ECA318372E9400D2F7BC /* Foundation.framework in Frameworks */,
-				9CD45122FE734B2B95937550 /* libPods-XJSInspectorTests-ios-device.a in Frameworks */,
+				A3B099105319EDAE479771F1 /* libPods-XJSInspectorTests-ios-device.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -245,7 +255,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0624ECBA18372EDE00D2F7BC /* Foundation.framework in Frameworks */,
-				48E4982BDAE642FB9A5F9FF0 /* libPods-XJSInspector-ios.a in Frameworks */,
+				721A8134F2682168D85A21AA /* libPods-XJSInspector-ios.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,12 +263,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0624ECE6183736B500D2F7BC /* libz.dylib in Frameworks */,
 				0624ECC718372EDE00D2F7BC /* XCTest.framework in Frameworks */,
 				0624ECC918372EDF00D2F7BC /* UIKit.framework in Frameworks */,
 				0624ECC818372EDF00D2F7BC /* Foundation.framework in Frameworks */,
 				0624ECCC18372EDF00D2F7BC /* libXJSInspector-ios.a in Frameworks */,
-				3EA24ED65A0D47F7BFDFD4AC /* libPods-XJSInspectorTests-ios.a in Frameworks */,
+				52D87B529A5F4E81B4B72914 /* libPods-XJSInspectorTests-ios.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,7 +276,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0663F176182A2EE500587A38 /* Cocoa.framework in Frameworks */,
-				A3E8EE00FA9F4491B2AB44CA /* libPods-XJSInspector.a in Frameworks */,
+				F36F43C902A5FB27E692F540 /* libPods-XJSInspector.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -279,7 +288,7 @@
 				0663F188182A2EE500587A38 /* Cocoa.framework in Frameworks */,
 				0663F18B182A2EE500587A38 /* libXJSInspector.a in Frameworks */,
 				0663F187182A2EE500587A38 /* XCTest.framework in Frameworks */,
-				1EE75F3DCC6246748E668136 /* libPods-XJSInspectorTests.a in Frameworks */,
+				6944B4F0F23F53497B4F86B3 /* libPods-XJSInspectorTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -288,7 +297,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				06F95D991845DDA400E34922 /* XCTest.framework in Frameworks */,
-				A7FE6D4513614F08844DF770 /* libPods-XJSInspectorTerminalTests.a in Frameworks */,
+				EF5C4936252857EFCE3E78C3 /* libPods-XJSInspectorTerminalTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -360,13 +369,7 @@
 				06F95D9A1845DDA400E34922 /* XJSInspectorTerminalTests */,
 				0663F174182A2EE500587A38 /* Frameworks */,
 				0663F173182A2EE500587A38 /* Products */,
-				86A0DAF32B0A4EF49A6F1D0B /* Pods-XJSInspector.xcconfig */,
-				9F5F8167BC93414D8B54E981 /* Pods-XJSInspectorTests.xcconfig */,
-				68730B313A68434F957138C4 /* Pods-XJSInspector-ios.xcconfig */,
-				FD2E7EAB408A4621AE4CC366 /* Pods-XJSInspectorTests-ios.xcconfig */,
-				6B1335043D494AD5B785535A /* Pods-XJSInspectorTests-ios-device.xcconfig */,
-				B929120D962849E18BF6320E /* Pods-XJSInspectorTerminal.xcconfig */,
-				121E2D05C85A4F40AA47655E /* Pods-XJSInspectorTerminalTests.xcconfig */,
+				69A52CB74050234E561DEA01 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -389,7 +392,6 @@
 			isa = PBXGroup;
 			children = (
 				06F50AA21903D671000E5D58 /* Carbon.framework */,
-				0624ECE4183736A600D2F7BC /* libz.dylib */,
 				06A8769418336FBE00855B3E /* libz.dylib */,
 				0663F175182A2EE500587A38 /* Cocoa.framework */,
 				0663F186182A2EE500587A38 /* XCTest.framework */,
@@ -397,13 +399,13 @@
 				0624EC8218372E9400D2F7BC /* CoreGraphics.framework */,
 				0624EC8418372E9400D2F7BC /* UIKit.framework */,
 				0663F177182A2EE500587A38 /* Other Frameworks */,
-				FB02BEC8203948538687CBEF /* libPods-XJSInspector.a */,
-				9F64C0D321764CCDAD44C429 /* libPods-XJSInspectorTests.a */,
-				67BDBE06BC984D7990229045 /* libPods-XJSInspector-ios.a */,
-				7DEF823BD03F4C589F664B6E /* libPods-XJSInspectorTests-ios.a */,
-				F8DD6C93F0C6437EB3B6A591 /* libPods-XJSInspectorTests-ios-device.a */,
-				9CF1ADD11F1F4D2EA6E19D2B /* libPods-XJSInspectorTerminal.a */,
-				D317B7F650BB46FD84A909B1 /* libPods-XJSInspectorTerminalTests.a */,
+				0E1F1662C4725070AAD4A477 /* libPods-XJSInspector.a */,
+				8CF6A9FA80C1640FA88ABEB5 /* libPods-XJSInspector-ios.a */,
+				7C118A16EC1E5EDA8EE27079 /* libPods-XJSInspectorTerminal.a */,
+				6588A123F6A397B17FC4A82B /* libPods-XJSInspectorTerminalTests.a */,
+				C5BACA0E7480D1033229AF37 /* libPods-XJSInspectorTests.a */,
+				C8D51779E3D5EDBE5AF5CEE4 /* libPods-XJSInspectorTests-ios.a */,
+				2BF2C7CFAEA70055ABD1C3F3 /* libPods-XJSInspectorTests-ios-device.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -508,6 +510,27 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		69A52CB74050234E561DEA01 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A06C603797F7D78C8874289C /* Pods-XJSInspector.debug.xcconfig */,
+				F3476D346AA1280AD92E8DBA /* Pods-XJSInspector.release.xcconfig */,
+				7D2F0BE1157474634C4D7BAE /* Pods-XJSInspector-ios.debug.xcconfig */,
+				7F42776092C6D0C34C080E49 /* Pods-XJSInspector-ios.release.xcconfig */,
+				B730044C4A33E8E8CC6DA2DC /* Pods-XJSInspectorTerminal.debug.xcconfig */,
+				3FC801BF862032769BC069B7 /* Pods-XJSInspectorTerminal.release.xcconfig */,
+				F1185EE7D724C20E7467CE4C /* Pods-XJSInspectorTerminalTests.debug.xcconfig */,
+				913E15317354AE43B7A669BF /* Pods-XJSInspectorTerminalTests.release.xcconfig */,
+				6D34FDDD495A13F43A79C98C /* Pods-XJSInspectorTests.debug.xcconfig */,
+				07975AE295CF57103BC7C7B4 /* Pods-XJSInspectorTests.release.xcconfig */,
+				76BED4D9720E4CC6B9D5D4A5 /* Pods-XJSInspectorTests-ios.debug.xcconfig */,
+				2B997CF49ECDC3790261D4C9 /* Pods-XJSInspectorTests-ios.release.xcconfig */,
+				EAC2F97ED3D7DC39F7B0201F /* Pods-XJSInspectorTests-ios-device.debug.xcconfig */,
+				7A81744D8D80B0D08B77CC3F /* Pods-XJSInspectorTests-ios-device.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -535,6 +558,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				06304C6B1A05CCCA00236930 /* PBXTargetDependency */,
 			);
 			name = XJSInspectorTerminal;
 			productName = XJSInspectorTerminal;
@@ -683,7 +707,7 @@
 		0663F16A182A2EE500587A38 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = "Xiliang Chen";
 				TargetAttributes = {
 					0624ECA018372E9400D2F7BC = {
@@ -795,7 +819,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-XJSInspector-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-XJSInspector/Pods-XJSInspector-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		2B2DEC9C94944755B80D1705 /* Check Pods Manifest.lock */ = {
@@ -840,7 +864,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-XJSInspectorTests-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-XJSInspectorTests/Pods-XJSInspectorTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		3A4053F5BFD140929DEC100D /* Copy Pods Resources */ = {
@@ -855,7 +879,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-XJSInspectorTerminal-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-XJSInspectorTerminal/Pods-XJSInspectorTerminal-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		5815231244AC4F6ABDB2EA7F /* Copy Pods Resources */ = {
@@ -870,7 +894,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-XJSInspector-ios-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-XJSInspector-ios/Pods-XJSInspector-ios-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		6C52F58243474455AB973F20 /* Copy Pods Resources */ = {
@@ -885,7 +909,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-XJSInspectorTerminalTests-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-XJSInspectorTerminalTests/Pods-XJSInspectorTerminalTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		6FF1A8CD190148D1A1545CF5 /* Check Pods Manifest.lock */ = {
@@ -915,7 +939,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-XJSInspectorTests-ios-device-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-XJSInspectorTests-ios-device/Pods-XJSInspectorTests-ios-device-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		8D2A826AC6FE479E97E952C0 /* Check Pods Manifest.lock */ = {
@@ -990,7 +1014,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-XJSInspectorTests-ios-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-XJSInspectorTests-ios/Pods-XJSInspectorTests-ios-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1091,6 +1115,11 @@
 			target = 0624ECB818372EDE00D2F7BC /* XJSInspector-ios */;
 			targetProxy = 0624ECE21837369400D2F7BC /* PBXContainerItemProxy */;
 		};
+		06304C6B1A05CCCA00236930 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0663F171182A2EE500587A38 /* XJSInspector */;
+			targetProxy = 06304C6A1A05CCCA00236930 /* PBXContainerItemProxy */;
+		};
 		0663F18A182A2EE500587A38 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 0663F171182A2EE500587A38 /* XJSInspector */;
@@ -1173,21 +1202,29 @@
 /* Begin XCBuildConfiguration section */
 		061B34051837530B00F5DA08 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B929120D962849E18BF6320E /* Pods-XJSInspectorTerminal.xcconfig */;
+			baseConfigurationReference = B730044C4A33E8E8CC6DA2DC /* Pods-XJSInspectorTerminal.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "XJSInspectorTerminal/XJSInspectorTerminal-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
-				INFOPLIST_FILE = "XJSInspectorTerminal/XJSInspectorTerminal-Info.plist";
-				LIBRARY_SEARCH_PATHS = "\"${PODS_ROOT}/XJSBinding/Spidermonkey/debug\"";
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
-				OTHER_LDFLAGS = (
-					"-ObjC",
-					"-ljs_static",
-					"-lz",
+				HEADER_SEARCH_PATHS = (
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/CocoaLumberjack\"",
+					"\"${PODS_ROOT}/Headers/Public/OCMock\"",
+					"\"${PODS_ROOT}/Headers/Public/ThoMoNetworking\"",
+					"\"${PODS_ROOT}/Headers/Public/XJSBinding\"",
+					"\"${PODS_ROOT}/Headers/Public/XJSBinding/js\"",
+					"\"${PODS_ROOT}/Headers/Public/XJSBinding/mozilla\"",
+					"\"${PODS_ROOT}/Headers/Public/XLCUtils\"",
+					"\"${PODS_ROOT}/Headers/XJSBinding\"",
+					"\"${PODS_ROOT}/XJSBinding/Spidermonkey/include\"",
+					"\"${PODS_ROOT}/Headers\"",
+					"\"${SRCROOT}\"",
 				);
+				INFOPLIST_FILE = "XJSInspectorTerminal/XJSInspectorTerminal-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1195,20 +1232,28 @@
 		};
 		061B34061837530B00F5DA08 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B929120D962849E18BF6320E /* Pods-XJSInspectorTerminal.xcconfig */;
+			baseConfigurationReference = 3FC801BF862032769BC069B7 /* Pods-XJSInspectorTerminal.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "XJSInspectorTerminal/XJSInspectorTerminal-Prefix.pch";
-				INFOPLIST_FILE = "XJSInspectorTerminal/XJSInspectorTerminal-Info.plist";
-				LIBRARY_SEARCH_PATHS = "\"${PODS_ROOT}/XJSBinding/Spidermonkey/release\"";
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
-				OTHER_LDFLAGS = (
-					"-ObjC",
-					"-ljs_static",
-					"-lz",
+				HEADER_SEARCH_PATHS = (
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/CocoaLumberjack\"",
+					"\"${PODS_ROOT}/Headers/Public/OCMock\"",
+					"\"${PODS_ROOT}/Headers/Public/ThoMoNetworking\"",
+					"\"${PODS_ROOT}/Headers/Public/XJSBinding\"",
+					"\"${PODS_ROOT}/Headers/Public/XJSBinding/js\"",
+					"\"${PODS_ROOT}/Headers/Public/XJSBinding/mozilla\"",
+					"\"${PODS_ROOT}/Headers/Public/XLCUtils\"",
+					"\"${PODS_ROOT}/Headers/XJSBinding\"",
+					"\"${PODS_ROOT}/XJSBinding/Spidermonkey/include\"",
+					"\"${PODS_ROOT}/Headers\"",
+					"\"${SRCROOT}\"",
 				);
+				INFOPLIST_FILE = "XJSInspectorTerminal/XJSInspectorTerminal-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1233,11 +1278,6 @@
 				);
 				INFOPLIST_FILE = "XJSInspectorDemo/XJSInspectorDemo-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				LIBRARY_SEARCH_PATHS = "\"${PODS_ROOT}/XJSBinding/Spidermonkey/debug\"";
-				OTHER_LDFLAGS = (
-					"-ljs_static",
-					"-ObjC",
-				);
 				PODS_ROOT = "${SRCROOT}/Pods";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -1261,11 +1301,6 @@
 				GCC_PREFIX_HEADER = "XJSInspectorDemo/XJSInspectorDemo-Prefix.pch";
 				INFOPLIST_FILE = "XJSInspectorDemo/XJSInspectorDemo-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				LIBRARY_SEARCH_PATHS = "\"${PODS_ROOT}/XJSBinding/Spidermonkey/release\"";
-				OTHER_LDFLAGS = (
-					"-ljs_static",
-					"-ObjC",
-				);
 				PODS_ROOT = "${SRCROOT}/Pods";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -1277,7 +1312,7 @@
 		};
 		0624ECB318372E9400D2F7BC /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6B1335043D494AD5B785535A /* Pods-XJSInspectorTests-ios-device.xcconfig */;
+			baseConfigurationReference = EAC2F97ED3D7DC39F7B0201F /* Pods-XJSInspectorTests-ios-device.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/XJSInspectorDemo.app/XJSInspectorDemo";
 				CLANG_ENABLE_MODULES = YES;
@@ -1303,7 +1338,7 @@
 		};
 		0624ECB418372E9400D2F7BC /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6B1335043D494AD5B785535A /* Pods-XJSInspectorTests-ios-device.xcconfig */;
+			baseConfigurationReference = 7A81744D8D80B0D08B77CC3F /* Pods-XJSInspectorTests-ios-device.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/XJSInspectorDemo.app/XJSInspectorDemo";
 				CLANG_ENABLE_MODULES = YES;
@@ -1326,7 +1361,7 @@
 		};
 		0624ECD618372EDF00D2F7BC /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 68730B313A68434F957138C4 /* Pods-XJSInspector-ios.xcconfig */;
+			baseConfigurationReference = 7D2F0BE1157474634C4D7BAE /* Pods-XJSInspector-ios.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				DSTROOT = /tmp/XJSInspector_ios.dst;
@@ -1337,7 +1372,6 @@
 					"$(inherited)",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -1346,14 +1380,13 @@
 		};
 		0624ECD718372EDF00D2F7BC /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 68730B313A68434F957138C4 /* Pods-XJSInspector-ios.xcconfig */;
+			baseConfigurationReference = 7F42776092C6D0C34C080E49 /* Pods-XJSInspector-ios.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				DSTROOT = /tmp/XJSInspector_ios.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -1363,7 +1396,7 @@
 		};
 		0624ECD918372EDF00D2F7BC /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FD2E7EAB408A4621AE4CC366 /* Pods-XJSInspectorTests-ios.xcconfig */;
+			baseConfigurationReference = 76BED4D9720E4CC6B9D5D4A5 /* Pods-XJSInspectorTests-ios.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "";
 				CLANG_ENABLE_MODULES = YES;
@@ -1380,11 +1413,6 @@
 				);
 				INFOPLIST_FILE = "XJSInspectorTests/XJSInspectorTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				LIBRARY_SEARCH_PATHS = "\"${PODS_ROOT}/XJSBinding/Spidermonkey/debug\"";
-				OTHER_LDFLAGS = (
-					"-ObjC",
-					"-ljs_static",
-				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				TEST_HOST = "";
@@ -1394,7 +1422,7 @@
 		};
 		0624ECDA18372EDF00D2F7BC /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FD2E7EAB408A4621AE4CC366 /* Pods-XJSInspectorTests-ios.xcconfig */;
+			baseConfigurationReference = 2B997CF49ECDC3790261D4C9 /* Pods-XJSInspectorTests-ios.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "";
 				CLANG_ENABLE_MODULES = YES;
@@ -1407,11 +1435,6 @@
 				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = "XJSInspectorTests/XJSInspectorTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				LIBRARY_SEARCH_PATHS = "\"${PODS_ROOT}/XJSBinding/Spidermonkey/release\"";
-				OTHER_LDFLAGS = (
-					"-ObjC",
-					"-ljs_static",
-				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				TEST_HOST = "";
@@ -1453,7 +1476,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = macosx;
+				SDKROOT = macosx10.9;
 			};
 			name = Debug;
 		};
@@ -1488,17 +1511,17 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
-				SDKROOT = macosx;
+				SDKROOT = macosx10.9;
 			};
 			name = Release;
 		};
 		0663F197182A2EE500587A38 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 86A0DAF32B0A4EF49A6F1D0B /* Pods-XJSInspector.xcconfig */;
+			baseConfigurationReference = A06C603797F7D78C8874289C /* Pods-XJSInspector.debug.xcconfig */;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "XJSInspector/XJSInspector-Prefix.pch";
-				LIBRARY_SEARCH_PATHS = "";
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -1506,11 +1529,11 @@
 		};
 		0663F198182A2EE500587A38 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 86A0DAF32B0A4EF49A6F1D0B /* Pods-XJSInspector.xcconfig */;
+			baseConfigurationReference = F3476D346AA1280AD92E8DBA /* Pods-XJSInspector.release.xcconfig */;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "XJSInspector/XJSInspector-Prefix.pch";
-				LIBRARY_SEARCH_PATHS = "";
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -1518,7 +1541,7 @@
 		};
 		0663F19A182A2EE500587A38 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9F5F8167BC93414D8B54E981 /* Pods-XJSInspectorTests.xcconfig */;
+			baseConfigurationReference = 6D34FDDD495A13F43A79C98C /* Pods-XJSInspectorTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -1533,11 +1556,6 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "XJSInspectorTests/XJSInspectorTests-Info.plist";
-				LIBRARY_SEARCH_PATHS = "\"${PODS_ROOT}/XJSBinding/Spidermonkey/debug\"";
-				OTHER_LDFLAGS = (
-					"-ObjC",
-					"-ljs_static",
-				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "";
 				WRAPPER_EXTENSION = xctest;
@@ -1546,7 +1564,7 @@
 		};
 		0663F19B182A2EE500587A38 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9F5F8167BC93414D8B54E981 /* Pods-XJSInspectorTests.xcconfig */;
+			baseConfigurationReference = 07975AE295CF57103BC7C7B4 /* Pods-XJSInspectorTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -1557,11 +1575,6 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "XJSInspector/XJSInspector-Prefix.pch";
 				INFOPLIST_FILE = "XJSInspectorTests/XJSInspectorTests-Info.plist";
-				LIBRARY_SEARCH_PATHS = "\"${PODS_ROOT}/XJSBinding/Spidermonkey/release\"";
-				OTHER_LDFLAGS = (
-					"-ObjC",
-					"-ljs_static",
-				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "";
 				WRAPPER_EXTENSION = xctest;
@@ -1570,7 +1583,7 @@
 		};
 		06F95DA61845DDA400E34922 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 121E2D05C85A4F40AA47655E /* Pods-XJSInspectorTerminalTests.xcconfig */;
+			baseConfigurationReference = F1185EE7D724C20E7467CE4C /* Pods-XJSInspectorTerminalTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/XJSInspectorTerminal.app/Contents/MacOS/XJSInspectorTerminal";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -1586,11 +1599,6 @@
 				);
 				INFOPLIST_FILE = "XJSInspectorTerminalTests/XJSInspectorTerminalTests-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-framework",
-					XCTest,
-				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
@@ -1599,7 +1607,7 @@
 		};
 		06F95DA71845DDA400E34922 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 121E2D05C85A4F40AA47655E /* Pods-XJSInspectorTerminalTests.xcconfig */;
+			baseConfigurationReference = 913E15317354AE43B7A669BF /* Pods-XJSInspectorTerminalTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/XJSInspectorTerminal.app/Contents/MacOS/XJSInspectorTerminal";
 				COMBINE_HIDPI_IMAGES = YES;

@@ -1,8 +1,9 @@
-def import_pods
-    pod 'XLCUtils', :head
-    pod 'ThoMoNetworking', :head
-    pod 'XJSBinding', :head
+source 'https://github.com/CocoaPods/Specs.git'
+source 'git@github.com:xlc/Specs.git'
 
+def import_pods
+    pod 'XLCUtils'
+    pod 'ThoMoNetworking'
 end
 
 def import_pods_test
@@ -10,8 +11,9 @@ def import_pods_test
 end
 
 target 'XJSInspector' do
-    platform :osx, '10.8'
+    platform :osx, '10.9'
     import_pods
+    pod 'XJSBinding'
 
     target 'XJSInspectorTests', :exclusive => true do
         import_pods_test
@@ -19,8 +21,9 @@ target 'XJSInspector' do
 end
 
 target 'XJSInspector-ios' do
-    platform :ios, '6.0'
+    platform :ios, '7.0'
     import_pods
+    pod 'XJSBinding'
 
     target 'XJSInspectorTests-ios', :exclusive => true do
         import_pods_test
@@ -32,28 +35,28 @@ target 'XJSInspector-ios' do
 end
 
 target 'XJSInspectorTerminal' do
-    platform :osx, '10.8'
+    platform :osx, '10.9'
 
     import_pods
-    pod 'XJSInspector', :head
+    pod 'XJSBinding'
 
-   target 'XJSInspectorTerminalTests', :exclusive => true do
+    target 'XJSInspectorTerminalTests', :exclusive => true do
         import_pods_test
-   end
-end
-
-post_install do |installer|
-    default_library = installer.libraries.each do |lib|
-        name = lib.target_definition.name
-        if name.start_with?('XJSInspector') and not name.include?('Tests') and name != 'XJSInspectorTerminal'
-            config_file_path = lib.library.xcconfig_path
-
-            File.open("config.tmp", "w") do |io|
-                io << File.read(config_file_path).gsub(/OTHER_LDFLAGS.*$/, '')
-            end
-
-            FileUtils.mv("config.tmp", config_file_path)
-        end
     end
-
 end
+
+#post_install do |installer|
+#    default_library = installer.libraries.each do |lib|
+#        name = lib.target_definition.name
+#        if name.start_with?('XJSInspector') and not name.include?('Tests') and name != 'XJSInspectorTerminal'
+#            config_file_path = lib.library.xcconfig_path
+#
+#            File.open("config.tmp", "w") do |io|
+#                io << File.read(config_file_path).gsub(/OTHER_LDFLAGS.*$/, '')
+#            end
+#
+#            FileUtils.mv("config.tmp", config_file_path)
+#        end
+#    end
+#
+#end
